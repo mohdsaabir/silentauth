@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
-from db_utils import insert_embedding, create_table
+from db_utils import insert_embedding
 
 # ---------------- CONFIG ----------------
 ENROLL_DIR = Path("data/enroll")
@@ -25,7 +25,7 @@ def enroll_user(user_id):
     if not wav_files:
         print("No WAV files found for enrollment!")
         return
-    create_table()
+    
     embeddings = []
     print(f"\n--- Enrolling user: {user_id} ---")
 
@@ -37,7 +37,7 @@ def enroll_user(user_id):
 
     # Average + normalize
     avg_emb = np.mean(embeddings, axis=0)
-    avg_emb = l2_normalize(avg_emb)           # ✅ critical step
+    avg_emb = l2_normalize(avg_emb)         
 
     emb_path = EMBED_DIR / f"{user_id}.pt"
     torch.save(torch.tensor(avg_emb, dtype=torch.float32), emb_path)

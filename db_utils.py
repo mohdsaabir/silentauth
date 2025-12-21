@@ -2,6 +2,8 @@ import sqlite3
 import numpy as np
 from pathlib import Path
 
+# The DB logic is as same as we learned in PHP or other languages but here we use sqlite3 module
+
 DB_PATH = Path("database/voice_embeddings.db")
 
 def get_connection():
@@ -38,6 +40,7 @@ def insert_embedding(user_name, embedding):
     conn.commit()
     conn.close()
 
+# Have not used so far so skip this function
 def fetch_embedding(user_name):
     """Fetch a single embedding for a user."""
     conn = get_connection()
@@ -49,8 +52,10 @@ def fetch_embedding(user_name):
         return None
     return np.frombuffer(row[0], dtype=np.float32)
 
+
+
 def fetch_all_embeddings():
-    """Fetch all users and their embeddings."""
+    """Fetch all users and their embeddings and return as a list of tuples of user_name and embedding."""
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT user_name, embedding FROM users")

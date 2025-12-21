@@ -3,7 +3,7 @@ from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
 import sounddevice as sd
 import scipy.io.wavfile as wavfile
-from db_utils import fetch_all_embeddings # ✅ use db_utils
+from db_utils import fetch_all_embeddings 
 
 # -------------------- CONFIG --------------------
 SAMPLE_RATE = 16000
@@ -33,13 +33,14 @@ def save_wav(audio, file_path):
 
 
 def verify_user():
-    enrolled = fetch_all_embeddings()  # returns list of (user_name, embedding)
+    enrolled = fetch_all_embeddings()  # returns list of (user_name, embedding) from db_utils.py
     if not enrolled:
         print("No enrolled users found in the database!")
         return
 
     print("\n--- Verification ---")
     audio = record_audio()
+    # Stores the audio clip locally can remove this code later in production 
     verify_path = AUDIO_DIR / "verify.wav"
     save_wav(audio, verify_path)
 

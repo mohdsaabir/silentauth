@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
-from db_utils import fetch_all_embeddings, create_table
+from db_utils import fetch_all_embeddings
 
 # ---------------- CONFIG ----------------
 VERIFY_DIR = Path("data/verify")
@@ -16,7 +16,7 @@ def l2_normalize(x, eps=1e-10):
 
 def verify_all():
     verify_files = sorted(VERIFY_DIR.glob("*.wav"))
-    enrolled = fetch_all_embeddings()  # returns list of tuples (user_name, embedding)
+    enrolled = fetch_all_embeddings()  # returns list of tuples (user_name, embedding) from db_utils.py
 
     if not verify_files:
         print("No verification WAV files found!")
@@ -66,7 +66,7 @@ def verify_all():
             "score": best_score,
             "decision": decision
         })
-
+    # Just printing a final summary of all verifications not relevent to core logic
     # -------- FINAL SUMMARY --------
     print("\n=========== SUMMARY ===========")
     print(f"{'File':20} {'User':15} {'Score (%)':10} {'Result'}")
