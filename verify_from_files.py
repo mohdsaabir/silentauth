@@ -6,7 +6,7 @@ from resemblyzer import VoiceEncoder, preprocess_wav
 # ---------------- CONFIG ----------------
 VERIFY_AUDIO = Path("data/verify/test.wav")
 EMBED_DIR = Path("embeddings")
-THRESHOLD = 0.75
+THRESHOLD = 0.78
 # ---------------------------------------
 
 encoder = VoiceEncoder()

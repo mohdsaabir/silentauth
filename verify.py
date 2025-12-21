@@ -1,34 +1,41 @@
-import sounddevice as sd
 import numpy as np
-import torch
 from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
+import sounddevice as sd
 import scipy.io.wavfile as wavfile
+from db_utils import fetch_all_embeddings # ✅ use db_utils
 
 # -------------------- CONFIG --------------------
 SAMPLE_RATE = 16000
-DURATION = 10  # seconds for verification
+DURATION = 10
+THRESHOLD = 0.78
 AUDIO_DIR = Path("enrolled_audio")
-EMBED_DIR = Path("embeddings")
-THRESHOLD = 0.75
+AUDIO_DIR.mkdir(exist_ok=True)
 # ------------------------------------------------
 
 encoder = VoiceEncoder()
 
+
+def l2_normalize(x, eps=1e-10):
+    return x / (np.linalg.norm(x) + eps)
+
+
 def record_audio(duration=DURATION, fs=SAMPLE_RATE):
     print(f"Recording for {duration} seconds... Speak now 🎤")
-    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='float32')
+    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype="float32")
     sd.wait()
     return recording.squeeze()
+
 
 def save_wav(audio, file_path):
     wavfile.write(file_path, SAMPLE_RATE, (audio * 32767).astype(np.int16))
     print(f"Audio saved to {file_path}")
 
+
 def verify_user():
-    enrolled_files = list(EMBED_DIR.glob("*.pt"))
-    if not enrolled_files:
-        print("No enrolled users found! Please enroll first.")
+    enrolled = fetch_all_embeddings()  # returns list of (user_name, embedding)
+    if not enrolled:
+        print("No enrolled users found in the database!")
         return
 
     print("\n--- Verification ---")
@@ -37,25 +44,24 @@ def verify_user():
     save_wav(audio, verify_path)
 
     wav_processed = preprocess_wav(str(verify_path))
-    test_emb = encoder.embed_utterance(wav_processed).flatten()  # ensure 1D
+    test_emb = encoder.embed_utterance(wav_processed).flatten()
+    test_emb = l2_normalize(test_emb)
 
     best_score = -1
     best_user = None
 
-    for file in enrolled_files:
-        user_id = file.stem
-        stored_emb = torch.load(file).flatten().numpy()  # ensure 1D
-
+    for user_name, stored_emb in enrolled:
+        stored_emb = l2_normalize(stored_emb)  # normalize db embeddings
         if stored_emb.shape != test_emb.shape:
-            print(f"Skipping {user_id}: embedding shape mismatch {stored_emb.shape}")
+            print(f"Skipping {user_name}: shape mismatch {stored_emb.shape}")
             continue
 
-        score = np.dot(test_emb, stored_emb) / (np.linalg.norm(test_emb) * np.linalg.norm(stored_emb))
-        print(f"Similarity with {user_id}: {score*100:.2f}%")
+        score = np.dot(test_emb, stored_emb)  # cosine similarity
+        print(f"Similarity with {user_name}: {score*100:.2f}%")
 
         if score > best_score:
             best_score = score
-            best_user = user_id
+            best_user = user_name
 
     print("\n--- RESULT ---")
     print(f"Best match: {best_user}")
@@ -64,6 +70,7 @@ def verify_user():
         print("✅ AUTHENTICATED")
     else:
         print("❌ REJECTED")
+
 
 if __name__ == "__main__":
     verify_user()

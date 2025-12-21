@@ -4,10 +4,11 @@ import torch
 from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
 import scipy.io.wavfile as wavfile
+from db_utils import insert_embedding
 
 # -------------------- CONFIG --------------------
 SAMPLE_RATE = 16000
-DURATION = 10  # seconds per sample
+DURATION = 10        # seconds per sample
 NUM_SAMPLES = 5
 AUDIO_DIR = Path("enrolled_audio")
 EMBED_DIR = Path("embeddings")
@@ -17,35 +18,48 @@ EMBED_DIR.mkdir(exist_ok=True)
 
 encoder = VoiceEncoder()
 
+
+def l2_normalize(x, eps=1e-10):
+    return x / (np.linalg.norm(x) + eps)
+
+
 def record_audio(duration=DURATION, fs=SAMPLE_RATE):
     print(f"Recording for {duration} seconds... Speak now 🎤")
-    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='float32')
+    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype="float32")
     sd.wait()
     return recording.squeeze()
+
 
 def save_wav(audio, file_path):
     wavfile.write(file_path, SAMPLE_RATE, (audio * 32767).astype(np.int16))
     print(f"Audio saved to {file_path}")
 
+
 def enroll_user(user_id):
     embeddings = []
     print(f"\n--- Enrollment for user '{user_id}' ---")
-    
+
     for i in range(NUM_SAMPLES):
         audio = record_audio()
         audio_path = AUDIO_DIR / f"{user_id}_sample{i+1}.wav"
         save_wav(audio, audio_path)
-        
+
         wav_processed = preprocess_wav(str(audio_path))
-        emb = encoder.embed_utterance(wav_processed)
+        emb = encoder.embed_utterance(wav_processed).flatten()
+        emb = l2_normalize(emb)           # ✅ normalize each utterance
         embeddings.append(emb)
 
-    # Average embeddings and ensure 1D
-    avg_emb = np.mean(embeddings, axis=0).flatten()
+    # Average + normalize again (CRITICAL)
+    avg_emb = np.mean(embeddings, axis=0)
+    avg_emb = l2_normalize(avg_emb)
+
     emb_path = EMBED_DIR / f"{user_id}.pt"
-    torch.save(torch.tensor(avg_emb), emb_path)
-    print(f"\nEnrollment complete for {user_id}.")
+    torch.save(torch.tensor(avg_emb, dtype=torch.float32), emb_path)
+    insert_embedding(user_id, avg_emb)
+
+    print(f"\nEnrollment complete for {user_id}")
     print(f"Embedding saved to {emb_path}\n")
+
 
 if __name__ == "__main__":
     user_id = input("Enter user ID: ")

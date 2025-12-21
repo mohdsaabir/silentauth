@@ -13,6 +13,7 @@ data/
 
 # Embeddings (optional – decide later)
 embeddings/*.pt
+database/
 
 # OS
 .DS_Store

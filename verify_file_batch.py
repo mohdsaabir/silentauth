@@ -2,32 +2,31 @@ import numpy as np
 import torch
 from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
+from db_utils import fetch_all_embeddings, create_table
 
 # ---------------- CONFIG ----------------
 VERIFY_DIR = Path("data/verify")
-EMBED_DIR = Path("embeddings")
-THRESHOLD = 0.75
+THRESHOLD = 0.78
 # ---------------------------------------
 
 encoder = VoiceEncoder()
 
-def cosine_similarity(a, b):
-    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+def l2_normalize(x, eps=1e-10):
+    return x / (np.linalg.norm(x) + eps)
 
 def verify_all():
-    verify_files = list(VERIFY_DIR.glob("*.wav"))
-    enrolled_files = list(EMBED_DIR.glob("*.pt"))
+    verify_files = sorted(VERIFY_DIR.glob("*.wav"))
+    enrolled = fetch_all_embeddings()  # returns list of tuples (user_name, embedding)
 
     if not verify_files:
         print("No verification WAV files found!")
         return
 
-    if not enrolled_files:
-        print("No enrolled users found!")
+    if not enrolled:
+        print("No enrolled users found in the database!")
         return
 
     print("\n========= BATCH VERIFICATION =========\n")
-
     summary = []
 
     for wav_file in verify_files:
@@ -35,20 +34,25 @@ def verify_all():
 
         wav_processed = preprocess_wav(str(wav_file))
         test_emb = encoder.embed_utterance(wav_processed).flatten()
+        test_emb = l2_normalize(test_emb)
 
         best_score = -1
         best_user = None
 
-        for emb_file in enrolled_files:
-            user_id = emb_file.stem
-            stored_emb = torch.load(emb_file).flatten().numpy()
+        for user_name, stored_emb in enrolled:
+            stored_emb = stored_emb.flatten()
+            stored_emb = l2_normalize(stored_emb)  # normalize DB embeddings
 
-            score = cosine_similarity(test_emb, stored_emb)
-            print(f"   Similarity with {user_id}: {score*100:.2f}%")
+            if stored_emb.shape != test_emb.shape:
+                print(f"   Skipping {user_name}: shape mismatch")
+                continue
+
+            score = np.dot(test_emb, stored_emb)
+            print(f"   Similarity with {user_name}: {score*100:.2f}%")
 
             if score > best_score:
                 best_score = score
-                best_user = user_id
+                best_user = user_name
 
         decision = "ACCEPT" if best_score >= THRESHOLD else "REJECT"
 
@@ -67,10 +71,10 @@ def verify_all():
     print("\n=========== SUMMARY ===========")
     print(f"{'File':20} {'User':15} {'Score (%)':10} {'Result'}")
     print("-" * 55)
-
     for s in summary:
-        print(f"{s['file']:20} {s['user']:15} {s['score']*100:10.2f} {s['decision']}")
-
+        print(
+            f"{s['file']:20} {s['user']:15} {s['score']*100:10.2f} {s['decision']}"
+        )
     print("\n================================\n")
 
 if __name__ == "__main__":
