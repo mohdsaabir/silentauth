@@ -20,6 +20,18 @@ def l2_normalize(x, eps=1e-10):
     return x / (np.linalg.norm(x) + eps)
 
 
+
+def is_speech(audio):
+    # This is to check whether the audio clip is silence or not
+    rms = np.sqrt(np.mean(audio**2))
+    if rms < 0.02:
+        return False
+
+    return True
+
+
+
+
 def record_audio(duration=DURATION, fs=SAMPLE_RATE):
     print(f"Recording for {duration} seconds... Speak now 🎤")
     recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype="float32")
@@ -40,6 +52,13 @@ def verify_user():
 
     print("\n--- Verification ---")
     audio = record_audio()
+
+    if not is_speech(audio):
+        print("❌ No speech detected")
+        return
+    
+   
+
     # Stores the audio clip locally can remove this code later in production 
     verify_path = AUDIO_DIR / "verify.wav"
     save_wav(audio, verify_path)
