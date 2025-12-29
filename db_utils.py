@@ -19,13 +19,16 @@ def create_table():
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_name TEXT NOT NULL UNIQUE,
-            embedding BLOB NOT NULL
+            embedding BLOB NOT NULL,
+            keywords TEXT
         )
     """)
     conn.commit()
     conn.close()
 
-def insert_embedding(user_name, embedding):
+
+
+def insert_embedding(user_name, embedding, keywords):
     """
     Store the embedding of a user.
     embedding: np.ndarray
@@ -34,9 +37,9 @@ def insert_embedding(user_name, embedding):
     cursor = conn.cursor()
     emb_bytes = embedding.astype(np.float32).tobytes()
     cursor.execute("""
-        INSERT OR REPLACE INTO users (user_name, embedding)
-        VALUES (?, ?)
-    """, (user_name, emb_bytes))
+        INSERT OR REPLACE INTO users (user_name, embedding, keywords)
+        VALUES (?, ?, ?)
+    """, (user_name, emb_bytes, keywords))
     conn.commit()
     conn.close()
 
@@ -58,11 +61,11 @@ def fetch_all_embeddings():
     """Fetch all users and their embeddings and return as a list of tuples of user_name and embedding."""
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT user_name, embedding FROM users")
+    cursor.execute("SELECT user_name, embedding , keywords FROM users")
     rows = cursor.fetchall()
     conn.close()
     result = []
-    for user_name, emb_bytes in rows:
+    for user_name, emb_bytes, keywords in rows:
         emb = np.frombuffer(emb_bytes, dtype=np.float32)
-        result.append((user_name, emb))
+        result.append((user_name, emb, keywords))
     return result

@@ -15,6 +15,9 @@ data/
 embeddings/*.pt
 database/
 
+# models
+model/
+
 # OS
 .DS_Store
 Thumbs.db
