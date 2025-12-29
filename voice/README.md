@@ -26,3 +26,10 @@ authentication pipeline with multi-layer verification.
 - Run enroll.py for enrollment 
 - Run start_point.py for verification
 
+## Directory structure
+<img width="331" height="592" alt="Screenshot 2025-12-29 221421" src="https://github.com/user-attachments/assets/024543a2-6a94-40d6-8f61-496e64406048" />
+
+## Models 
+
+- Download model files from the repo faster-whisper by comparing with directory structure model
+- faster-whisper: https://huggingface.co/Systran/faster-whisper-base/tree/main
