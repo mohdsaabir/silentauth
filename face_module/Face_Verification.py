@@ -2,6 +2,7 @@ import cv2
 import sqlite3
 import numpy as np
 import time
+import json
 from collections import deque
 from insightface.app import FaceAnalysis
 
@@ -13,6 +14,12 @@ score_buffer = deque(maxlen=10) # to compute average of several frames
 last_printed_name = None
 start_time = time.time()
 
+api_output = {"modality" : "face",
+              "user_id" : "Nil",
+              "confidence" : 0,
+              "status" : "Nil"}
+
+flag = 0
 #---------- Similarity Score Core----------
 def cosine_similarity(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
@@ -54,6 +61,7 @@ while True:
     faces = app.get(frame) #finds faces
     
 
+
     for face in faces:
         emb = face.embedding #generate embeddings
 
@@ -72,20 +80,31 @@ while True:
         avg_score = sum(score_buffer) / len(score_buffer)
 
         x1, y1, x2, y2 = face.bbox.astype(int)
-
         # identification decision
+        
         if avg_score >= THRESHOLD:
             label = f"{best_name} ({avg_score:.2f})"
             color = (0, 255, 0)
 
             # Print only once per person
             if best_name != last_printed_name:
-                print(f"[IDENTIFIED] User: {best_name}, Score: {avg_score:.2f}")
+                api_output["user_id"] = best_name
+                api_output["confidence"] = round(float(avg_score), 2)
+                api_output["status"] = "success"
+                print(json.dumps(api_output))
                 last_printed_name = best_name
+                flag = 0
+                
 
         else:
-            label = f"UNKNOWN ({avg_score:.2f})"
-            color = (0, 0, 255)
+            if not flag:
+                label = f"Unknown ({avg_score:.2f})"
+                api_output["user_id"] = "Unknown"
+                api_output["confidence"] = round(float(avg_score), 2)
+                api_output["status"] = "rejected"
+                print(json.dumps(api_output))
+                color = (0, 0, 255)
+                flag = 1
 
         # bounding box around the face
         cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
