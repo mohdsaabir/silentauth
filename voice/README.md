@@ -16,7 +16,13 @@ authentication pipeline with multi-layer verification.
 - Code structure and APIs may change frequently
 - Not intended for production or demo use yet
 
-## Stable Versions
-- Use `main` for the last stable working version
-- Use `voice-iteration-1` for the frozen baseline implementation
+## Files and uses
+- enroll.py records 5 audio clip and reads keyword and stores in DB
+- keyword_asr.py is the module to check whether the keyword is present in the verifying audio or not
+- speaker_verify.py this is to check the user identity using MFCC embeddings
+- start_point.py this is the common file that connects the keyword_asr.py and speaker_verify.py
+
+## Flow
+- Run enroll.py for enrollment 
+- Run start_point.py for verification
 
