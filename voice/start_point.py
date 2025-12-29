@@ -3,8 +3,9 @@ from pathlib import Path
 import sounddevice as sd
 import scipy.io.wavfile as wavfile
 
+# These are the modules we created
 from keyword_asr import keyword_detect, transcribe
-from speaker_verify import verify_user   # ← ADD THIS
+from speaker_verify import verify_user   
 
 # -------------------- CONFIG --------------------
 SAMPLE_RATE = 16000
@@ -45,7 +46,7 @@ def main():
 
     audio = record_audio()
 
-    # 1️⃣ Silence gate
+    # Checks for silence using RMS
     if not rms_check(audio):
         print("❌ Rejected: Silence / No speech")
         return
@@ -53,22 +54,32 @@ def main():
     verify_path = AUDIO_DIR / "verify.wav"
     save_wav(audio, verify_path)
 
+    # Verification using speaker embedding for user identification
+    result = None
+    #print("\n---This is print is for testing---")
     print("\n--- Speaker Verification ---")
-    keyword = verify_user(verify_path)
+    keyword, result = verify_user(verify_path)
     if not keyword:
+        # This is the return if speaker verification fails it doesnot proceed to ASR 
+        print(f"\nAuthentication Details: {result}")
         return
 
 
-    # 2️⃣ Keyword / ASR gate
+    # ASR and Keyword Detection
     transcript = transcribe(verify_path)
    
     if not keyword_detect(transcript, keyword):
-        print("❌ Rejected: Keyword not found")
-        print("Final Result: Not Authenticated")
+        #print("❌ Rejected: Keyword not found")
+        #print("Final Result: Not Authenticated")
+        result = {"modality":"Voice", "user_name": None, "similarity_score": 0, "status":"Rejected"}
+        # This return if the speaker is verified but keyword is not detected so similarity score is 0 
+        print(f"\nAuthentication Details: {result}")
         return
 
-    print("✅ Keyword accepted")
-    print("\nFinal Result: Authenticated ✅")
+    #print("✅ Keyword accepted")
+    #print("\nFinal Result: Authenticated ✅")
+    # This should return the authentication details while integration with other modalities
+    print(f"\nAuthentication Details: {result}")
 
 
 if __name__ == "__main__":

@@ -27,7 +27,6 @@ def create_table():
     conn.close()
 
 
-
 def insert_embedding(user_name, embedding, keywords):
     """
     Store the embedding of a user.

@@ -3,6 +3,8 @@ from pathlib import Path
 from resemblyzer import VoiceEncoder, preprocess_wav
 import sounddevice as sd
 import scipy.io.wavfile as wavfile
+
+# These are the modules we created
 from db_utils import fetch_all_embeddings 
 
 # -------------------- CONFIG --------------------
@@ -20,36 +22,12 @@ def l2_normalize(x, eps=1e-10):
     return x / (np.linalg.norm(x) + eps)
 
 
-'''
-
-def record_audio(duration=DURATION, fs=SAMPLE_RATE):
-    print(f"Recording for {duration} seconds... Speak now 🎤")
-    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype="float32")
-    sd.wait()
-    return recording.squeeze()
-
-
-def save_wav(audio, file_path):
-    wavfile.write(file_path, SAMPLE_RATE, (audio * 32767).astype(np.int16))
-    print(f"Audio saved to {file_path}")
-
-'''
 
 def verify_user(verify_path):
     enrolled = fetch_all_embeddings()  # returns list of (user_name, embedding) from db_utils.py
     if not enrolled:
         print("No enrolled users found in the database!")
         return
-
-    print("\n--- Verification ---")
-    '''
-    audio = record_audio()
-
-
-    # Stores the audio clip locally can remove this code later in production 
-    verify_path = AUDIO_DIR / "verify.wav"
-    save_wav(audio, verify_path)
-    '''
 
     wav_processed = preprocess_wav(str(verify_path))
     test_emb = encoder.embed_utterance(wav_processed).flatten()
@@ -66,23 +44,29 @@ def verify_user(verify_path):
 
         score = np.dot(test_emb, stored_emb)  # cosine similarity
 
-        #print(f"Similarity with {user_name}: {score*100:.2f}%")
+        # print(f"Similarity with {user_name}: {score*100:.2f}%")
 
         if score > best_score:
             best_score = score
             best_user = user_name
             keyword = keywords
 
-    print("\n--- RESULT ---")
-    print(f"Best match: {best_user}")
-    print(f"Score: {best_score*100:.2f}%")
+    #print("\n--- RESULT ---")
+    #print(f"Best match: {best_user}")
+    #print(f"Score: {best_score*100:.2f}%")
+    best_score_rounded = round(best_score * 100, 2)
+    result = {"modality":"Voice", "user_name": best_user, "similarity_score": best_score_rounded}
     if best_score >= THRESHOLD:
-        print("✅ AUTHENTICATED")
-        print(f"Keyword: {keyword}")
-        return keyword
+        #print("✅ AUTHENTICATED")
+        #print(f"Keyword: {keyword}")
+        result["status"] = "Sucess"
+        return keyword, result
     else:
-        print("❌ REJECTED")
-        return False
+        #print("❌ REJECTED")
+        result["status"] = "Rejected"
+        result["user_name"] = None
+        result["similarity_score"] = 0
+        return False, result
 
 
 if __name__ == "__main__":

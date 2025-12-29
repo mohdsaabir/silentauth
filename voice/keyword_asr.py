@@ -15,26 +15,9 @@ MODEL_PATH = Path("model/base")   # Faster-Whisper base model
 DEVICE = "cpu"
 LANGUAGE = "en"
 
-KEYWORDS = [
-    "hello system",
-    "i am",
-    "muhammed sabir"
-    "verify me"
-]
+
 # ----------------------------------------
 
-'''
-def record_audio(duration=DURATION, fs=SAMPLE_RATE):
-    print(f"Recording for {duration} seconds... Speak clearly 🎤")
-    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype="float32")
-    sd.wait()
-    return recording.squeeze()
-
-
-def save_wav(audio, file_path):
-    sf.write(file_path, audio, SAMPLE_RATE)
-    print(f"Audio saved to {file_path}")
-'''
 
 
 
@@ -47,19 +30,19 @@ def normalize_text(text):
 
 def keyword_detect(transcript, keyword):
     transcript = normalize_text(transcript)
-    print("\nNormalized text:", transcript)
+    #print("\nNormalized text:", transcript)
 
     
     if keyword in transcript:
-        print(f"\n✅ KEYWORD DETECTED → '{keyword}'")
+        #print(f"\n✅ KEYWORD DETECTED → '{keyword}'")
         return True
 
-    print("\n❌ NO KEYWORD DETECTED")
+    #print("\n❌ NO KEYWORD DETECTED")
     return False
 
 
 def transcribe(audio_path):
-    print("\nLoading Faster Whisper model...")
+    #print("\nLoading Faster Whisper model...")
     model = WhisperModel(
         str(MODEL_PATH),
         device=DEVICE,
@@ -74,7 +57,7 @@ def transcribe(audio_path):
         vad_filter=True
     )
 
-    print("\n===== ASR OUTPUT =====")
+    #print("\n===== ASR OUTPUT =====")
     #print(f"Detected language: {info.language}")
 
     full_text = ""
@@ -89,21 +72,3 @@ def transcribe(audio_path):
 
 
 
-'''
-def main():
-    audio = record_audio()
-    wav_path = AUDIO_DIR / "recorded.wav"
-    save_wav(audio, wav_path)
-
-    transcript = transcribe(wav_path)
-
-    print("\n===== FINAL RESULT =====")
-    if keyword_detect(transcript):
-        print("✅ ACCEPTED")
-    else:
-        print("❌ REJECTED")
-
-
-if __name__ == "__main__":
-    main()
-'''

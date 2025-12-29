@@ -10,7 +10,7 @@ from db_utils import insert_embedding
 
 # -------------------- CONFIG --------------------
 SAMPLE_RATE = 16000
-DURATION = 10        # seconds per sample
+DURATION = 10        
 NUM_SAMPLES = 5
 SILENCE_RMS_THRESHOLD = 0.02
 
@@ -26,9 +26,8 @@ encoder = VoiceEncoder()
 def l2_normalize(x, eps=1e-10):
     return x / (np.linalg.norm(x) + eps)
 
-
+# Silence detection using RMS
 def is_speech(audio):
-    """RMS-based silence detection"""
     rms = np.sqrt(np.mean(audio ** 2))
     print(f"RMS: {rms:.4f}")
     return rms >= SILENCE_RMS_THRESHOLD
@@ -69,7 +68,7 @@ def enroll_user(user_id):
 
     # ---------------- KEYWORD ENROLLMENT ----------------
     raw_keyword = input(
-        "\nEnter a secret keyword/sentence (you must speak this during login): "
+        "\nEnter a secret keyword (Should not include your name or related terms): "
     )
     keyword = normalize_keyword(raw_keyword)
 
