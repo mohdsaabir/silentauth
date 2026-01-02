@@ -18,7 +18,7 @@ import sqlite3
 
 # ------------------- DATABASE FUNCTION -------------------
 def identify_user(gesture_name):
-    conn = sqlite3.connect('gesture_users.db')
+    conn = sqlite3.connect('database/gesture_users.db')
     cursor = conn.cursor()
     cursor.execute(
         "SELECT user_name FROM users WHERE gesture_name = ?",
