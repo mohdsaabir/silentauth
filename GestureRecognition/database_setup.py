@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('gesture_users.db')
+conn = sqlite3.connect('database/gesture_users.db')
 cursor = conn.cursor()
 
 cursor.execute('''
