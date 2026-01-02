@@ -34,7 +34,7 @@ Contains the trained SVM gesture recognition model.
 ---
 
 ### database/
-To create the SQLite database, the script 'gesture_users.db' located in this database folder must be executed.
+To create the SQLite database, the script 'database_setup.py' must be executed.
 
 ---
 
