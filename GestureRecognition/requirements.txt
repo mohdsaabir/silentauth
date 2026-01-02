@@ -1,0 +1,5 @@
+numpy
+joblib
+scikit-learn
+opencv-python
+mediapipe==0.10.14
