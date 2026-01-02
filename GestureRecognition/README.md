@@ -1,50 +1,16 @@
-Gesture Recognition Module
+\## Overview
 
 
 
-This module implements gesture-based authentication for the SilentAuth system.
+This branch corresponds to the \*\*Gesture Recognition\*\* modality for SilentAuth.
 
-It uses OpenCV and MediaPipe to extract hand landmarks and an SVM classifier to perform gesture recognition in real time.
-
-
+It is implemented using \*\*OpenCV\*\*, \*\*MediaPipe\*\*, and \*\*Scikit-learn (SVM)\*\*.
 
 
 
-📁 Project Structure
+The system extracts \*\*hand landmark features\*\*, trains an SVM model, and performs
 
-
-
-GestureRecognition/
-
-├── collected\_data/ # Hand landmark feature data
-
-├── database/
-
-│ └── gesture\_users.db # SQLite database for registered users
-
-├── models/ # Trained SVM gesture model
-
-├── enroll\_gesture.py # User gesture enrollment script
-
-├── realtime\_gesture.py # Real-time gesture verification
-
-├── requirements.txt # Python dependencies
-
-└── README.md
-
-
-
-
-
-\### `enroll\_gesture.py`
-
-\- Captures hand landmarks using OpenCV + MediaPipe
-
-\- Stores landmark features for the user
-
-\- Updates the SQLite database
-
-\- Used for \*\*initial user registration\*\*
+real-time gesture-based user authentication.
 
 
 
@@ -52,27 +18,17 @@ GestureRecognition/
 
 
 
-\### `realtime\_gesture.py`
-
-\- Captures live hand landmarks from webcam
-
-\- Loads the trained SVM model
-
-\- Verifies the user’s gesture in real time
-
-\- Outputs authentication result
+\## Structure
 
 
 
----
+\### enroll\_gesture.py
 
+Registers a user by capturing hand landmarks using live camera input.
 
+The extracted landmark features are stored and used for training.
 
-\### `models/`
-
-\- Contains the trained \*\*SVM gesture recognition model\*\*
-
-\- Loaded during real-time verification
+This file is executed \*\*once per user\*\*.
 
 
 
@@ -80,25 +36,13 @@ GestureRecognition/
 
 
 
-\### `collected\_data/`
+\### realtime\_gesture.py
 
-\- Stores extracted \*\*hand landmark feature vectors\*\*
+Verifies a user by capturing live hand landmarks and comparing them
 
-\- Used for training and updating the SVM model
+against the trained SVM gesture model.
 
-
-
----
-
-
-
-\### `database/gesture\_users.db`
-
-\- SQLite database
-
-\- Stores user IDs and gesture metadata
-
-\- Automatically updated during enrollment
+This is the \*\*main authentication module\*\*.
 
 
 
@@ -106,23 +50,11 @@ GestureRecognition/
 
 
 
-\### `requirements.txt`
+\### collected\_data/
 
-Contains required Python libraries:
+Stores extracted \*\*hand landmark feature data\*\* collected during enrollment.
 
-opencv-python
-
-mediapipe
-
-numpy
-
-scikit-learn
-
-
-
-yaml
-
-Copy code
+These features are used to train and update the gesture recognition model.
 
 
 
@@ -130,35 +62,59 @@ Copy code
 
 
 
-\## ⚙️ Setup \& Installation
+\### models/
+
+Contains the trained \*\*SVM gesture recognition model\*\*.
+
+The model is loaded during real-time verification.
 
 
 
-\### 1. Create virtual environment
+---
+
+
+
+\### database/
+
+A local SQLite database (`gesture\_users.db`) is used to store user metadata.
+
+The database is created automatically during enrollment.
+
+Only gesture-related metadata is stored, not images or videos.
+
+
+
+---
+
+
+
+\### requirements.txt
+
+Lists all required Python dependencies for the gesture recognition module.
+
+
+
+---
+
+
+
+\## Usage
+
+
+
+\*\*Note:\*\* Run `enroll\_gesture.py` at least once before verification.
+
+
+
+\### Install dependencies
+
+
 
 ```bash
 
-python -m venv venv
-
-2\. Activate virtual environment (Windows)
-
-bash
-
-Copy code
-
-venv\\Scripts\\activate
-
-3\. Install dependencies
-
-bash
-
-Copy code
-
 pip install -r requirements.txt
 
-▶️ How to Run
-
-Step 1: Enroll a user gesture
+Register a user
 
 bash
 
@@ -166,11 +122,7 @@ Copy code
 
 python enroll\_gesture.py
 
-Run once per user.
-
-
-
-Step 2: Verify gesture in real time
+Verify a user
 
 bash
 
@@ -178,19 +130,7 @@ Copy code
 
 python realtime\_gesture.py
 
-Requires prior enrollment.
-
-
-
-🔄 Execution Flow
-
-sql
-
-Copy code
-
-Landmark Capture → SVM Training → User Enrollment → Real-Time Verification
-
-📌 Notes
+Notes
 
 Webcam access is required
 
@@ -200,9 +140,13 @@ Enrollment must be completed before verification
 
 
 
+This module is designed to work sequentially with other SilentAuth modalities
 
 
 
+markdown
+
+Copy code
 
 
 
