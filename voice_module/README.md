@@ -38,7 +38,7 @@ voice_module/
 ├── ecapa_realtime_verify_db.py     # Voice verification script
 ├── requirements.txt                # Python dependencies
 └── README.md
-
+```
 ## Requirements
 
 Python 3.10.0
