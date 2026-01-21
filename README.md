@@ -93,7 +93,7 @@ Before enrollment, initialize the database:
 python db_setup.py
 ```
 
-Enroll a user across all modalitie.
+Enroll a user across all modalities.
 ```bash
 python orchestra_enroll.py
 ```
@@ -151,19 +151,3 @@ Enrollment must be completed before verification
 Each module must be running before orchestration
 
 Designed to work as part of the SilentAuth system
-
-## Technologies Used
-
-Python
-
-FastAPI
-
-OpenCV
-
-MediaPipe
-
-Scikit-learn
-
-REST APIs
-
-SQLite
