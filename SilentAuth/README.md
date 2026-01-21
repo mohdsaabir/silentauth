@@ -1,8 +1,8 @@
-##SilentAuth 🔐
+## SilentAuth 🔐
 
-Multi-Modal Continuous Authentication System
+Multi-Modal Biometric Authentication System
 
-##Overview
+## Overview
 
 **SilentAuth** is a multi-modal biometric authentication system that verifies users
 using Face, Voice, and Gesture recognition.
@@ -13,7 +13,7 @@ orchestration layer coordinates enrollment and verification in a sequential mann
 The system is designed for continuous authentication and academic research,
 with modular components that can be extended or replaced independently.
 
-##System Modalities
+## System Modalities
 
 **Face Recognition** – Visual biometric authentication
 
@@ -23,17 +23,14 @@ with modular components that can be extended or replaced independently.
 
 All modules communicate via APIs and are triggered sequentially
 during enrollment and verification.
-
-##Installation
+## Installation
 Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
-##Module Setup
+## Enrollment Process
 
-Each biometric module must be set up and run independently.
-
-Face Recognition Module
+## Face Recognition Module
 Description
 
 Implements face-based user authentication using computer vision techniques.
@@ -49,7 +46,7 @@ python face_api.py
 
 uvicorn face_api:app --port 5001
 ```
-##Voice Recognition Module
+## Voice Recognition Module
 Description
 
 Performs speaker verification by extracting voice embeddings and comparing
@@ -64,7 +61,7 @@ python voice_api.py
 
 uvicorn voice_api:app --port 5002
 ```
-##Gesture Recognition Module
+## Gesture Recognition Module
 Description
 
 This module performs gesture-based authentication using
@@ -96,9 +93,7 @@ Before enrollment, initialize the database:
 python db_setup.py
 ```
 
-##Enrollment Process (Sequential)
-
-Enroll a user across all modalities using the orchestrator.
+Enroll a user across all modalitie.
 ```bash
 python orchestra_enroll.py
 ```
@@ -111,7 +106,7 @@ Voice enrollment
 
 Gesture enrollment
 
-##Verification Process (Sequential)
+## Verification Process 
 
 **Face**
 ```bash
@@ -119,12 +114,14 @@ python face_api_verify.py
 
 uvicorn face_api_verify:app --port 5001
 ```
+
 **Voice**
 ```bash
 python voice_api_verify.py
 
 uvicorn voice_api_verify:app --port 5002
 ```
+
 **Gesture**
 ```bash
 python gesture_api_verify.py
@@ -143,7 +140,7 @@ Voice verification
 
 Gesture verification
 
-##Notes
+## Notes
 
 Webcam access is required for Face and Gesture modules
 
@@ -155,7 +152,7 @@ Each module must be running before orchestration
 
 Designed to work as part of the SilentAuth system
 
-##Technologies Used
+## Technologies Used
 
 Python
 
