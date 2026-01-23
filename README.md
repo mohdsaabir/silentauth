@@ -128,8 +128,9 @@ python gesture_api_verify.py
 
 uvicorn gesture_api_verify:app --port 5003
 ```
+Run fusion_engine for verification
 ```bash
-python orchestra_verify.py
+python fusion_engine.py
 ```
 
 This performs:
