@@ -48,5 +48,7 @@ def orchestrate_verification():
     # ---- GESTURE ----
     results.append(call_api("Gesture", GESTURE_VERIFY_URL))
 
+    return results
+
 if __name__ == "__main__":
     orchestrate_verification()

@@ -5,9 +5,15 @@ import time
 import json
 from collections import deque
 from insightface.app import FaceAnalysis
+import os
 
 # ================= CONFIG =================
-DB_PATH = "--------------------------------------"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.environ.get(
+    "SILENTAUTH_DB_PATH",
+    os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
+)
 THRESHOLD = 0.6
 RUN_TIME = 10
 
@@ -129,3 +135,10 @@ def run_face_verification():
     cv2.destroyAllWindows()
 
     return api_output
+
+
+'''
+if __name__ == "__main__":
+    result = run_face_verification()
+    print(result)
+'''

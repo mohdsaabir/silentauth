@@ -17,7 +17,12 @@ warnings.filterwarnings("ignore")
 logging.getLogger("absl").setLevel(logging.ERROR)
 
 # ------------------- DATABASE -------------------
-DB_PATH = "---------------------------------"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.environ.get(
+    "SILENTAUTH_DB_PATH",
+    os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
+)
 
 def identify_user(gesture_name):
     if not gesture_name:
@@ -144,3 +149,9 @@ def cleanup(cap, hands):
     cap.release()
     hands.close()
     cv2.destroyAllWindows()
+
+'''
+if __name__ == "__main__":
+    result = run_gesture_verification()
+    print(result)
+'''

@@ -1,5 +1,6 @@
 # enroll_gesture.py
 import sqlite3
+import os
 
 def recognize_gesture():
     gestures = [
@@ -26,8 +27,15 @@ def run_gesture_enrollment(user_name):
         print("No gesture detected. Enrollment failed.")
         return None
 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    DB_PATH = os.environ.get(
+        "SILENTAUTH_DB_PATH",
+        os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
+    )
+
     # Only insert user_name into users table if not exists
-    conn = sqlite3.connect("-----------DBPATH----------")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
     """
@@ -48,3 +56,13 @@ def run_gesture_enrollment(user_name):
 
     print(f"Enrollment successful → {user_name} : {gesture_name}")
     return gesture_name
+
+
+'''
+if __name__ == "__main__":
+    user_name = input("Enter user name for enrollment: ").strip()
+    if user_name:
+        run_gesture_enrollment(user_name)
+    else:
+        print("User name cannot be empty. Enrollment aborted.")
+'''

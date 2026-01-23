@@ -3,6 +3,8 @@ import sounddevice as sd
 import numpy as np
 import torch
 import sqlite3
+import os
+
 
 from speechbrain.inference import SpeakerRecognition
 from speechbrain.utils.fetching import LocalStrategy
@@ -11,7 +13,14 @@ from speechbrain.utils.fetching import LocalStrategy
 SAMPLE_RATE = 16000
 CLIP_SECONDS = 10
 NUM_CLIPS = 5
-DB_PATH = "----------------------------------------"
+
+# ================= DATABASE =================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.environ.get(
+    "SILENTAUTH_DB_PATH",
+    os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
+)
 
 # ---------- Load ECAPA ----------
 print("Loading ECAPA model...")
@@ -98,3 +107,12 @@ def run_voice_enrollment(user_name):
     print(f"Voice enrollment successful → {user_name} (user_id={user_id})")
 
     return {"user_id": user_id}
+
+
+'''
+
+if __name__ == "__main__":
+    test_user = "sabir"
+    run_voice_enrollment(test_user)
+
+'''

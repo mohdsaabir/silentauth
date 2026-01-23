@@ -3,8 +3,15 @@ import time
 import sqlite3
 import numpy as np
 from insightface.app import FaceAnalysis
+import os
 
-DB_PATH = "-------------------------"
+# ================= CONFIG =================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.environ.get(
+    "SILENTAUTH_DB_PATH",
+    os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
+)
 REGISTRATION_TIME = 8
 
 
@@ -109,3 +116,12 @@ def run_face_enrollment(user_name):
 
     print(f"Enrollment successful → {user_name} (user_id={user_id})")
     return {"user_id": user_id}
+
+
+'''
+
+if __name__ == "__main__":
+    user_name = input("Enter user name for registration: ")
+    run_face_enrollment(user_name)
+
+'''

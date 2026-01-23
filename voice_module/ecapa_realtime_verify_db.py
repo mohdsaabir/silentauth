@@ -13,7 +13,14 @@ from speechbrain.utils.fetching import LocalStrategy
 SAMPLE_RATE = 16000
 RECORD_SECONDS = 10
 THRESHOLD = 0.40
-DB_PATH ="---------------------------------------"
+
+# ================= DATABASE =================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.environ.get(
+    "SILENTAUTH_DB_PATH",
+    os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
+)
 # ==========================================
 
 # ---------- Load ECAPA ----------
@@ -25,6 +32,7 @@ model = SpeakerRecognition.from_hparams(
 
 # ---------- Helpers ----------
 def record_audio(seconds):
+    #print(f" Speak for {seconds} seconds...")
     audio = sd.rec(
         int(seconds * SAMPLE_RATE),
         samplerate=SAMPLE_RATE,
@@ -102,3 +110,10 @@ def run_voice_verification():
         api_output["status"] = "rejected"
 
     return api_output
+
+
+"""
+if __name__ == "__main__":
+    result = run_voice_verification()
+    print(result)
+"""
