@@ -29,9 +29,13 @@ during enrollment and verification.
 Strictly follow these instructions to have a hussle-free setup of the system
 
 Step 1 : In the root folder , create a virtual environment 'venv' (any python version)
+
 Step 2 : In the face_module folder, create a virtual environment 'venv' (python 3.11.9)
+
 Step 3 : In the gesture_module folder, create a virtual environment 'venv' (python 3.10.0)
+
 step 4 : In the voice_module folder, create a virtual environment 'venv' (python 3.10.0)
+
 step 5 : Install Dependencies on each of these four virtual environments 'venv'
 ```bash
 pip install -r requirements.txt
@@ -76,8 +80,11 @@ against the trained SVM model.
 (make sure all terminals are closed)
 
 Step 1 : ctrl + shift + p
+
 Step 2 : In the window , type 'Tasks : Run Task' then click it.
+
 Step 3 : Click 'SilentAuth-Enrollment (ALL)' and then click 'continue without scanning'
+
 step 4 : In the four terminals opened , wait till all services are active , then in the active terminal run : 
 ```bash
 python multimodal_enroll.py
@@ -146,8 +153,11 @@ If the combined score crosses the threshold, access is granted.
 (make sure all terminals are closed)
 
 Step 1 : ctrl + shift + p
+
 Step 2 : In the window , type 'Tasks : Run Task' then click it.
+
 Step 3 : Click 'SilentAuth (ALL)' and then click 'continue without scanning'
+
 step 4 : In the five terminals opened , wait till all services are active , then in the active terminal run : 
 ```bash
 python fusion_engine.py
