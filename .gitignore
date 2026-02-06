@@ -5,6 +5,11 @@ env/
 venv/
 ENV/
 .venv/
+# Virtual environments
+venv/
+*/venv/
+*.venv
+
 
 # ========================
 # Python Cache
@@ -23,7 +28,7 @@ database/
 # ========================
 # VS Code settings
 # ========================
-.vscode/
+
 
 # ========================
 # Local scripts

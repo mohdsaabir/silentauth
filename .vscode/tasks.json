@@ -1,0 +1,170 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Camera Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "venv\\Scripts\\activate && python camera_service.py"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Face Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "cd face_module && venv\\Scripts\\activate && uvicorn face_api_verify:app --port 5001"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Voice Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "cd voice_module && venv\\Scripts\\activate && uvicorn voice_api_verify:app --port 5002"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Gesture Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "cd gesture_module && venv\\Scripts\\activate && uvicorn gesture_api_verify:app --port 5003"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    
+    {
+      "label": "Main Fusion Engine",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "venv\\Scripts\\activate"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": true,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start SilentAuth (ALL)",
+      "dependsOn": [
+        "Camera Service",
+        "Face Service",
+        "Gesture Service",
+        "Voice Service",
+        "Main Fusion Engine"
+      ],
+    },
+    {
+      "label": "Enroll Face Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "cd face_module && venv\\Scripts\\activate && uvicorn face_api:app --port 5001"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth-Enrollment"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Enroll Voice Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "cd voice_module && venv\\Scripts\\activate && uvicorn voice_api:app --port 5002"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth-Enrollment"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Enroll Gesture Service",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "cd gesture_module && venv\\Scripts\\activate && uvicorn gesture_api:app --port 5003"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth-Enrollment"
+      },
+      "problemMatcher": []
+    },
+    
+    {
+      "label": "Main Enrollment Engine",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "venv\\Scripts\\activate"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": true,
+        "group": "silentauth-Enrollment"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start SilentAuth-Enrollment (ALL)",
+      "dependsOn": [
+        "Enroll Face Service",
+        "Enroll Gesture Service",
+        "Enroll Voice Service",
+        "Main Enrollment Engine"
+      ],
+    }
+  ]
+}

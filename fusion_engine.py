@@ -1,5 +1,4 @@
-from orchestra_verify import orchestrate_verification
-
+from multimodal_executor import orchestrate_parallel
 
 # ======================= CONFIG =======================
 FUSION_THRESHOLD = 0.60
@@ -68,10 +67,15 @@ def fuse_results(face_res, voice_res, gesture_res):
 
 
 if __name__ == "__main__":
-    results = orchestrate_verification()
-    face_res = results[0]
-    voice_res = results[1]
-    gesture_res = results[2]
+    #results = orchestrate_verification()
+    results = orchestrate_parallel()
+
+    result_map = {res["modality"]: res for res in results}
+
+    face_res = result_map.get("face", {})
+    voice_res = result_map.get("voice", {})
+    gesture_res = result_map.get("gesture", {})
+
     fused_result = fuse_results(face_res, voice_res, gesture_res)
     print("\nFUSION RESULT:")
     print(fused_result)

@@ -9,6 +9,15 @@ import numpy as np
 import joblib
 import sqlite3
 from collections import Counter
+import zmq
+import pickle
+
+# ================= ZMQ FRAME RECEIVER =================
+context = zmq.Context()
+frame_socket = context.socket(zmq.SUB)
+frame_socket.setsockopt(zmq.CONFLATE, 1)
+frame_socket.connect("tcp://localhost:5555")
+frame_socket.setsockopt(zmq.SUBSCRIBE, b'')
 
 # ------------------- SILENCE LOGS -------------------
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -50,8 +59,10 @@ classes = clf.classes_
 mp_hands = mp.solutions.hands
 
 # ------------------- SETTINGS -------------------
-REQUIRED_FRAMES = 5
 CONFIDENCE_THRESHOLD = 0.6
+GESTURE_WINDOW_SECONDS = 3
+MIN_DOMINANCE_RATIO = 0.7
+HAND_LOSS_GRACE_SECONDS = 0.5
 NO_HAND_TIMEOUT_SECONDS = 10
 MAX_TIMEOUT = 30
 
@@ -65,27 +76,24 @@ def normalize(pts):
 
 # ------------------- MAIN FUNCTION -------------------
 def run_gesture_verification():
-    PREDICTIONS = []
+    PREDICTIONS = []          # [(gesture, score)]
+    gesture_start_time = None
     no_hand_start_time = None
 
-    cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        return {"modality": "gesture", "status": "failure", "reason": "Cannot open camera"}
+    window_name = "Gesture Verification"
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.setWindowProperty(window_name, cv2.WND_PROP_TOPMOST, 1)
 
     hands = mp_hands.Hands(max_num_hands=1)
     start_time = time.time()
 
     while True:
-        ret, frame = cap.read()
-        if not ret:
-            continue
-
-        # SHOW CAMERA
-        cv2.imshow("Gesture Verification", frame)
+        frame = pickle.loads(frame_socket.recv())
+        cv2.imshow(window_name, frame)
 
         # ESC to exit
-        if cv2.waitKey(1) & 0xFF == 27:
-            cleanup(cap, hands)
+        if cv2.waitKey(10) & 0xFF == 27:
+            cleanup(hands)
             return {
                 "modality": "gesture",
                 "status": "failure",
@@ -95,8 +103,13 @@ def run_gesture_verification():
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         result = hands.process(rgb)
 
+        # ---------------- HAND DETECTED ----------------
         if result.multi_hand_landmarks:
             no_hand_start_time = None
+
+            if gesture_start_time is None:
+                gesture_start_time = time.time()
+
             lm = result.multi_hand_landmarks[0]
             pts = [(p.x, p.y, p.z) for p in lm.landmark]
 
@@ -108,50 +121,73 @@ def run_gesture_verification():
             gesture = classes[idx]
 
             if score >= CONFIDENCE_THRESHOLD:
-                PREDICTIONS.append(gesture)
+                PREDICTIONS.append((gesture, score))
 
-            if len(PREDICTIONS) >= REQUIRED_FRAMES:
-                final_gesture = Counter(PREDICTIONS).most_common(1)[0][0]
-                final_score = score
+            # -------- TIME WINDOW COMPLETE --------
+            if (
+                time.time() - gesture_start_time >= GESTURE_WINDOW_SECONDS
+                and len(PREDICTIONS) > 0
+            ):
+                gestures = [g for g, _ in PREDICTIONS]
+                counts = Counter(gestures)
 
-                user_names = identify_user(final_gesture)
-                status = "success" if "Unknown user" not in user_names else "failure"
+                final_gesture, dominant_count = counts.most_common(1)[0]
+                dominance_ratio = dominant_count / len(gestures)
 
-                cleanup(cap, hands)
-                return {
-                    "modality": "gesture",
-                    "gesture": final_gesture,
-                    "username": user_names,
-                    "confidence": round(float(final_score), 2),
-                    "status": status
-                }
+                if dominance_ratio >= MIN_DOMINANCE_RATIO:
+                    avg_score = np.mean(
+                        [s for g, s in PREDICTIONS if g == final_gesture]
+                    )
 
+                    user_names = identify_user(final_gesture)
+                    cleanup(hands)
+
+                    return {
+                        "modality": "gesture",
+                        "gesture": final_gesture,
+                        "username": user_names,
+                        "confidence": round(float(avg_score), 2),
+                        "status": "success"
+                        if "Unknown user" not in user_names
+                        else "failure"
+                    }
+                else:
+                    cleanup(hands)
+                    return {
+                        "modality": "gesture",
+                        "status": "failure",
+                        "reason": "Unstable gesture"
+                    }
+
+        # ---------------- NO HAND ----------------
         else:
             if no_hand_start_time is None:
                 no_hand_start_time = time.time()
-            elif time.time() - no_hand_start_time >= NO_HAND_TIMEOUT_SECONDS:
-                cleanup(cap, hands)
+
+            # tolerate brief hand loss
+            elif time.time() - no_hand_start_time > HAND_LOSS_GRACE_SECONDS:
+                gesture_start_time = None
+                PREDICTIONS.clear()
+
+            # hard timeout
+            if time.time() - no_hand_start_time >= NO_HAND_TIMEOUT_SECONDS:
+                cleanup(hands)
                 return {
                     "modality": "gesture",
                     "status": "failure",
                     "reason": "No gesture detected"
                 }
 
+        # ---------------- GLOBAL TIMEOUT ----------------
         if time.time() - start_time > MAX_TIMEOUT:
-            cleanup(cap, hands)
+            cleanup(hands)
             return {
                 "modality": "gesture",
                 "status": "failure",
                 "reason": "Timeout"
             }
 
-def cleanup(cap, hands):
-    cap.release()
+# ------------------- CLEANUP -------------------
+def cleanup(hands):
     hands.close()
     cv2.destroyAllWindows()
-
-'''
-if __name__ == "__main__":
-    result = run_gesture_verification()
-    print(result)
-'''

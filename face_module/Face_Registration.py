@@ -30,6 +30,10 @@ def run_face_enrollment(user_name):
         print("Cannot open camera")
         return None
 
+    window_name = "Face Registration"
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.setWindowProperty(window_name, cv2.WND_PROP_TOPMOST, 1)
+
     embeddings = []
     start_time = time.time()
 
@@ -69,8 +73,7 @@ def run_face_enrollment(user_name):
                 2
             )
 
-        cv2.imshow("Face Registration", frame)
-        cv2.setWindowProperty("Face Registration", cv2.WND_PROP_TOPMOST, 1)
+        cv2.imshow(window_name, frame)
 
         if time.time() - start_time >= REGISTRATION_TIME:
             break
