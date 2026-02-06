@@ -24,7 +24,7 @@ with modular components that can be extended or replaced independently.
 
 All modules communicate via APIs and are triggered sequentially
 during enrollment and verification.
-## Installation & Setup\
+## Installation & Setup
 
 Strictly follow these instructions to have a hussle-free setup of the system
 
