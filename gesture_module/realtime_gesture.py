@@ -1,4 +1,3 @@
-# gesture_api.py
 import os
 import warnings
 import logging
@@ -12,20 +11,13 @@ from collections import Counter
 import zmq
 import pickle
 
-# ================= ZMQ FRAME RECEIVER =================
-context = zmq.Context()
-frame_socket = context.socket(zmq.SUB)
-frame_socket.setsockopt(zmq.CONFLATE, 1)
-frame_socket.connect("tcp://localhost:5555")
-frame_socket.setsockopt(zmq.SUBSCRIBE, b'')
-
-# ------------------- SILENCE LOGS -------------------
+# ================= SILENCE LOGS =================
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["GLOG_minloglevel"] = "3"
 warnings.filterwarnings("ignore")
 logging.getLogger("absl").setLevel(logging.ERROR)
 
-# ------------------- DATABASE -------------------
+# ================= CONFIG =================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DB_PATH = os.environ.get(
@@ -33,40 +25,57 @@ DB_PATH = os.environ.get(
     os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
 )
 
+VERIFICATION_TIME = 6
+MIN_CONFIDENCE = 0.55
+DISPLAY_AFTER = 2
+SMOOTHING_FACTOR = 0.7
+
+# ================= API OUTPUT TEMPLATE =================
+def reset_output():
+    return {
+        "modality": "gesture",
+        "gesture": None,
+        "user_id": ["Unknown user"],
+        "confidence": 0.0,
+        "status": "failure"
+    }
+
+# ================= ZMQ FRAME RECEIVER =================
+context = zmq.Context()
+frame_socket = context.socket(zmq.SUB)
+frame_socket.setsockopt(zmq.CONFLATE, 1)
+frame_socket.connect("tcp://localhost:5555")
+frame_socket.setsockopt(zmq.SUBSCRIBE, b'')
+
+# ================= DATABASE =================
 def identify_user(gesture_name):
     if not gesture_name:
         return ["Unknown user"]
 
-    gesture_name = gesture_name.strip().lower()
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT users.name FROM gesture
+        SELECT users.name
+        FROM gesture
         JOIN users ON gesture.user_id = users.user_id
         WHERE LOWER(TRIM(gesture_label)) = ?
-    """, (gesture_name,))
+    """, (gesture_name.lower().strip(),))
 
-    result = cursor.fetchall()
+    rows = cursor.fetchall()
     conn.close()
-    return [row[0] for row in result] if result else ["Unknown user"]
 
-# ------------------- LOAD MODEL -------------------
+    return [r[0] for r in rows] if rows else ["Unknown user"]
+
+# ================= LOAD MODEL =================
 clf = joblib.load("models/gesture_svm.pkl")
 classes = clf.classes_
 
-# ------------------- MEDIAPIPE -------------------
+# ================= MEDIAPIPE =================
 mp_hands = mp.solutions.hands
+mp_drawing = mp.solutions.drawing_utils
 
-# ------------------- SETTINGS -------------------
-CONFIDENCE_THRESHOLD = 0.6
-GESTURE_WINDOW_SECONDS = 3
-MIN_DOMINANCE_RATIO = 0.7
-HAND_LOSS_GRACE_SECONDS = 0.5
-NO_HAND_TIMEOUT_SECONDS = 10
-MAX_TIMEOUT = 30
-
-# ------------------- NORMALIZATION -------------------
+# ================= NORMALIZATION =================
 def normalize(pts):
     pts = np.array(pts)
     base = pts[0]
@@ -74,120 +83,143 @@ def normalize(pts):
     scale = np.max(np.linalg.norm(pts, axis=1))
     return (pts / (scale + 1e-8)).flatten()
 
-# ------------------- MAIN FUNCTION -------------------
+# ================= MAIN FUNCTION =================
 def run_gesture_verification():
-    PREDICTIONS = []          # [(gesture, score)]
-    gesture_start_time = None
-    no_hand_start_time = None
+
+    api_output = reset_output()
+
+    predictions = []
+    confidences = []
+    smoothed_pts = None
+    start_time = None
+
+    print("Flushing old frames...")
+    for _ in range(5):
+        try:
+            frame_socket.recv(flags=zmq.NOBLOCK)
+        except:
+            break
+
+    hands = mp_hands.Hands(
+        max_num_hands=1,
+        min_detection_confidence=0.6,
+        min_tracking_confidence=0.6
+    )
 
     window_name = "Gesture Verification"
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
     cv2.setWindowProperty(window_name, cv2.WND_PROP_TOPMOST, 1)
 
-    hands = mp_hands.Hands(max_num_hands=1)
-    start_time = time.time()
+    print("Gesture verification started")
 
-    while True:
-        frame = pickle.loads(frame_socket.recv())
-        cv2.imshow(window_name, frame)
+    try:
+        while True:
 
-        # ESC to exit
-        if cv2.waitKey(10) & 0xFF == 27:
-            cleanup(hands)
-            return {
-                "modality": "gesture",
-                "status": "failure",
-                "reason": "User cancelled"
-            }
+            frame = pickle.loads(frame_socket.recv())
+            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            result = hands.process(rgb)
 
-        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        result = hands.process(rgb)
+            if result.multi_hand_landmarks and result.multi_handedness:
 
-        # ---------------- HAND DETECTED ----------------
-        if result.multi_hand_landmarks:
-            no_hand_start_time = None
+                hand_label = result.multi_handedness[0].classification[0].label
+                lm = result.multi_hand_landmarks[0]
 
-            if gesture_start_time is None:
-                gesture_start_time = time.time()
+                if start_time is None:
+                    start_time = time.time()
+                    print(f"✋ {hand_label} hand detected — starting timer")
 
-            lm = result.multi_hand_landmarks[0]
-            pts = [(p.x, p.y, p.z) for p in lm.landmark]
+                mp_drawing.draw_landmarks(
+                    frame,
+                    lm,
+                    mp_hands.HAND_CONNECTIONS,
+                    mp_drawing.DrawingSpec(color=(0,255,0), thickness=2),
+                    mp_drawing.DrawingSpec(color=(255,0,0), thickness=2)
+                )
 
-            vec = normalize(pts).reshape(1, -1)
-            probs = clf.predict_proba(vec)[0]
+                pts = np.array([(p.x, p.y, p.z) for p in lm.landmark])
 
-            idx = np.argmax(probs)
-            score = probs[idx]
-            gesture = classes[idx]
+                if hand_label == "Right":
+                    pts[:, 0] = 1 - pts[:, 0]
 
-            if score >= CONFIDENCE_THRESHOLD:
-                PREDICTIONS.append((gesture, score))
-
-            # -------- TIME WINDOW COMPLETE --------
-            if (
-                time.time() - gesture_start_time >= GESTURE_WINDOW_SECONDS
-                and len(PREDICTIONS) > 0
-            ):
-                gestures = [g for g, _ in PREDICTIONS]
-                counts = Counter(gestures)
-
-                final_gesture, dominant_count = counts.most_common(1)[0]
-                dominance_ratio = dominant_count / len(gestures)
-
-                if dominance_ratio >= MIN_DOMINANCE_RATIO:
-                    avg_score = np.mean(
-                        [s for g, s in PREDICTIONS if g == final_gesture]
+                if smoothed_pts is None:
+                    smoothed_pts = pts
+                else:
+                    smoothed_pts = (
+                        SMOOTHING_FACTOR * smoothed_pts +
+                        (1 - SMOOTHING_FACTOR) * pts
                     )
 
-                    user_names = identify_user(final_gesture)
-                    cleanup(hands)
+                vec = normalize(smoothed_pts).reshape(1, -1)
 
-                    return {
-                        "modality": "gesture",
-                        "gesture": final_gesture,
-                        "username": user_names,
-                        "confidence": round(float(avg_score), 2),
-                        "status": "success"
-                        if "Unknown user" not in user_names
-                        else "failure"
-                    }
-                else:
-                    cleanup(hands)
-                    return {
-                        "modality": "gesture",
-                        "status": "failure",
-                        "reason": "Unstable gesture"
-                    }
+                probs = clf.predict_proba(vec)[0]
+                idx = np.argmax(probs)
+                score = probs[idx]
+                gesture = classes[idx]
 
-        # ---------------- NO HAND ----------------
-        else:
-            if no_hand_start_time is None:
-                no_hand_start_time = time.time()
+                cv2.putText(
+                    frame,
+                    f"{hand_label}: {gesture} ({score:.2f})",
+                    (10, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    1,
+                    (0, 255, 255),
+                    2
+                )
 
-            # tolerate brief hand loss
-            elif time.time() - no_hand_start_time > HAND_LOSS_GRACE_SECONDS:
-                gesture_start_time = None
-                PREDICTIONS.clear()
+                if score >= MIN_CONFIDENCE:
+                    predictions.append(gesture)
+                    confidences.append(score)
 
-            # hard timeout
-            if time.time() - no_hand_start_time >= NO_HAND_TIMEOUT_SECONDS:
-                cleanup(hands)
-                return {
-                    "modality": "gesture",
-                    "status": "failure",
-                    "reason": "No gesture detected"
-                }
+            else:
+                cv2.putText(
+                    frame,
+                    "Show your gesture",
+                    (30, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    1,
+                    (0, 0, 255),
+                    2
+                )
 
-        # ---------------- GLOBAL TIMEOUT ----------------
-        if time.time() - start_time > MAX_TIMEOUT:
-            cleanup(hands)
-            return {
-                "modality": "gesture",
-                "status": "failure",
-                "reason": "Timeout"
-            }
+            cv2.imshow(window_name, frame)
 
-# ------------------- CLEANUP -------------------
-def cleanup(hands):
-    hands.close()
-    cv2.destroyAllWindows()
+            if start_time and (time.time() - start_time >= VERIFICATION_TIME):
+                break
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+        # ================= FINAL DECISION =================
+        if len(predictions) > 5:
+
+            final_gesture = Counter(predictions).most_common(1)[0][0]
+
+            selected_conf = [
+                confidences[i]
+                for i in range(len(predictions))
+                if predictions[i] == final_gesture
+            ]
+
+            avg_confidence = float(np.mean(selected_conf))
+            users = identify_user(final_gesture)
+
+            api_output["gesture"] = final_gesture.lower()
+            api_output["user_id"] = users
+            api_output["confidence"] = round(avg_confidence, 2)
+            api_output["status"] = (
+                "success" if "Unknown user" not in users else "failure"
+            )
+
+        print("FINAL OUTPUT:", api_output)
+
+        end_time = time.time() + DISPLAY_AFTER
+        while time.time() < end_time:
+            cv2.imshow(window_name, frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+    finally:
+        hands.close()
+        cv2.destroyAllWindows()
+
+    return api_output
