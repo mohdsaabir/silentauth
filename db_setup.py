@@ -1,18 +1,18 @@
 import sqlite3
 
-# Connect to central database
 conn = sqlite3.connect("database/central.db")
 cursor = conn.cursor()
 
-# -------- USER TABLE --------
+# Users table with preset
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE
+    name TEXT NOT NULL UNIQUE,
+    preset TEXT DEFAULT 'normal'
 )
 """)
 
-# -------- FACE TABLE --------
+# Face table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS face (
     user_id INTEGER,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS face (
 )
 """)
 
-# -------- VOICE TABLE --------
+# Voice table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS voice (
     user_id INTEGER,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS voice (
 )
 """)
 
-# -------- GESTURE TABLE --------
+# Gesture table
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS gesture (
     user_id INTEGER,
@@ -39,19 +39,10 @@ CREATE TABLE IF NOT EXISTS gesture (
 )
 """)
 
-# -------- INDEXING FOR GESTURE TABLE --------
-cursor.execute("""
-CREATE INDEX IF NOT EXISTS idx_gesture_user_id
-ON gesture(user_id)
-""")
+# Indexing
+cursor.execute("CREATE INDEX IF NOT EXISTS idx_gesture_user_id ON gesture(user_id)")
+cursor.execute("CREATE INDEX IF NOT EXISTS idx_gesture_label ON gesture(gesture_label)")
 
-cursor.execute("""
-CREATE INDEX IF NOT EXISTS idx_gesture_label
-ON gesture(gesture_label)
-""")
-
-# Commit and close
 conn.commit()
 conn.close()
-
-print(" Central Database Created Successfully with Gesture Indexing")
+print("Central Database Created Successfully with Indexing")

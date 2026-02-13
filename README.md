@@ -24,6 +24,15 @@ with modular components that can be extended or replaced independently.
 
 All modules communicate via APIs and are triggered sequentially
 during enrollment and verification.
+
+**Preset Management** – Stores and manages pre-configured user authentication profiles
+for each user. Presets contain user-specific thresholds, model references, and 
+weights for Face, Voice, and Gesture modules. 
+
+Presets are automatically created during enrollment and applied during verification 
+to optimize recognition accuracy. Users can update, delete, or select presets via 
+the preset manager.
+
 ## Installation & Setup
 
 Strictly follow these instructions to have a hussle-free setup of the system
@@ -76,6 +85,9 @@ Executed once per user.
 Verifies a user by capturing live hand landmarks and matching them
 against the trained SVM model.
 
+- Preset creation and storage for the user
+
+
 ## How to Execute Multimodal Enrollment?
 (make sure all terminals are closed)
 
@@ -98,6 +110,8 @@ Face enrollment
 Voice enrollment
 
 Gesture enrollment
+
+Preset creation and storage for the user
 
 ## Verification Process 
 
@@ -143,9 +157,13 @@ Outputs a voice confidence score.
 
 Collects results from Face, Gesture, and Voice APIs.
 
-Applies weighted decision fusion
+Applies weighted decision fusion, using preset-specific weights if available.
 
 If the combined score crosses the threshold, access is granted.
+
+User-specific presets ensure consistent weighting, faster verification, and 
+optimized accuracy for enrolled users.
+
 
 
 

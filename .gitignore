@@ -5,11 +5,8 @@ env/
 venv/
 ENV/
 .venv/
-# Virtual environments
-venv/
 */venv/
 *.venv
-
 
 # ========================
 # Python Cache
@@ -28,7 +25,7 @@ database/
 # ========================
 # VS Code settings
 # ========================
-
+.vscode/
 
 # ========================
 # Local scripts
@@ -46,4 +43,7 @@ Thumbs.db
 # ========================
 *.log
 
-voice/
+# ========================
+# Ignore temporary voice files (if any)
+# ========================
+voice/   # remove this if it’s part of project code
