@@ -92,16 +92,16 @@ PRESET_CONFIG = {
         "FUSION_THRESHOLD": 0.60
     },
     "voice_impaired": {  # skip voice, increase gesture weight
-        "FACE_WEIGHT": 0.6,
+        "FACE_WEIGHT": 0.7,
         "VOICE_WEIGHT": 0.0,
-        "GESTURE_WEIGHT": 0.4,
-        "FUSION_THRESHOLD": 0.55
+        "GESTURE_WEIGHT": 0.3,
+        "FUSION_THRESHOLD": 0.60
     },
     "motor_impaired": {  # skip gesture, increase voice weight
         "FACE_WEIGHT": 0.6,
         "VOICE_WEIGHT": 0.4,
         "GESTURE_WEIGHT": 0.0,
-        "FUSION_THRESHOLD": 0.55
+        "FUSION_THRESHOLD": 0.60
     }
 }
 
