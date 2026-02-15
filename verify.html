@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SilentAuth Verification</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            background: gray;
+        }
+
+        #status {
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            min-height: 40px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .failure {
+            color: red;
+        }
+
+        .info {
+            color: #444;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Verification</h2>
+
+    <button id="verifyBtn" onclick="startVerification()">
+        Start Verification
+    </button>
+
+    <div id="status"></div>
+</div>
+
+<script>
+
+async function startVerification() {
+
+    const statusBox = document.getElementById("status");
+    const button = document.getElementById("verifyBtn");
+
+    // Disable button
+    button.disabled = true;
+    button.innerText = "Verifying...";
+
+    // Show instruction
+    statusBox.className = "info";
+    statusBox.innerHTML = 
+        "Please look at the camera, speak clearly, and show your registered gesture.";
+
+    // Small delay for UX
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    try {
+        const response = await fetch("http://127.0.0.1:8008/verify", {
+            method: "POST"
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            statusBox.className = "success";
+            statusBox.innerHTML = 
+                "Authenticated – " + result.username + "<br>Score – " + result.score;
+        } else {
+            statusBox.className = "failure";
+            statusBox.innerHTML = 
+                "Authentication Failed";
+        }
+
+    } catch (error) {
+        statusBox.className = "failure";
+        statusBox.innerHTML = "Server error. Please try again.";
+    }
+
+    button.disabled = false;
+    button.innerText = "Start Verification";
+}
+
+</script>
+
+</body>
+</html>

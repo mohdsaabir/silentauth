@@ -1,28 +1,20 @@
-# gesture_api.py
-from fastapi import FastAPI, HTTPException
-from enroll_gesture import run_gesture_enrollment, ALLOWED_GESTURES
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
+from enroll_gesture import run_gesture_enrollment
 
 app = FastAPI()
 
-@app.get("/gestures")
-def list_gestures():
-    return {"gestures": ALLOWED_GESTURES}
+class GestureRequest(BaseModel):
+    user_name: str
+    gesture_name: str
 
-@app.post("/enroll")
-def enroll_gesture(data: dict):
-    user_name = data.get("user_name")
-    gesture_name = data.get("gesture_name")
+@app.post("/enroll_stream")
+def enroll_stream(data: GestureRequest):
 
-    if not user_name or not gesture_name:
-        raise HTTPException(status_code=400, detail="user_name and gesture_name required")
+    def event_generator():
+        for msg in run_gesture_enrollment(data.user_name, data.gesture_name):
+            yield f"data: [GESTURE] {msg}\n\n"
+        yield "data: ENROLL_COMPLETE\n\n"
 
-    result = run_gesture_enrollment(user_name, gesture_name)
-
-    if not result:
-        raise HTTPException(status_code=400, detail="Invalid gesture or enrollment failed")
-
-    return {
-        "status": "gesture enrolled",
-        "user_name": user_name,
-        "gesture_label": result
-    }
+    return StreamingResponse(event_generator(), media_type="text/event-stream")

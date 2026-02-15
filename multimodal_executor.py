@@ -3,9 +3,9 @@ import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 #--------VERIFY API ENDPOINTS-----------------------
-FACE_VERIFY_URL = "http://localhost:5001/verify"
-VOICE_VERIFY_URL = "http://localhost:5002/verify"
-GESTURE_VERIFY_URL = "http://localhost:5003/verify"
+FACE_VERIFY_URL = "http://localhost:5010/verify"
+VOICE_VERIFY_URL = "http://localhost:5011/verify"
+GESTURE_VERIFY_URL = "http://localhost:5012/verify"
 #---------------------------------------------------
 
 #---------FUNCTION TO CALLING APIS-------------
@@ -26,10 +26,25 @@ def call_api(name, url):
             "status": "error"
         }
 
+
+
+
+def orchestrate():
+    print("\nMULTI-MODAL ORCHESTRATION STARTED\n")
+
+    # Sequential calls (for reference)
+    face_res = call_api("Face", FACE_VERIFY_URL)
+    voice_res = call_api("Voice", VOICE_VERIFY_URL)
+    gesture_res = call_api("Gesture", GESTURE_VERIFY_URL)
+
+    return [face_res, voice_res, gesture_res]
+
+
+
 #--------------PARALLEL RUNNER----------------
 def orchestrate_parallel():
-    print("\nMULTI-MODAL PARALLEL ORCHESTRATION STARTED\n")
-
+#    print("\nMULTI-MODAL PARALLEL ORCHESTRATION STARTED\n")
+    
     tasks = {
         "Face": FACE_VERIFY_URL,
         "Gesture": GESTURE_VERIFY_URL,
@@ -51,3 +66,7 @@ def orchestrate_parallel():
 
 if __name__ == "__main__":
     orchestrate_parallel()
+
+
+
+   

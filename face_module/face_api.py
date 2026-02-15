@@ -1,20 +1,25 @@
 # face_api.py
 from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
 from Face_Registration import run_face_enrollment
 
 app = FastAPI()
 
-@app.post("/enroll")
-def enroll_face(data: dict):
-    user_name = data["user_name"]
+# Request model
+class FaceRequest(BaseModel):
+    user_name: str
 
-    result = run_face_enrollment(user_name)
+@app.post("/enroll_stream")
+def enroll_stream(data: FaceRequest):
 
-    if not result:
-        return {"status": "failed", "message": "Face enrollment failed"}
+    def event_generator():
+        for msg in run_face_enrollment(data.user_name):
+            yield f"data: [FACE] {msg}\n\n"
 
-    return {
-        "status": "face enrolled",
-        "user_name": user_name,
-        "user_id": result["user_id"]
-    }
+        yield "data: ENROLL_COMPLETE\n\n"
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream"
+    )

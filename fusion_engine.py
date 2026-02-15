@@ -5,8 +5,72 @@ FUSION_THRESHOLD = 0.60
 FACE_WEIGHT = 0.5
 VOICE_WEIGHT = 0.3
 GESTURE_WEIGHT = 0.2
+'''
+# ===================== PRESET-BASED ADAPTIVE FUSION =====================
+
+# Preset-based weights and thresholds
+PRESET_CONFIG = {
+    "normal": {
+        "FACE_WEIGHT": 0.5,
+        "VOICE_WEIGHT": 0.3,
+        "GESTURE_WEIGHT": 0.2,
+        "FUSION_THRESHOLD": 0.60
+    },
+    "voice_impaired": {  # skip voice, increase gesture weight
+        "FACE_WEIGHT": 0.7,
+        "VOICE_WEIGHT": 0.0,
+        "GESTURE_WEIGHT": 0.3,
+        "FUSION_THRESHOLD": 0.60
+    },
+    "motor_impaired": {  # skip gesture, increase voice weight
+        "FACE_WEIGHT": 0.6,
+        "VOICE_WEIGHT": 0.4,
+        "GESTURE_WEIGHT": 0.0,
+        "FUSION_THRESHOLD": 0.60
+    }
+}
 
 
+def fuse_results_with_preset(face_res, voice_res, gesture_res):
+    """
+    Adaptive fusion wrapper:
+    Adjusts weights and threshold according to user's preset before calling core fuse_results.
+    """
+    preset = face_res.get("preset", "normal")  # read preset from face output
+    config = PRESET_CONFIG.get(preset, PRESET_CONFIG["normal"])
+
+    # Save original global weights/threshold
+    global FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD
+    old_face, old_voice, old_gesture, old_thresh = FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD
+
+    # Temporarily override weights/threshold
+    FACE_WEIGHT = config["FACE_WEIGHT"]
+    VOICE_WEIGHT = config["VOICE_WEIGHT"]
+    GESTURE_WEIGHT = config["GESTURE_WEIGHT"]
+    FUSION_THRESHOLD = config["FUSION_THRESHOLD"]
+
+    # Call original fuse_results
+    fused = fuse_results(face_res, voice_res, gesture_res)
+
+    print(fused)
+
+    # Restore original values
+    FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD = old_face, old_voice, old_gesture, old_thresh
+
+    # Check preset match
+    preset_user = face_res.get("username")
+    if fused["status"] == "success":
+        if fused["username"] != preset_user:
+            fused["status"] = "failure"
+            fused["details"]["preset_mismatch"] = True
+        else:
+            fused["details"]["preset_mismatch"] = False
+    else:
+        fused["details"]["preset_mismatch"] = False
+
+    return fused
+
+'''
 def fuse_results(face_res, voice_res, gesture_res):
 
     # Extract users from each modality
@@ -65,6 +129,8 @@ def fuse_results(face_res, voice_res, gesture_res):
     }
 
 
+
+'''
 # ===================== MAIN ==========================
 if __name__ == "__main__":
     #results = orchestrate_verification()
@@ -76,69 +142,11 @@ if __name__ == "__main__":
     voice_res = result_map.get("voice", {})
     gesture_res = result_map.get("gesture", {})
 
-    fused_result = fuse_results(face_res, voice_res, gesture_res)
+
+    fused_result = fuse_results_with_preset(face_res, voice_res, gesture_res)
     print("\nFUSION RESULT:")
     print(fused_result)
 
-
-# ===================== PRESET-BASED ADAPTIVE FUSION =====================
-
-# Preset-based weights and thresholds
-PRESET_CONFIG = {
-    "normal": {
-        "FACE_WEIGHT": 0.5,
-        "VOICE_WEIGHT": 0.3,
-        "GESTURE_WEIGHT": 0.2,
-        "FUSION_THRESHOLD": 0.60
-    },
-    "voice_impaired": {  # skip voice, increase gesture weight
-        "FACE_WEIGHT": 0.7,
-        "VOICE_WEIGHT": 0.0,
-        "GESTURE_WEIGHT": 0.3,
-        "FUSION_THRESHOLD": 0.60
-    },
-    "motor_impaired": {  # skip gesture, increase voice weight
-        "FACE_WEIGHT": 0.6,
-        "VOICE_WEIGHT": 0.4,
-        "GESTURE_WEIGHT": 0.0,
-        "FUSION_THRESHOLD": 0.60
-    }
-}
+'''
 
 
-def fuse_results_with_preset(face_res, voice_res, gesture_res):
-    """
-    Adaptive fusion wrapper:
-    Adjusts weights and threshold according to user's preset before calling core fuse_results.
-    """
-    preset = face_res.get("preset", "normal")  # read preset from face output
-    config = PRESET_CONFIG.get(preset, PRESET_CONFIG["normal"])
-
-    # Save original global weights/threshold
-    global FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD
-    old_face, old_voice, old_gesture, old_thresh = FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD
-
-    # Temporarily override weights/threshold
-    FACE_WEIGHT = config["FACE_WEIGHT"]
-    VOICE_WEIGHT = config["VOICE_WEIGHT"]
-    GESTURE_WEIGHT = config["GESTURE_WEIGHT"]
-    FUSION_THRESHOLD = config["FUSION_THRESHOLD"]
-
-    # Call original fuse_results
-    fused = fuse_results(face_res, voice_res, gesture_res)
-
-    # Restore original values
-    FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD = old_face, old_voice, old_gesture, old_thresh
-
-    # Check preset match
-    preset_user = face_res.get("username")
-    if fused["status"] == "success":
-        if fused["username"] != preset_user:
-            fused["status"] = "failure"
-            fused["details"]["preset_mismatch"] = True
-        else:
-            fused["details"]["preset_mismatch"] = False
-    else:
-        fused["details"]["preset_mismatch"] = False
-
-    return fused

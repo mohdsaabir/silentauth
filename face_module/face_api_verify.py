@@ -7,3 +7,4 @@ app = FastAPI()
 def verify_face():
     result = run_face_verification()
     return result
+

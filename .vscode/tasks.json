@@ -7,7 +7,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "venv\\Scripts\\activate && python camera_service.py"
+        "env\\Scripts\\activate && python camera_service.py"
       ],
       "presentation": {
         "panel": "new",
@@ -23,7 +23,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd face_module && venv\\Scripts\\activate && uvicorn face_api_verify:app --port 5001"
+        "cd face_module && env\\Scripts\\activate && uvicorn face_api_verify:app --port 5010"
       ],
       "presentation": {
         "panel": "new",
@@ -39,7 +39,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd voice_module && venv\\Scripts\\activate && uvicorn voice_api_verify:app --port 5002"
+        "cd voice_module && env\\Scripts\\activate && uvicorn voice_api_verify:app --port 5011"
       ],
       "presentation": {
         "panel": "new",
@@ -55,7 +55,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd gesture_module && venv\\Scripts\\activate && uvicorn gesture_api_verify:app --port 5003"
+        "cd gesture_module && env\\Scripts\\activate && uvicorn gesture_api_verify:app --port 5012"
       ],
       "presentation": {
         "panel": "new",
@@ -72,12 +72,28 @@
       "command": "cmd",
       "args": [
         "/k",
-        "venv\\Scripts\\activate"
+        "env\\Scripts\\activate"
       ],
       "presentation": {
         "panel": "new",
         "reveal": "always",
         "focus": true,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Verification Controller",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "env\\Scripts\\activate && uvicorn verification_controller:app --host 0.0.0.0 --port 8008 --reload"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
         "group": "silentauth"
       },
       "problemMatcher": []
@@ -89,7 +105,8 @@
         "Face Service",
         "Gesture Service",
         "Voice Service",
-        "Main Fusion Engine"
+        "Main Fusion Engine",
+        "Verification Controller"
       ],
     },
     {
@@ -98,7 +115,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd face_module && venv\\Scripts\\activate && uvicorn face_api:app --port 5001"
+        "cd face_module && env\\Scripts\\activate && uvicorn face_api:app --port 5004"
       ],
       "presentation": {
         "panel": "new",
@@ -114,7 +131,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd voice_module && venv\\Scripts\\activate && uvicorn voice_api:app --port 5002"
+        "cd voice_module && env\\Scripts\\activate && uvicorn voice_api:app --port 5002"
       ],
       "presentation": {
         "panel": "new",
@@ -130,7 +147,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd gesture_module && venv\\Scripts\\activate && uvicorn gesture_api:app --port 5003"
+        "cd gesture_module && env\\Scripts\\activate && uvicorn gesture_api:app --port 5003"
       ],
       "presentation": {
         "panel": "new",
@@ -140,14 +157,29 @@
       },
       "problemMatcher": []
     },
-    
+    {
+      "label": "Enrollment Controller",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "env\\Scripts\\activate && uvicorn enrollment_controller:app --host 0.0.0.0 --port 8009 --reload"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": false,
+        "group": "silentauth-Enrollment"
+      },
+      "problemMatcher": []
+    },
     {
       "label": "Main Enrollment Engine",
       "type": "shell",
       "command": "cmd",
       "args": [
         "/k",
-        "venv\\Scripts\\activate"
+        "call env\\Scripts\\activate"
       ],
       "presentation": {
         "panel": "new",
@@ -163,7 +195,8 @@
         "Enroll Face Service",
         "Enroll Gesture Service",
         "Enroll Voice Service",
-        "Main Enrollment Engine"
+        "Main Enrollment Engine",
+        "Enrollment Controller"
       ],
     }
   ]

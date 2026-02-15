@@ -24,7 +24,7 @@ DB_PATH = os.environ.get(
     os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
 )
 
-VERIFICATION_TIME = 6
+VERIFICATION_TIME = 4
 NO_GESTURE_TIMEOUT = 8  # Exit if no gesture detected for 10s
 MIN_CONFIDENCE = 0.55
 DISPLAY_AFTER = 2

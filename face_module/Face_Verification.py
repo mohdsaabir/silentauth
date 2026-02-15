@@ -23,7 +23,7 @@ DB_PATH = os.environ.get(
 )
 
 THRESHOLD = 0.6
-RUN_TIME = 10
+RUN_TIME = 20
 BLINK_TIME_LIMIT = 2  # seconds
 
 # ================= ZMQ FRAME RECEIVER =================
@@ -181,3 +181,4 @@ def run_face_verification():
         api_output["preset"] = None
 
     return api_output
+

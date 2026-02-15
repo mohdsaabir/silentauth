@@ -23,18 +23,20 @@ DB_PATH = os.environ.get(
 )
 
 # ---------- Load ECAPA ----------
-print("Loading ECAPA model...")
+
+#print("Loading ECAPA model...")
+
 model = SpeakerRecognition.from_hparams(
     source="speechbrain/spkrec-ecapa-voxceleb",
     savedir="pretrained_models/spkrec-ecapa-voxceleb",
     local_strategy=LocalStrategy.COPY
 )
-print("ECAPA loaded")
+#print("ECAPA loaded")
 
 
 # ---------- Helpers ----------
 def record_audio(seconds):
-    print(f" Speak for {seconds} seconds...")
+#    print(f" Speak for {seconds} seconds...")
     audio = sd.rec(
         int(seconds * SAMPLE_RATE),
         samplerate=SAMPLE_RATE,
@@ -55,26 +57,31 @@ def get_embedding_from_signal(signal_np):
 # ================= ENROLLMENT =================
 def run_voice_enrollment(user_name):
 
-    print(f"\nStarting voice enrollment for: {user_name}")
-
+#    print(f"\nStarting voice enrollment for: {user_name}")
+    yield f"Starting voice enrollment for: {user_name}"
     embeddings = []
 
     for i in range(NUM_CLIPS):
-        print(f"\nRecording clip {i+1}/{NUM_CLIPS}")
+#        print(f"\nRecording clip {i+1}/{NUM_CLIPS}")
+        yield f"Recording clip {i+1}/{NUM_CLIPS}"
+        yield "Speak for 10 seconds now..."
+        print("Speak for 10 seconds now...")
         audio = record_audio(CLIP_SECONDS)
 
         emb = get_embedding_from_signal(audio)
         embeddings.append(emb)
 
-        print(f"Clip {i+1} embedding captured")
+#        print(f"Clip {i+1} embedding captured")
+        yield f"Clip {i+1} embedding captured"
 
     if len(embeddings) == 0:
-        print("No voice data captured. Enrollment failed.")
+        yield "No voice data captured. Enrollment failed."
         return None
 
     final_embedding = torch.stack(embeddings).mean(dim=0)
 
     print("\nEnrollment completed")
+    yield "Enrollment completed"
     print("Final embedding shape:", final_embedding.shape)
 
     # ---------- Database operations ----------
@@ -89,7 +96,7 @@ def run_voice_enrollment(user_name):
     row = cursor.fetchone()
 
     if not row:
-        print("User not found in DB")
+        yield "User not found in DB"
         conn.close()
         return None
 
@@ -105,7 +112,7 @@ def run_voice_enrollment(user_name):
     conn.close()
 
     print(f"Voice enrollment successful → {user_name} (user_id={user_id})")
-
+    yield f"Voice enrollment successful for user: {user_name}"
     return {"user_id": user_id}
 
 

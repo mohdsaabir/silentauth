@@ -1,20 +1,23 @@
-# voice_api.py
 from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
 from ecapa_realtime_register import run_voice_enrollment
 
 app = FastAPI()
 
-@app.post("/enroll")
-def enroll_voice(data: dict):
-    user_name = data["user_name"]
+class VoiceRequest(BaseModel):
+    user_name: str
 
-    result = run_voice_enrollment(user_name)
+@app.post("/enroll_stream")
+def enroll_stream(data: VoiceRequest):
 
-    if not result:
-        return {"status": "failed", "message": "Voice enrollment failed"}
+    def event_generator():
+        for msg in run_voice_enrollment(data.user_name):
+            yield f"data: [VOICE] {msg}\n\n"
 
-    return {
-        "status": "voice enrolled",
-        "user_name": user_name,
-        "user_id": result["user_id"]
-    }
+        yield "data: ENROLL_COMPLETE\n\n"
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream"
+    )

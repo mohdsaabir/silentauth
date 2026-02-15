@@ -42,5 +42,5 @@ def run_gesture_enrollment(user_name, gesture_name):
     )
     conn.commit()
     conn.close()
-
+    yield f"Gesture '{gesture_name}' enrolled for user: {user_name}"
     return gesture_name
