@@ -48,8 +48,8 @@ def enroll_user_stream(data: EnrollmentRequest):
 
     user_name = data.user_name.strip()
     preset = data.preset
-    gesture_name = data.gesture_name
-
+    gesture_name = data.gesture_name.lower()
+    
     if not user_name:
         raise HTTPException(status_code=400, detail="Username cannot be empty.")
 
@@ -61,6 +61,7 @@ def enroll_user_stream(data: EnrollmentRequest):
         # -------------------------------
         # FACE (Always)
         # -------------------------------
+        
         with requests.post(
             "http://127.0.0.1:5004/enroll_stream",
             json={"user_name": user_name},
@@ -69,11 +70,12 @@ def enroll_user_stream(data: EnrollmentRequest):
 
             for line in r.iter_lines():
                 if line:
-                    yield line.decode() + "\n"
-
+                    yield line.decode() + "\n\n"
+        
         # -------------------------------
         # VOICE (Conditional)
         # -------------------------------
+        
         if preset in ["normal", "motor_impaired"]:
 
             with requests.post(
@@ -84,7 +86,7 @@ def enroll_user_stream(data: EnrollmentRequest):
 
                 for line in r.iter_lines():
                     if line:
-                        yield line.decode() + "\n"
+                        yield line.decode() + "\n\n"
 
         else:
             yield "data: [VOICE] Skipped (preset-based)\n\n"
@@ -109,7 +111,7 @@ def enroll_user_stream(data: EnrollmentRequest):
 
                 for line in r.iter_lines():
                     if line:
-                        yield line.decode() + "\n"
+                        yield line.decode() + "\n\n"
 
         else:
             yield "data: [GESTURE] Skipped (preset-based)\n\n"
@@ -119,7 +121,7 @@ def enroll_user_stream(data: EnrollmentRequest):
         # -------------------------------
         update_user_preset(user_name, preset)
 
-        yield "data: ENROLLMENT_COMPLETE\n\n"
+        yield "data: ENROLLMENT COMPLETED SUCCESSFULLY\n\n"
 
     return StreamingResponse(
         event_generator(),

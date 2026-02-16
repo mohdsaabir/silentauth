@@ -57,24 +57,27 @@ def get_embedding_from_signal(signal_np):
 # ================= ENROLLMENT =================
 def run_voice_enrollment(user_name):
 
-#    print(f"\nStarting voice enrollment for: {user_name}")
+#   print(f"\nStarting voice enrollment for: {user_name}")
     yield f"Starting voice enrollment for: {user_name}"
     embeddings = []
 
     for i in range(NUM_CLIPS):
-#        print(f"\nRecording clip {i+1}/{NUM_CLIPS}")
-        yield f"Recording clip {i+1}/{NUM_CLIPS}"
-        yield "Speak for 10 seconds now..."
-        print("Speak for 10 seconds now...")
+#       print(f"\nRecording clip {i+1}/{NUM_CLIPS}")
+        yield f"Recording clip {i+1}/{NUM_CLIPS}\n\n"
+        print(f"Recording clip {i+1}/{NUM_CLIPS}")
+        print(f"Speak for {CLIP_SECONDS} seconds...")
+        yield "Speak for 10 seconds now...\n\n"
+       # print("Speak for 10 seconds now...")
         audio = record_audio(CLIP_SECONDS)
 
         emb = get_embedding_from_signal(audio)
         embeddings.append(emb)
 
-#        print(f"Clip {i+1} embedding captured")
+        print(f"Clip {i+1} embedding captured")
         yield f"Clip {i+1} embedding captured"
 
     if len(embeddings) == 0:
+        print("No embeddings captured. Enrollment failed.")
         yield "No voice data captured. Enrollment failed."
         return None
 
@@ -96,6 +99,7 @@ def run_voice_enrollment(user_name):
     row = cursor.fetchone()
 
     if not row:
+        print("User not found in DB")
         yield "User not found in DB"
         conn.close()
         return None
@@ -120,6 +124,5 @@ def run_voice_enrollment(user_name):
 
 if __name__ == "__main__":
     test_user = "sabir"
-    run_voice_enrollment(test_user)
 
 '''

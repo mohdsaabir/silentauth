@@ -17,7 +17,7 @@ def enroll_stream(data: FaceRequest):
         for msg in run_face_enrollment(data.user_name):
             yield f"data: [FACE] {msg}\n\n"
 
-        yield "data: ENROLL_COMPLETE\n\n"
+        #yield "data: ENROLL_COMPLETE\n\n"
 
     return StreamingResponse(
         event_generator(),

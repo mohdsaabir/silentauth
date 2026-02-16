@@ -21,6 +21,8 @@ def run_face_enrollment(user_name):
     Returns dict with user_id on success, None on failure.
     """
     yield f"Registering user: {user_name}"
+    print(f"Registering user: {user_name}")
+    print("Look at the camera normally...")
     yield "Look at the camera normally..."
     # -------- Face registration core --------
     app = FaceAnalysis(name="buffalo_l")
@@ -37,7 +39,7 @@ def run_face_enrollment(user_name):
 
     embeddings = []
     start_time = time.time()
-
+    
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -83,6 +85,7 @@ def run_face_enrollment(user_name):
     cv2.destroyAllWindows()
 
     if len(embeddings) == 0:
+        yield "No face data captured. Enrollment failed."
         print("No embeddings collected. Registration failed.")
         return None
 
@@ -114,9 +117,9 @@ def run_face_enrollment(user_name):
 
     conn.commit()
     conn.close()
-
+    #yield "Face enrollment successful"
     print(f"Enrollment successful → {user_name} (user_id={user_id})")
-    yield f"Enrollment successful for user: {user_name}"
+    yield f"Face enrollment successful for user: {user_name}"
     return {"user_id": user_id}
 
 

@@ -70,11 +70,7 @@
     </select>
 
     <label>Gesture</label>
-    <select id="gesture">
-        <option value="wave">Wave</option>
-        <option value="thumbs_up">Thumbs Up</option>
-        <option value="peace">Peace</option>
-    </select>
+    <select id="gesture"></select>
 
     <button id="startBtn" onclick="startEnrollment()">Start Enrollment</button>
 
@@ -82,6 +78,27 @@
 </div>
 
 <script>
+
+const GESTURES = [
+    "bang", "comehere", "fist", "four", "grab", "greeting",
+    "loser", "love", "ok", "palm", "pinkyfinger",
+    "pointingfinger", "rock", "three", "thumbsup",
+    "thumbsdown", "victory", "w", "zero"
+]
+
+function loadGestures() {
+    const gestureDropdown = document.getElementById("gesture");
+    gestureDropdown.innerHTML = "";
+
+    GESTURES.forEach(gesture => {
+        const option = document.createElement("option");
+        option.value = gesture;
+        option.textContent = gesture.replaceAll("_", " ");
+        gestureDropdown.appendChild(option);
+    });
+}
+
+window.onload = loadGestures;
 
 function handlePresetChange() {
     const preset = document.getElementById("preset").value;
@@ -112,7 +129,7 @@ async function startEnrollment() {
     button.innerText = "Enrolling...";
 
     try {
-        const response = await fetch("http://127.0.0.1:8009/enroll_stream", {
+        const response = await fetch("http://127.0.0.1:8003/enroll_stream", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -127,16 +144,28 @@ async function startEnrollment() {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
 
+        let buffer = "";
+
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
 
-            const chunk = decoder.decode(value);
-            const clean = chunk.replaceAll("data:", "").trim();
+            buffer += decoder.decode(value, { stream: true });
 
-            log.innerHTML += clean + "<br>";
-            log.scrollTop = log.scrollHeight;
+            let parts = buffer.split("\n\n");
+
+            // Keep last partial chunk in buffer
+            buffer = parts.pop();
+
+            for (let part of parts) {
+                if (part.startsWith("data:")) {
+                    const clean = part.replace("data:", "").trim();
+                    log.innerHTML += clean + "<br>";
+                    log.scrollTop = log.scrollHeight;
+                }
+            }
         }
+
 
     } catch (error) {
         log.innerHTML += "Error: " + error + "<br>";

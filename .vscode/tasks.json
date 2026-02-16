@@ -163,7 +163,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "env\\Scripts\\activate && uvicorn enrollment_controller:app --host 0.0.0.0 --port 8009 --reload"
+        "env\\Scripts\\activate && uvicorn enrollment_controller:app --host 0.0.0.0 --port 8003 --reload"
       ],
       "presentation": {
         "panel": "new",

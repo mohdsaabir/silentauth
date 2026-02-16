@@ -15,7 +15,7 @@ def enroll_stream(data: VoiceRequest):
         for msg in run_voice_enrollment(data.user_name):
             yield f"data: [VOICE] {msg}\n\n"
 
-        yield "data: ENROLL_COMPLETE\n\n"
+        #yield "data: ENROLL_COMPLETE\n\n"
 
     return StreamingResponse(
         event_generator(),
