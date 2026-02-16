@@ -111,14 +111,15 @@ def run_gesture_verification():
     try:
         while True:
             # Receive frame from ZMQ or fallback to any camera
-            try:
+            """try:
                 frame = pickle.loads(frame_socket.recv(flags=zmq.NOBLOCK))
             except zmq.Again:
                 cap = cv2.VideoCapture(0)  # default webcam
                 ret, frame = cap.read()
                 cap.release()
                 if not ret:
-                    continue
+                    continue"""
+            frame = pickle.loads(frame_socket.recv())
 
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             result = hands.process(rgb)
