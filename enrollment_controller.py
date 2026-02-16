@@ -4,6 +4,11 @@ from pydantic import BaseModel
 import requests
 import sqlite3
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi import Request
+
 
 app = FastAPI()
 
@@ -14,6 +19,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/enroll", response_class=HTMLResponse)
+def load_enrollment_page(request: Request):
+    return templates.TemplateResponse("enroll.html", {"request": request})
+
 
 DB_PATH = "database/central.db"
 

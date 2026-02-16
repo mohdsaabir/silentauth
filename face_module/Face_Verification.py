@@ -24,7 +24,7 @@ DB_PATH = os.environ.get(
 
 THRESHOLD = 0.6
 RUN_TIME = 20
-BLINK_TIME_LIMIT = 2  # seconds
+BLINK_TIME_LIMIT = 3  # seconds
 
 # ================= ZMQ FRAME RECEIVER =================
 context = zmq.Context()

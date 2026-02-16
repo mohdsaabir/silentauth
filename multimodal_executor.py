@@ -29,18 +29,6 @@ def call_api(name, url):
 
 
 
-def orchestrate():
-    print("\nMULTI-MODAL ORCHESTRATION STARTED\n")
-
-    # Sequential calls (for reference)
-    face_res = call_api("Face", FACE_VERIFY_URL)
-    voice_res = call_api("Voice", VOICE_VERIFY_URL)
-    gesture_res = call_api("Gesture", GESTURE_VERIFY_URL)
-
-    return [face_res, voice_res, gesture_res]
-
-
-
 #--------------PARALLEL RUNNER----------------
 def orchestrate_parallel():
 #    print("\nMULTI-MODAL PARALLEL ORCHESTRATION STARTED\n")

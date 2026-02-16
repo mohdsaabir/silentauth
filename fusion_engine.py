@@ -5,7 +5,7 @@ FUSION_THRESHOLD = 0.60
 FACE_WEIGHT = 0.5
 VOICE_WEIGHT = 0.3
 GESTURE_WEIGHT = 0.2
-'''
+
 # ===================== PRESET-BASED ADAPTIVE FUSION =====================
 
 # Preset-based weights and thresholds
@@ -39,6 +39,7 @@ def fuse_results_with_preset(face_res, voice_res, gesture_res):
     preset = face_res.get("preset", "normal")  # read preset from face output
     config = PRESET_CONFIG.get(preset, PRESET_CONFIG["normal"])
 
+    
     # Save original global weights/threshold
     global FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD
     old_face, old_voice, old_gesture, old_thresh = FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD
@@ -52,11 +53,10 @@ def fuse_results_with_preset(face_res, voice_res, gesture_res):
     # Call original fuse_results
     fused = fuse_results(face_res, voice_res, gesture_res)
 
-    print(fused)
 
     # Restore original values
     FACE_WEIGHT, VOICE_WEIGHT, GESTURE_WEIGHT, FUSION_THRESHOLD = old_face, old_voice, old_gesture, old_thresh
-
+    
     # Check preset match
     preset_user = face_res.get("username")
     if fused["status"] == "success":
@@ -70,7 +70,7 @@ def fuse_results_with_preset(face_res, voice_res, gesture_res):
 
     return fused
 
-'''
+
 def fuse_results(face_res, voice_res, gesture_res):
 
     # Extract users from each modality

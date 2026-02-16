@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>SilentAuth Verification</title>
     <style>
         body {
@@ -93,7 +94,7 @@ async function startVerification() {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     try {
-        const response = await fetch("http://127.0.0.1:8008/verify", {
+        const response = await fetch("http://127.0.0.1:8004/verify_endpoint", {
             method: "POST"
         });
 

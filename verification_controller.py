@@ -1,7 +1,12 @@
 from fastapi import FastAPI
-from multimodal_executor import orchestrate_parallel,orchestrate
-from fusion_engine import fuse_results
+from multimodal_executor import orchestrate_parallel
+from fusion_engine import fuse_results_with_preset
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi import Request
+
 
 
 app = FastAPI()
@@ -14,7 +19,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/verify")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/verify", response_class=HTMLResponse)
+def load_verification_page(request: Request):
+    return templates.TemplateResponse("verify.html", {"request": request})
+
+
+
+@app.post("/verify_endpoint")
 def verify_user():
 
     results = orchestrate_parallel()
@@ -26,7 +41,10 @@ def verify_user():
     gesture_res = result_map.get("gesture", {})
 
 
-    fused = fuse_results(face_res, voice_res, gesture_res)
+    fused = fuse_results_with_preset(face_res, voice_res, gesture_res)
+
+    print("\nFused Result:")
+    print(fused)
 
     if fused["status"] == "success":
         return {
