@@ -7,7 +7,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "env\\Scripts\\activate && python camera_service.py"
+        "venv\\Scripts\\activate && python camera_service.py"
       ],
       "presentation": {
         "panel": "new",
@@ -23,7 +23,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd face_module && env\\Scripts\\activate && uvicorn face_api_verify:app --port 5010"
+        "cd face_module && venv\\Scripts\\activate && uvicorn face_api_verify:app --port 5010"
       ],
       "presentation": {
         "panel": "new",
@@ -39,7 +39,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd voice_module && env\\Scripts\\activate && uvicorn voice_api_verify:app --port 5011"
+        "cd voice_module && venv\\Scripts\\activate && uvicorn voice_api_verify:app --port 5013"
       ],
       "presentation": {
         "panel": "new",
@@ -55,7 +55,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd gesture_module && env\\Scripts\\activate && uvicorn gesture_api_verify:app --port 5012"
+        "cd gesture_module && venv\\Scripts\\activate && uvicorn gesture_api_verify:app --port 5012"
       ],
       "presentation": {
         "panel": "new",
@@ -72,7 +72,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "env\\Scripts\\activate"
+        "venv\\Scripts\\activate"
       ],
       "presentation": {
         "panel": "new",
@@ -88,7 +88,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "env\\Scripts\\activate && uvicorn verification_controller:app --host 0.0.0.0 --port 8004 --reload"
+        "venv\\Scripts\\activate && uvicorn verification_controller:app --host 0.0.0.0 --port 8004 --reload"
       ],
       "presentation": {
         "panel": "new",
@@ -115,7 +115,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd face_module && env\\Scripts\\activate && uvicorn face_api:app --port 5004"
+        "cd face_module && venv\\Scripts\\activate && uvicorn face_api:app --port 5004"
       ],
       "presentation": {
         "panel": "new",
@@ -131,7 +131,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd voice_module && env\\Scripts\\activate && uvicorn voice_api:app --port 5002"
+        "cd voice_module && venv\\Scripts\\activate && uvicorn voice_api:app --port 5002"
       ],
       "presentation": {
         "panel": "new",
@@ -147,7 +147,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "cd gesture_module && env\\Scripts\\activate && uvicorn gesture_api:app --port 5003"
+        "cd gesture_module && venv\\Scripts\\activate && uvicorn gesture_api:app --port 5003"
       ],
       "presentation": {
         "panel": "new",
@@ -163,7 +163,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "env\\Scripts\\activate && uvicorn enrollment_controller:app --host 0.0.0.0 --port 8000 --reload"
+        "venv\\Scripts\\activate && uvicorn enrollment_controller:app --host 0.0.0.0 --port 8000 --reload"
       ],
       "presentation": {
         "panel": "new",
@@ -179,7 +179,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "call env\\Scripts\\activate"
+        "call venv\\Scripts\\activate"
       ],
       "presentation": {
         "panel": "new",

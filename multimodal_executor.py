@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 #--------VERIFY API ENDPOINTS-----------------------
 FACE_VERIFY_URL = "http://localhost:5010/verify"
-VOICE_VERIFY_URL = "http://localhost:5011/verify"
+VOICE_VERIFY_URL = "http://localhost:5013/verify"
 GESTURE_VERIFY_URL = "http://localhost:5012/verify"
 #---------------------------------------------------
 

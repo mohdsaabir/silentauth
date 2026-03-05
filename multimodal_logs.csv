@@ -1,0 +1,10 @@
+timestamp,identified_user,face_username,face_conf_raw,voice_username,voice_conf_raw,gesture,gesture_userset,gesture_conf_raw,voice_conf_effective,gesture_conf_effective,voice_penalty,voice_penalty_applied,fusion_score,decision,ground_truth,attack_type,preset,preset_mismatch
+2026-03-06 02:04:31,Madhav,Madhav,0.701,Madhav,0.821,victory,"['Madhav', 'Sara']",0.91,0.821,0.91,0,0,0.806,success,impostor,spoof_voice,normal,False
+2026-03-06 02:06:49,Unknown,Madhav,0.707,,0.272,victory,"['Madhav', 'Sara']",0.95,0,0.95,0,0,0.532,failure,impostor,spoof_voice,normal,False
+2026-03-06 02:08:39,Unknown,Madhav,0.714,,0.256,victory,"['Madhav', 'Sara']",0.94,0,0.94,0,0,0.532,failure,impostor,spoof_voice,normal,False
+2026-03-06 02:09:16,Unknown,Madhav,0.703,,0.259,victory,"['Madhav', 'Sara']",0.86,0,0.86,0,0,0.504,failure,impostor,spoof_voice,normal,False
+2026-03-06 02:10:01,Unknown,Madhav,0.835,,0.331,victory,"['Madhav', 'Sara']",0.92,0,0.92,0,0,0.568,failure,impostor,spoof_voice,normal,False
+2026-03-06 02:10:23,Unknown,Madhav,0.808,,0.308,victory,"['Madhav', 'Sara']",0.9,0,0.9,0,0,0.553,failure,impostor,spoof_voice,normal,False
+2026-03-06 02:10:42,Madhav,Madhav,0.807,Madhav,0.661,victory,"['Madhav', 'Sara']",0.93,0.661,0.93,0,0,0.793,success,impostor,spoof_voice,normal,False
+2026-03-06 02:15:07,Unknown,Madhav,0.842,Sara,0.517,victory,"['Madhav', 'Sara']",0.88,0,0.88,0,0,0.559,failure,impostor,spoof_voice,normal,False
+2026-03-06 02:16:16,Unknown,Madhav,0.828,afiya,0.608,victory,"['Madhav', 'Sara']",0.94,0,0.94,0,0,0.572,failure,impostor,spoof_voice,normal,False

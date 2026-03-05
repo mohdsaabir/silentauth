@@ -205,3 +205,113 @@ Enrollment must be completed before verification
 Each module must be running before running executor files in active terminals
 
 Designed to work as part of the SilentAuth system
+
+
+## System Testing & Evaluation 🔬
+
+SilentAuth also includes internal tools used for system testing, statistical evaluation, and parameter optimization.
+These scripts were used to generate experimental data and determine the final configuration of the authentication system.
+
+These files are not required for normal enrollment or verification but are used during the research and evaluation phase of the system.
+
+## Analysis Scripts (AN_*)
+
+Files prefixed with AN_ are analysis utilities used to evaluate the performance of the multimodal authentication pipeline.
+
+These scripts help determine:
+
+Optimal fusion weights
+
+Optimal fusion thresholds
+
+Voice contradiction penalty tuning
+
+Attack simulation and log generation
+
+Dataset preparation for evaluation
+
+Included Analysis Files
+
+# AN_generator.py
+
+Generates synthetic multimodal attack scenarios and evaluation samples used to simulate cross-user and unknown-user authentication attempts.
+
+# AN_voice_contradiction.py
+
+Analyzes cases where the voice modality contradicts the face identity and determines the optimal contradiction penalty threshold to prevent impersonation attacks.
+
+# AN_fusion_weight.py
+
+Performs parameter sweeps across different combinations of:
+
+Face weight
+Voice weight
+Gesture weight
+
+to determine the optimal weighting configuration for multimodal fusion.
+
+# AN_fusion_threshold.py
+
+Computes the optimal final decision threshold for the fusion engine by analyzing score distributions and evaluation metrics.
+
+## Evaluation Datasets
+
+The following CSV files contain experiment logs used during evaluation:
+
+# AN_multimodal_logs_new.csv
+Processed dataset used for multimodal fusion analysis.
+
+# AN_old_logs.csv
+Previous experimental logs retained for reference.
+
+# AN_fusion_final.csv
+Final dataset used for determining optimal system parameters.
+
+## System Testing Utility
+
+tester1.py
+
+This script is used to perform large-scale system testing.
+
+It runs multimodal authentication attempts and logs the following information:
+
+Face confidence score
+
+Voice confidence score
+
+Gesture confidence score
+
+Voice contradiction penalty
+
+Final fusion score
+
+Authentication decision
+
+The generated logs are used to evaluate:
+
+Genuine user performance
+
+Cross-user impersonation attempts
+
+Unknown user rejection
+
+System robustness under attack scenarios
+
+Results Folder
+results/
+
+The results folder stores outputs generated during evaluation experiments.
+
+This may include:
+
+ROC curve plots
+
+Score distribution histograms
+
+Evaluation statistics
+
+Threshold analysis results
+
+Experiment logs
+
+These artifacts are used to validate the accuracy, robustness, and security of the SilentAuth multimodal authentication system.

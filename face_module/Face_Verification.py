@@ -22,9 +22,9 @@ DB_PATH = os.environ.get(
     os.path.abspath(os.path.join(BASE_DIR, "..", "database", "central.db"))
 )
 
-THRESHOLD = 0.6
-RUN_TIME = 20
-BLINK_TIME_LIMIT = 3  # seconds
+THRESHOLD = 0.48
+RUN_TIME = 10
+BLINK_TIME_LIMIT = 4  # seconds
 
 # ================= ZMQ FRAME RECEIVER =================
 context = zmq.Context()
@@ -32,6 +32,12 @@ frame_socket = context.socket(zmq.SUB)
 frame_socket.setsockopt(zmq.CONFLATE, 1)
 frame_socket.connect("tcp://localhost:5555")
 frame_socket.setsockopt(zmq.SUBSCRIBE, b'')
+
+# --------- InsightFace ---------
+face_model = FaceAnalysis(name="buffalo_l")
+face_model.prepare(ctx_id=0, det_size=(640, 640))
+
+print("✅ Face model loaded once at startup")
 
 # ================= SIMILARITY =================
 def cosine_similarity(v1, v2):
@@ -50,8 +56,10 @@ def run_face_verification():
         "preset": None
     }
 
-    score_buffer = deque(maxlen=10)
+    #score_buffer = deque(maxlen=10)
     start_time = time.time()
+    session_scores = []
+    session_identities = []
 
     # --------- Load users from CENTRAL DB ---------
     conn = sqlite3.connect(DB_PATH)
@@ -72,12 +80,13 @@ def run_face_verification():
     print("Loaded users:", list(face_db.keys()))
 
     # --------- InsightFace ---------
-    app = FaceAnalysis(name="buffalo_l")
-    app.prepare(ctx_id=0, det_size=(640, 640))
+    #app = FaceAnalysis(name="buffalo_l")
+    #app.prepare(ctx_id=0, det_size=(640, 640))
 
     # --------- Blink / Liveness ---------
     blink_detector = BlinkDetector(threshold=2.5)
-    blink_verified = False
+    #blink_verified = False
+    blink_verified = True
     blink_start_time = None
     face_seen = False
 
@@ -87,12 +96,12 @@ def run_face_verification():
 
     print("▶ Face verification started")
 
-    best_identity = None
-    best_identity_score = 0.0
+    #best_identity = None
+    #best_identity_score = 0.0
 
     while True:
         frame = pickle.loads(frame_socket.recv())
-        faces = app.get(frame)
+        faces = face_model.get(frame)
 
         # ================= NO FACE =================
         if len(faces) == 0:
@@ -112,10 +121,10 @@ def run_face_verification():
 
             if not face_seen:
                 face_seen = True
-                blink_start_time = time.time()
-                blink_detector.reset()
-                print("👤 Face detected — starting blink timer")
-
+                #blink_start_time = time.time()
+                #blink_detector.reset()
+                #print("👤 Face detected — starting blink timer")
+            '''
             # ================= BLINK CHECK =================
             if not blink_verified:
                 blinked = blink_detector.update(kps)
@@ -130,7 +139,7 @@ def run_face_verification():
                             (30, 40), cv2.FONT_HERSHEY_SIMPLEX,
                             1, (0, 0, 255), 2)
                 cv2.imshow(window_name, frame)
-                continue
+                continue '''
 
             # ================= IDENTITY CHECK =================
             emb = face.embedding.astype(np.float32)
@@ -142,8 +151,7 @@ def run_face_verification():
                 if score > best_score:
                     best_score = score
                     best_name = name
-
-            score_buffer.append(best_score)
+            '''score_buffer.append(best_score)
             avg_score = sum(score_buffer) / len(score_buffer)
 
             x1, y1, x2, y2 = face.bbox.astype(int)
@@ -159,7 +167,22 @@ def run_face_verification():
 
             cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
             cv2.putText(frame, label, (x1, y1 - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)'''
+            # Collect session data
+            session_scores.append(best_score)
+            session_identities.append(best_name)
+
+            # --------- Visualization Only ---------
+            x1, y1, x2, y2 = face.bbox.astype(int)
+
+            label = f"{best_name} ({best_score:.2f})"
+            color = (255, 255, 0)  # Neutral color during session
+
+            cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
+            cv2.putText(frame, label, (x1, y1 - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+
+            
 
         cv2.imshow(window_name, frame)
 
@@ -169,16 +192,43 @@ def run_face_verification():
             break
 
     cv2.destroyAllWindows()
+    '''if len(session_scores) > 0:
+        session_mean_score = sum(session_scores) / len(session_scores)
+    else:
+        session_mean_score = 0.0'''
+    
+    if len(session_scores) == 0:
+        return api_output
+    
+    # 🔹 Session Mean Score
+    session_mean_score = sum(session_scores) / len(session_scores)
 
-    # ================= FINAL OUTPUT =================
+    # 🔹 Majority Voting for Identity
+    identity_counts = {}
+    for name in session_identities:
+        identity_counts[name] = identity_counts.get(name, 0) + 1
+
+    best_identity = max(identity_counts, key=identity_counts.get)
+
+    '''# ================= FINAL OUTPUT =================
     if best_identity:
         api_output["username"] = best_identity
-        api_output["confidence"] = round(float(best_identity_score), 2)
+        api_output["confidence"] = round(float(session_mean_score), 2)
         api_output["status"] = "success"
         # ✅ Fetch preset via modular function
         api_output["preset"] = preset_selector(best_identity)
     else:
-        api_output["preset"] = None
+        api_output["preset"] = None'''
+    
+    # 🔹 Final Threshold Check
+    if session_mean_score >= THRESHOLD:
+        api_output["username"] = best_identity
+        api_output["confidence"] = round(float(session_mean_score), 3)
+        api_output["status"] = "success"
+        api_output["preset"] = preset_selector(best_identity)
+    else:
+        api_output["confidence"] = round(float(session_mean_score), 3)
+
 
     return api_output
 

@@ -1,0 +1,505 @@
+﻿timestamp,identified_user,face_username,face_conf_raw,voice_username,voice_conf_raw,gesture,gesture_userset,gesture_conf_raw,voice_conf_effective,gesture_conf_effective,voice_penalty,voice_penalty_applied,fusion_score,decision,ground_truth,attack_type,preset,preset_mismatch
+5/3/2026 16:15,Goutham,Goutham,0.82,Goutham,0.8,thumbsup,['Goutham'],0.92,0.8,0.92,0,0,0.834,success,genuine,normal,normal,FALSE
+5/3/2026 16:16,Goutham,Goutham,0.811,Goutham,0.805,thumbsup,['Goutham'],0.95,0.805,0.95,0,0,0.837,success,genuine,normal,normal,FALSE
+5/3/2026 16:16,Goutham,Goutham,0.793,Goutham,0.804,thumbsup,['Goutham'],0.95,0.804,0.95,0,0,0.828,success,genuine,normal,normal,FALSE
+5/3/2026 16:16,Goutham,Goutham,0.793,Goutham,0.78,thumbsup,['Goutham'],0.95,0.78,0.95,0,0,0.821,success,genuine,normal,normal,FALSE
+5/3/2026 16:17,Goutham,Goutham,0.779,Goutham,0.784,thumbsup,['Goutham'],0.95,0.784,0.95,0,0,0.815,success,genuine,normal,normal,FALSE
+5/3/2026 16:17,Goutham,Goutham,0.787,Goutham,0.823,thumbsup,['Goutham'],0.94,0.823,0.94,0,0,0.828,success,genuine,normal,normal,FALSE
+5/3/2026 16:18,Goutham,Goutham,0.778,Goutham,0.85,thumbsup,['Goutham'],0.95,0.85,0.95,0,0,0.834,success,genuine,normal,normal,FALSE
+5/3/2026 16:18,Goutham,Goutham,0.772,Goutham,0.833,thumbsup,['Goutham'],0.95,0.833,0.95,0,0,0.826,success,genuine,normal,normal,FALSE
+5/3/2026 16:18,Goutham,Goutham,0.779,Goutham,0.846,thumbsup,['Goutham'],0.96,0.846,0.96,0,0,0.835,success,genuine,normal,normal,FALSE
+5/3/2026 16:19,Goutham,Goutham,0.786,Goutham,0.849,thumbsup,['Goutham'],0.93,0.849,0.93,0,0,0.834,success,genuine,normal,normal,FALSE
+5/3/2026 16:19,Goutham,Goutham,0.805,Goutham,0.815,thumbsup,['Goutham'],0.96,0.815,0.96,0,0,0.839,success,genuine,normal,normal,FALSE
+5/3/2026 16:20,Goutham,Goutham,0.781,Goutham,0.812,thumbsup,['Goutham'],0.95,0.812,0.95,0,0,0.824,success,genuine,normal,normal,FALSE
+5/3/2026 16:29,Goutham,Goutham,0.785,Goutham,0.834,thumbsup,['Goutham'],0.93,0.834,0.93,0,0,0.829,success,genuine,normal,normal,FALSE
+5/3/2026 16:30,Goutham,Goutham,0.794,Goutham,0.831,thumbsup,['Goutham'],0.92,0.831,0.92,0,0,0.83,success,genuine,normal,normal,FALSE
+5/3/2026 16:30,Goutham,Goutham,0.813,Goutham,0.847,thumbsup,['Goutham'],0.95,0.847,0.95,0,0,0.851,success,genuine,normal,normal,FALSE
+5/3/2026 16:30,Goutham,Goutham,0.81,Goutham,0.83,thumbsup,['Goutham'],0.94,0.83,0.94,0,0,0.842,success,genuine,normal,normal,FALSE
+5/3/2026 16:31,Goutham,Goutham,0.819,Goutham,0.867,thumbsup,['Goutham'],0.93,0.867,0.93,0,0,0.856,success,genuine,normal,normal,FALSE
+5/3/2026 16:31,Goutham,Goutham,0.805,Goutham,0.839,thumbsup,['Goutham'],0.93,0.839,0.93,0,0,0.84,success,genuine,normal,normal,FALSE
+5/3/2026 16:31,Goutham,Goutham,0.813,Goutham,0.855,thumbsup,['Goutham'],0.93,0.855,0.93,0,0,0.849,success,genuine,normal,normal,FALSE
+5/3/2026 16:32,Goutham,Goutham,0.799,Goutham,0.819,thumbsup,['Goutham'],0.93,0.819,0.93,0,0,0.831,success,genuine,normal,normal,FALSE
+5/3/2026 16:32,Goutham,Goutham,0.803,Goutham,0.847,thumbsup,['Goutham'],0.91,0.847,0.91,0,0,0.838,success,genuine,normal,normal,FALSE
+5/3/2026 16:32,Goutham,Goutham,0.794,Goutham,0.835,thumbsup,['Goutham'],0.91,0.835,0.91,0,0,0.83,success,genuine,normal,normal,FALSE
+5/3/2026 16:33,Goutham,Goutham,0.789,Goutham,0.79,thumbsup,['Goutham'],0.93,0.79,0.93,0,0,0.818,success,genuine,normal,normal,FALSE
+5/3/2026 16:33,Goutham,Goutham,0.789,Goutham,0.833,thumbsup,['Goutham'],0.94,0.833,0.94,0,0,0.832,success,genuine,normal,normal,FALSE
+5/3/2026 16:34,Goutham,Goutham,0.807,Goutham,0.82,thumbsup,['Goutham'],0.93,0.82,0.93,0,0,0.836,success,genuine,normal,normal,FALSE
+5/3/2026 16:34,Goutham,Goutham,0.782,Goutham,0.78,thumbsup,['Goutham'],0.93,0.78,0.93,0,0,0.811,success,genuine,normal,normal,FALSE
+5/3/2026 16:34,Goutham,Goutham,0.804,Goutham,0.785,thumbsup,['Goutham'],0.93,0.785,0.93,0,0,0.824,success,genuine,normal,normal,FALSE
+5/3/2026 16:35,Goutham,Goutham,0.797,Goutham,0.773,thumbsup,['Goutham'],0.93,0.773,0.93,0,0,0.816,success,genuine,normal,normal,FALSE
+5/3/2026 16:35,Goutham,Goutham,0.805,Goutham,0.801,thumbsup,['Goutham'],0.93,0.801,0.93,0,0,0.829,success,genuine,normal,normal,FALSE
+5/3/2026 16:35,Goutham,Goutham,0.808,Goutham,0.737,thumbsup,['Goutham'],0.94,0.737,0.94,0,0,0.813,success,genuine,normal,normal,FALSE
+5/3/2026 16:36,Goutham,Goutham,0.802,Goutham,0.718,thumbsup,['Goutham'],0.94,0.718,0.94,0,0,0.804,success,genuine,normal,normal,FALSE
+5/3/2026 16:36,Goutham,Goutham,0.793,Goutham,0.781,thumbsup,['Goutham'],0.93,0.781,0.93,0,0,0.817,success,genuine,normal,normal,FALSE
+5/3/2026 16:36,Goutham,Goutham,0.8,Goutham,0.807,thumbsup,['Goutham'],0.93,0.807,0.93,0,0,0.828,success,genuine,normal,normal,FALSE
+5/3/2026 16:37,Goutham,Goutham,0.788,Goutham,0.798,thumbsup,['Goutham'],0.94,0.798,0.94,0,0,0.821,success,genuine,normal,normal,FALSE
+5/3/2026 16:37,Goutham,Goutham,0.775,Goutham,0.793,thumbsup,['Goutham'],0.93,0.793,0.93,0,0,0.811,success,genuine,normal,normal,FALSE
+5/3/2026 16:37,Goutham,Goutham,0.786,Goutham,0.739,thumbsup,['Goutham'],0.93,0.739,0.93,0,0,0.801,success,genuine,normal,normal,FALSE
+5/3/2026 16:38,Goutham,Goutham,0.794,Goutham,0.691,thumbsup,['Goutham'],0.92,0.691,0.92,0,0,0.788,success,genuine,normal,normal,FALSE
+5/3/2026 16:38,Goutham,Goutham,0.776,Goutham,0.767,thumbsup,['Goutham'],0.91,0.767,0.91,0,0,0.8,success,genuine,normal,normal,FALSE
+5/3/2026 16:38,Goutham,Goutham,0.806,Goutham,0.825,thumbsup,['Goutham'],0.93,0.825,0.93,0,0,0.837,success,genuine,normal,normal,FALSE
+5/3/2026 16:39,Goutham,Goutham,0.789,Goutham,0.738,thumbsup,['Goutham'],0.94,0.738,0.94,0,0,0.804,success,genuine,normal,normal,FALSE
+5/3/2026 16:39,Goutham,Goutham,0.798,Goutham,0.785,thumbsup,['Goutham'],0.92,0.785,0.92,0,0,0.819,success,genuine,normal,normal,FALSE
+5/3/2026 16:40,Goutham,Goutham,0.808,Goutham,0.775,thumbsup,['Goutham'],0.94,0.775,0.94,0,0,0.825,success,genuine,normal,normal,FALSE
+5/3/2026 16:40,Goutham,Goutham,0.806,Goutham,0.74,thumbsup,['Goutham'],0.94,0.74,0.94,0,0,0.813,success,genuine,normal,normal,FALSE
+5/3/2026 16:40,Goutham,Goutham,0.794,Goutham,0.766,thumbsup,['Goutham'],0.93,0.766,0.93,0,0,0.813,success,genuine,normal,normal,FALSE
+5/3/2026 16:41,Goutham,Goutham,0.787,Goutham,0.742,thumbsup,['Goutham'],0.93,0.742,0.93,0,0,0.802,success,genuine,normal,normal,FALSE
+5/3/2026 16:41,Goutham,Goutham,0.783,Goutham,0.706,thumbsup,['Goutham'],0.93,0.706,0.93,0,0,0.789,success,genuine,normal,normal,FALSE
+5/3/2026 16:41,Goutham,Goutham,0.783,Goutham,0.756,thumbsup,['Goutham'],0.92,0.756,0.92,0,0,0.802,success,genuine,normal,normal,FALSE
+5/3/2026 16:42,Goutham,Goutham,0.788,Goutham,0.667,thumbsup,['Goutham'],0.92,0.667,0.92,0,0,0.778,success,genuine,normal,normal,FALSE
+5/3/2026 16:42,Goutham,Goutham,0.794,Goutham,0.791,thumbsup,['Goutham'],0.92,0.791,0.92,0,0,0.818,success,genuine,normal,normal,FALSE
+5/3/2026 16:42,Goutham,Goutham,0.793,Goutham,0.763,thumbsup,['Goutham'],0.92,0.763,0.92,0,0,0.809,success,genuine,normal,normal,FALSE
+5/3/2026 17:17,Madhav,Madhav,0.736,Madhav,0.839,victory,"['Madhav', 'Sara']",0.89,0.839,0.89,0,0,0.798,success,genuine,normal,normal,FALSE
+5/3/2026 17:17,Madhav,Madhav,0.782,Madhav,0.782,victory,"['Madhav', 'Sara']",0.7,0.782,0.7,0,0,0.766,success,genuine,normal,normal,FALSE
+5/3/2026 17:22,Madhav,Madhav,0.777,Madhav,0.793,victory,"['Madhav', 'Sara']",0.97,0.793,0.97,0,0,0.82,success,genuine,normal,normal,FALSE
+5/3/2026 17:23,Madhav,Madhav,0.741,Madhav,0.837,victory,"['Madhav', 'Sara']",0.95,0.837,0.95,0,0,0.812,success,genuine,normal,normal,FALSE
+5/3/2026 17:23,Madhav,Madhav,0.731,Madhav,0.858,victory,"['Madhav', 'Sara']",0.95,0.858,0.95,0,0,0.813,success,genuine,normal,normal,FALSE
+5/3/2026 17:23,Madhav,Madhav,0.76,Madhav,0.82,victory,"['Madhav', 'Sara']",0.88,0.82,0.88,0,0,0.802,success,genuine,normal,normal,FALSE
+5/3/2026 17:24,Madhav,Madhav,0.727,Madhav,0.855,victory,"['Madhav', 'Sara']",0.94,0.855,0.94,0,0,0.808,success,genuine,normal,normal,FALSE
+5/3/2026 17:25,Madhav,Madhav,0.809,Madhav,0.85,victory,"['Madhav', 'Sara']",0.94,0.85,0.94,0,0,0.847,success,genuine,normal,normal,FALSE
+5/3/2026 17:25,Madhav,Madhav,0.762,Madhav,0.855,victory,"['Madhav', 'Sara']",0.93,0.855,0.93,0,0,0.824,success,genuine,normal,normal,FALSE
+5/3/2026 17:26,Madhav,Madhav,0.777,Madhav,0.808,victory,"['Madhav', 'Sara']",0.93,0.808,0.93,0,0,0.817,success,genuine,normal,normal,FALSE
+5/3/2026 17:26,Madhav,Madhav,0.743,Madhav,0.815,victory,"['Madhav', 'Sara']",0.9,0.815,0.9,0,0,0.796,success,genuine,normal,normal,FALSE
+5/3/2026 17:28,Madhav,Madhav,0.784,Madhav,0.748,victory,"['Madhav', 'Sara']",0.94,0.748,0.94,0,0,0.804,success,genuine,normal,normal,FALSE
+5/3/2026 17:32,Madhav,Madhav,0.796,Madhav,0.712,victory,"['Madhav', 'Sara']",0.96,0.712,0.96,0,0,0.804,success,genuine,normal,normal,FALSE
+5/3/2026 17:32,Madhav,Madhav,0.787,Madhav,0.815,victory,"['Madhav', 'Sara']",0.93,0.815,0.93,0,0,0.824,success,genuine,normal,normal,FALSE
+5/3/2026 17:33,Madhav,Madhav,0.777,Madhav,0.776,victory,"['Madhav', 'Sara']",0.83,0.776,0.83,0,0,0.787,success,genuine,normal,normal,FALSE
+5/3/2026 17:36,Madhav,Madhav,0.785,Madhav,0.728,victory,"['Madhav', 'Sara']",0.81,0.728,0.81,0,0,0.773,success,genuine,normal,normal,FALSE
+5/3/2026 17:37,Madhav,Madhav,0.768,Madhav,0.782,victory,"['Madhav', 'Sara']",0.94,0.782,0.94,0,0,0.807,success,genuine,normal,normal,FALSE
+5/3/2026 17:37,Madhav,Madhav,0.788,Madhav,0.833,victory,"['Madhav', 'Sara']",0.96,0.833,0.96,0,0,0.836,success,genuine,normal,normal,FALSE
+5/3/2026 17:37,Madhav,Madhav,0.718,Madhav,0.847,victory,"['Madhav', 'Sara']",0.91,0.847,0.91,0,0,0.795,success,genuine,normal,normal,FALSE
+5/3/2026 17:38,Madhav,Madhav,0.674,Madhav,0.751,victory,"['Madhav', 'Sara']",0.97,0.751,0.97,0,0,0.756,success,genuine,normal,normal,FALSE
+5/3/2026 17:38,Madhav,Madhav,0.7,Madhav,0.762,victory,"['Madhav', 'Sara']",0.83,0.762,0.83,0,0,0.745,success,genuine,normal,normal,FALSE
+5/3/2026 17:40,Madhav,Madhav,0.703,Madhav,0.746,victory,"['Madhav', 'Sara']",0.77,0.746,0.77,0,0,0.729,success,genuine,normal,normal,FALSE
+5/3/2026 17:40,Madhav,Madhav,0.769,Madhav,0.804,victory,"['Madhav', 'Sara']",0.75,0.804,0.75,0,0,0.776,success,genuine,normal,normal,FALSE
+5/3/2026 17:41,Madhav,Madhav,0.78,Madhav,0.855,victory,"['Madhav', 'Sara']",0.86,0.855,0.86,0,0,0.819,success,genuine,normal,normal,FALSE
+5/3/2026 17:41,Madhav,Madhav,0.77,Madhav,0.839,victory,"['Madhav', 'Sara']",0.86,0.839,0.86,0,0,0.809,success,genuine,normal,normal,FALSE
+5/3/2026 17:54,Madhav,Madhav,0.658,Madhav,0.807,victory,"['Madhav', 'Sara']",0.96,0.807,0.96,0,0,0.763,success,genuine,normal,normal,FALSE
+5/3/2026 17:54,Madhav,Madhav,0.677,Madhav,0.816,victory,"['Madhav', 'Sara']",0.92,0.816,0.92,0,0,0.767,success,genuine,normal,normal,FALSE
+5/3/2026 17:54,Madhav,Madhav,0.682,Madhav,0.803,victory,"['Madhav', 'Sara']",0.83,0.803,0.83,0,0,0.748,success,genuine,normal,normal,FALSE
+5/3/2026 17:55,Madhav,Madhav,0.687,Madhav,0.782,victory,"['Madhav', 'Sara']",0.89,0.782,0.89,0,0,0.756,success,genuine,normal,normal,FALSE
+5/3/2026 17:55,Madhav,Madhav,0.709,Madhav,0.802,victory,"['Madhav', 'Sara']",0.96,0.802,0.96,0,0,0.787,success,genuine,normal,normal,FALSE
+5/3/2026 17:55,Madhav,Madhav,0.75,Madhav,0.815,victory,"['Madhav', 'Sara']",0.9,0.815,0.9,0,0,0.799,success,genuine,normal,normal,FALSE
+5/3/2026 17:55,Madhav,Madhav,0.702,Madhav,0.826,victory,"['Madhav', 'Sara']",0.9,0.826,0.9,0,0,0.779,success,genuine,normal,normal,FALSE
+5/3/2026 17:56,Madhav,Madhav,0.667,Madhav,0.764,victory,"['Madhav', 'Sara']",0.96,0.764,0.96,0,0,0.755,success,genuine,normal,normal,FALSE
+5/3/2026 17:56,Madhav,Madhav,0.519,Madhav,0.772,victory,"['Madhav', 'Sara']",0.88,0.772,0.88,0,0,0.667,success,genuine,normal,normal,FALSE
+5/3/2026 17:56,Madhav,Madhav,0.556,Madhav,0.839,victory,"['Madhav', 'Sara']",0.86,0.839,0.86,0,0,0.702,success,genuine,normal,normal,FALSE
+5/3/2026 17:57,Madhav,Madhav,0.55,Madhav,0.864,victory,"['Madhav', 'Sara']",0.95,0.864,0.95,0,0,0.724,success,genuine,normal,normal,FALSE
+5/3/2026 17:57,Madhav,Madhav,0.586,Madhav,0.721,victory,"['Madhav', 'Sara']",0.79,0.721,0.79,0,0,0.667,success,genuine,normal,normal,FALSE
+5/3/2026 17:57,Madhav,Madhav,0.732,Madhav,0.744,victory,"['Madhav', 'Sara']",0.93,0.744,0.93,0,0,0.775,success,genuine,normal,normal,FALSE
+5/3/2026 17:58,Madhav,Madhav,0.696,Madhav,0.731,victory,"['Madhav', 'Sara']",0.98,0.731,0.98,0,0,0.763,success,genuine,normal,normal,FALSE
+5/3/2026 17:58,Madhav,Madhav,0.71,Madhav,0.804,victory,"['Madhav', 'Sara']",0.96,0.804,0.96,0,0,0.788,success,genuine,normal,normal,FALSE
+5/3/2026 17:58,Madhav,Madhav,0.682,Madhav,0.765,victory,"['Madhav', 'Sara']",0.95,0.765,0.95,0,0,0.76,success,genuine,normal,normal,FALSE
+5/3/2026 17:59,Madhav,Madhav,0.6,Madhav,0.711,victory,"['Madhav', 'Sara']",0.91,0.711,0.91,0,0,0.695,success,genuine,normal,normal,FALSE
+5/3/2026 17:59,Madhav,Madhav,0.615,Madhav,0.772,victory,"['Madhav', 'Sara']",0.95,0.772,0.95,0,0,0.729,success,genuine,normal,normal,FALSE
+5/3/2026 17:59,Madhav,Madhav,0.589,Madhav,0.728,victory,"['Madhav', 'Sara']",0.94,0.728,0.94,0,0,0.701,success,genuine,normal,normal,FALSE
+5/3/2026 18:00,Madhav,Madhav,0.589,Madhav,0.771,victory,"['Madhav', 'Sara']",0.97,0.771,0.97,0,0,0.72,success,genuine,normal,normal,FALSE
+5/3/2026 18:00,Madhav,Madhav,0.608,Madhav,0.806,victory,"['Madhav', 'Sara']",0.97,0.806,0.97,0,0,0.74,success,genuine,normal,normal,FALSE
+5/3/2026 18:00,Madhav,Madhav,0.632,Madhav,0.822,victory,"['Madhav', 'Sara']",0.95,0.822,0.95,0,0,0.753,success,genuine,normal,normal,FALSE
+5/3/2026 18:00,Madhav,Madhav,0.611,Madhav,0.815,victory,"['Madhav', 'Sara']",0.96,0.815,0.96,0,0,0.742,success,genuine,normal,normal,FALSE
+5/3/2026 18:01,Madhav,Madhav,0.581,Madhav,0.806,victory,"['Madhav', 'Sara']",0.88,0.806,0.88,0,0,0.708,success,genuine,normal,normal,FALSE
+5/3/2026 18:01,Madhav,Madhav,0.571,Madhav,0.813,victory,"['Madhav', 'Sara']",0.83,0.813,0.83,0,0,0.695,success,genuine,normal,normal,FALSE
+5/3/2026 18:10,Madhav,Madhav,0.586,Madhav,0.717,victory,"['Madhav', 'Sara']",0.95,0.717,0.95,0,0,0.698,success,genuine,normal,normal,FALSE
+5/3/2026 18:11,Madhav,Madhav,0.591,Madhav,0.798,victory,"['Madhav', 'Sara']",0.96,0.798,0.96,0,0,0.727,success,genuine,normal,normal,FALSE
+5/3/2026 17:13,Sara,Sara,0.729,Sara,0.594,victory,"['Madhav', 'Sara']",0.99,0.594,0.99,0,0,0.741,success,genuine,normal,normal,FALSE
+5/3/2026 17:14,Sara,Sara,0.711,Sara,0.698,victory,"['Madhav', 'Sara']",0.96,0.698,0.96,0,0,0.757,success,genuine,normal,normal,FALSE
+5/3/2026 17:15,Sara,Sara,0.67,Sara,0.744,victory,"['Madhav', 'Sara']",0.98,0.744,0.98,0,0,0.754,success,genuine,normal,normal,FALSE
+5/3/2026 17:15,Sara,Sara,0.708,Sara,0.72,victory,"['Madhav', 'Sara']",0.97,0.72,0.97,0,0,0.764,success,genuine,normal,normal,FALSE
+5/3/2026 17:16,Sara,Sara,0.701,Sara,0.708,victory,"['Madhav', 'Sara']",0.97,0.708,0.97,0,0,0.757,success,genuine,normal,normal,FALSE
+5/3/2026 17:17,Sara,Sara,0.692,Sara,0.736,victory,"['Madhav', 'Sara']",0.91,0.736,0.91,0,0,0.749,success,genuine,normal,normal,FALSE
+5/3/2026 17:18,Sara,Sara,0.68,Sara,0.672,victory,"['Madhav', 'Sara']",0.97,0.672,0.97,0,0,0.736,success,genuine,normal,normal,FALSE
+5/3/2026 17:18,Sara,Sara,0.705,Sara,0.598,victory,"['Madhav', 'Sara']",0.9,0.598,0.9,0,0,0.712,success,genuine,normal,normal,FALSE
+5/3/2026 17:18,Sara,Sara,0.677,Sara,0.704,victory,"['Madhav', 'Sara']",0.96,0.704,0.96,0,0,0.742,success,genuine,normal,normal,FALSE
+5/3/2026 17:18,Sara,Sara,0.71,Sara,0.711,victory,"['Madhav', 'Sara']",0.95,0.711,0.95,0,0,0.758,success,genuine,normal,normal,FALSE
+5/3/2026 17:19,Sara,Sara,0.697,Sara,0.636,victory,"['Madhav', 'Sara']",0.99,0.636,0.99,0,0,0.737,success,genuine,normal,normal,FALSE
+5/3/2026 17:19,Sara,Sara,0.67,Sara,0.775,victory,"['Madhav', 'Sara']",0.96,0.775,0.96,0,0,0.76,success,genuine,normal,normal,FALSE
+5/3/2026 17:19,Sara,Sara,0.686,Sara,0.724,victory,"['Madhav', 'Sara']",0.86,0.724,0.86,0,0,0.732,success,genuine,normal,normal,FALSE
+5/3/2026 17:20,Sara,Sara,0.667,Sara,0.601,victory,"['Madhav', 'Sara']",0.94,0.601,0.94,0,0,0.702,success,genuine,normal,normal,FALSE
+5/3/2026 17:20,Sara,Sara,0.686,Sara,0.625,victory,"['Madhav', 'Sara']",0.91,0.625,0.91,0,0,0.713,success,genuine,normal,normal,FALSE
+5/3/2026 17:21,Sara,Sara,0.676,Sara,0.696,victory,"['Madhav', 'Sara']",0.99,0.696,0.99,0,0,0.745,success,genuine,normal,normal,FALSE
+5/3/2026 17:21,Sara,Sara,0.642,Sara,0.592,victory,"['Madhav', 'Sara']",0.97,0.592,0.97,0,0,0.693,success,genuine,normal,normal,FALSE
+5/3/2026 17:21,Sara,Sara,0.628,Sara,0.64,victory,"['Madhav', 'Sara']",0.85,0.64,0.85,0,0,0.676,success,genuine,normal,normal,FALSE
+5/3/2026 17:22,Sara,Sara,0.659,Sara,0.677,victory,"['Madhav', 'Sara']",0.78,0.677,0.78,0,0,0.689,success,genuine,normal,normal,FALSE
+5/3/2026 17:22,Sara,Sara,0.679,Sara,0.649,victory,"['Madhav', 'Sara']",0.94,0.649,0.94,0,0,0.722,success,genuine,normal,normal,FALSE
+5/3/2026 17:22,Sara,Sara,0.657,Sara,0.649,victory,"['Madhav', 'Sara']",0.9,0.649,0.9,0,0,0.703,success,genuine,normal,normal,FALSE
+5/3/2026 17:23,Sara,Sara,0.665,Sara,0.642,victory,"['Madhav', 'Sara']",0.75,0.642,0.75,0,0,0.675,success,genuine,normal,normal,FALSE
+5/3/2026 17:23,Sara,Sara,0.678,Sara,0.548,victory,"['Madhav', 'Sara']",0.91,0.548,0.91,0,0,0.685,success,genuine,normal,normal,FALSE
+5/3/2026 17:23,Sara,Sara,0.641,Sara,0.503,victory,"['Madhav', 'Sara']",0.96,0.503,0.96,0,0,0.663,success,genuine,normal,normal,FALSE
+5/3/2026 17:24,Sara,Sara,0.65,Sara,0.645,victory,"['Madhav', 'Sara']",0.98,0.645,0.98,0,0,0.714,success,genuine,normal,normal,FALSE
+5/3/2026 17:24,Sara,Sara,0.659,Sara,0.601,victory,"['Madhav', 'Sara']",0.93,0.601,0.93,0,0,0.696,success,genuine,normal,normal,FALSE
+5/3/2026 17:24,Sara,Sara,0.658,Sara,0.64,victory,"['Madhav', 'Sara']",0.92,0.64,0.92,0,0,0.705,success,genuine,normal,normal,FALSE
+5/3/2026 17:25,Sara,Sara,0.65,Sara,0.381,victory,"['Madhav', 'Sara']",0.96,0.381,0.96,0,0,0.631,success,genuine,normal,normal,FALSE
+5/3/2026 17:26,Sara,Sara,0.643,Sara,0.68,victory,"['Madhav', 'Sara']",0.95,0.68,0.95,0,0,0.716,success,genuine,normal,normal,FALSE
+5/3/2026 17:27,Sara,Sara,0.653,Sara,0.63,victory,"['Madhav', 'Sara']",0.83,0.63,0.83,0,0,0.682,success,genuine,normal,normal,FALSE
+5/3/2026 17:27,Sara,Sara,0.633,Sara,0.685,victory,"['Madhav', 'Sara']",0.96,0.685,0.96,0,0,0.714,success,genuine,normal,normal,FALSE
+5/3/2026 17:27,Sara,Sara,0.622,Sara,0.63,victory,"['Madhav', 'Sara']",0.97,0.63,0.97,0,0,0.694,success,genuine,normal,normal,FALSE
+5/3/2026 17:28,Sara,Sara,0.631,Sara,0.597,victory,"['Madhav', 'Sara']",0.99,0.597,0.99,0,0,0.693,success,genuine,normal,normal,FALSE
+5/3/2026 17:28,Sara,Sara,0.662,Sara,0.544,victory,"['Madhav', 'Sara']",0.87,0.544,0.87,0,0,0.668,success,genuine,normal,normal,FALSE
+5/3/2026 17:29,Sara,Sara,0.702,Sara,0.591,victory,"['Madhav', 'Sara']",0.87,0.591,0.87,0,0,0.702,success,genuine,normal,normal,FALSE
+5/3/2026 17:29,Sara,Sara,0.746,Sara,0.628,victory,"['Madhav', 'Sara']",0.83,0.628,0.83,0,0,0.727,success,genuine,normal,normal,FALSE
+5/3/2026 17:29,Sara,Sara,0.715,Sara,0.604,victory,"['Madhav', 'Sara']",0.91,0.604,0.91,0,0,0.721,success,genuine,normal,normal,FALSE
+5/3/2026 17:29,Sara,Sara,0.755,Sara,0.58,victory,"['Madhav', 'Sara']",0.72,0.58,0.72,0,0,0.696,success,genuine,normal,normal,FALSE
+5/3/2026 17:30,Sara,Sara,0.719,Sara,0.471,victory,"['Madhav', 'Sara']",0.84,0.471,0.84,0,0,0.669,success,genuine,normal,normal,FALSE
+5/3/2026 17:30,Sara,Sara,0.759,Sara,0.658,victory,"['Madhav', 'Sara']",0.89,0.658,0.89,0,0,0.755,success,genuine,normal,normal,FALSE
+5/3/2026 17:30,Sara,Sara,0.734,Sara,0.716,victory,"['Madhav', 'Sara']",0.89,0.716,0.89,0,0,0.76,success,genuine,normal,normal,FALSE
+5/3/2026 17:31,Sara,Sara,0.749,Sara,0.723,victory,"['Madhav', 'Sara']",0.94,0.723,0.94,0,0,0.779,success,genuine,normal,normal,FALSE
+5/3/2026 17:31,Sara,Sara,0.758,Sara,0.736,victory,"['Madhav', 'Sara']",0.75,0.736,0.75,0,0,0.75,success,genuine,normal,normal,FALSE
+5/3/2026 17:32,Sara,Sara,0.748,Sara,0.725,victory,"['Madhav', 'Sara']",0.86,0.725,0.86,0,0,0.764,success,genuine,normal,normal,FALSE
+5/3/2026 17:33,Sara,Sara,0.738,Sara,0.723,victory,"['Madhav', 'Sara']",0.98,0.723,0.98,0,0,0.782,success,genuine,normal,normal,FALSE
+5/3/2026 17:33,Sara,Sara,0.762,Sara,0.749,victory,"['Madhav', 'Sara']",0.79,0.749,0.79,0,0,0.764,success,genuine,normal,normal,FALSE
+5/3/2026 17:34,Sara,Sara,0.73,Sara,0.694,victory,"['Madhav', 'Sara']",0.9,0.694,0.9,0,0,0.753,success,genuine,normal,normal,FALSE
+5/3/2026 17:34,Sara,Sara,0.743,Sara,0.705,victory,"['Madhav', 'Sara']",0.91,0.705,0.91,0,0,0.765,success,genuine,normal,normal,FALSE
+5/3/2026 17:34,Sara,Sara,0.766,Sara,0.69,victory,"['Madhav', 'Sara']",0.76,0.69,0.76,0,0,0.742,success,genuine,normal,normal,FALSE
+5/3/2026 17:35,Sara,Sara,0.718,Sara,0.678,victory,"['Madhav', 'Sara']",0.94,0.678,0.94,0,0,0.75,success,genuine,normal,normal,FALSE
+5/3/2026 17:51,afiya,afiya,0.748,afiya,0.62,ok,['afiya'],0.91,0.62,0.91,0,0,0.742,success,genuine,normal,normal,FALSE
+5/3/2026 17:53,afiya,afiya,0.742,afiya,0.714,ok,['afiya'],0.94,0.714,0.94,0,0,0.773,success,genuine,normal,normal,FALSE
+5/3/2026 17:53,afiya,afiya,0.763,afiya,0.618,ok,['afiya'],0.93,0.618,0.93,0,0,0.753,success,genuine,normal,normal,FALSE
+5/3/2026 17:54,afiya,afiya,0.74,afiya,0.558,ok,['afiya'],0.96,0.558,0.96,0,0,0.729,success,genuine,normal,normal,FALSE
+5/3/2026 18:03,afiya,afiya,0.775,afiya,0.611,ok,['afiya'],0.93,0.611,0.93,0,0,0.757,success,genuine,normal,normal,FALSE
+5/3/2026 18:04,afiya,afiya,0.75,afiya,0.532,ok,['afiya'],0.91,0.532,0.91,0,0,0.717,success,genuine,normal,normal,FALSE
+5/3/2026 18:05,Unknown,afiya,0.776,Unknown,0.021,ok,['afiya'],0.85,0,0.85,0,0,0.558,failure,genuine,normal,normal,FALSE
+5/3/2026 18:06,afiya,afiya,0.768,afiya,0.697,ok,['afiya'],0.92,0.697,0.92,0,0,0.777,success,genuine,normal,normal,FALSE
+5/3/2026 18:06,afiya,afiya,0.732,afiya,0.679,ok,['afiya'],0.88,0.679,0.88,0,0,0.746,success,genuine,normal,normal,FALSE
+5/3/2026 18:06,afiya,afiya,0.703,afiya,0.513,ok,['afiya'],0.87,0.513,0.87,0,0,0.679,success,genuine,normal,normal,FALSE
+5/3/2026 18:07,afiya,afiya,0.738,afiya,0.755,ok,['afiya'],0.92,0.755,0.92,0,0,0.779,success,genuine,normal,normal,FALSE
+5/3/2026 18:07,afiya,afiya,0.74,afiya,0.578,ok,['afiya'],0.93,0.578,0.93,0,0,0.729,success,genuine,normal,normal,FALSE
+5/3/2026 18:07,afiya,afiya,0.731,afiya,0.772,ok,['afiya'],0.88,0.772,0.88,0,0,0.773,success,genuine,normal,normal,FALSE
+5/3/2026 18:08,afiya,afiya,0.756,afiya,0.744,ok,['afiya'],0.92,0.744,0.92,0,0,0.785,success,genuine,normal,normal,FALSE
+5/3/2026 18:08,afiya,afiya,0.749,afiya,0.737,ok,['afiya'],0.89,0.737,0.89,0,0,0.774,success,genuine,normal,normal,FALSE
+5/3/2026 18:09,afiya,afiya,0.735,afiya,0.68,ok,['afiya'],0.89,0.68,0.89,0,0,0.75,success,genuine,normal,normal,FALSE
+5/3/2026 18:09,afiya,afiya,0.738,afiya,0.589,ok,['afiya'],0.92,0.589,0.92,0,0,0.73,success,genuine,normal,normal,FALSE
+5/3/2026 18:10,afiya,afiya,0.748,afiya,0.669,ok,['afiya'],0.84,0.669,0.84,0,0,0.743,success,genuine,normal,normal,FALSE
+5/3/2026 18:10,afiya,afiya,0.724,afiya,0.777,ok,['afiya'],0.91,0.777,0.91,0,0,0.777,success,genuine,normal,normal,FALSE
+5/3/2026 18:10,afiya,afiya,0.75,afiya,0.606,ok,['afiya'],0.93,0.606,0.93,0,0,0.743,success,genuine,normal,normal,FALSE
+5/3/2026 18:11,Unknown,afiya,0.676,Unknown,0.379,ok,['afiya'],0.94,0,0.94,0,0,0.526,failure,genuine,normal,normal,FALSE
+5/3/2026 18:11,afiya,afiya,0.746,afiya,0.706,ok,['afiya'],0.9,0.706,0.9,0,0,0.765,success,genuine,normal,normal,FALSE
+5/3/2026 18:11,afiya,afiya,0.719,afiya,0.703,ok,['afiya'],0.89,0.703,0.89,0,0,0.748,success,genuine,normal,normal,FALSE
+5/3/2026 18:12,afiya,afiya,0.745,afiya,0.743,ok,['afiya'],0.88,0.743,0.88,0,0,0.771,success,genuine,normal,normal,FALSE
+5/3/2026 18:12,afiya,afiya,0.733,afiya,0.624,ok,['afiya'],0.9,0.624,0.9,0,0,0.734,success,genuine,normal,normal,FALSE
+5/3/2026 18:12,afiya,afiya,0.711,afiya,0.657,ok,['afiya'],0.9,0.657,0.9,0,0,0.733,success,genuine,normal,normal,FALSE
+5/3/2026 18:13,afiya,afiya,0.753,afiya,0.78,ok,['afiya'],0.84,0.78,0.84,0,0,0.779,success,genuine,normal,normal,FALSE
+5/3/2026 18:13,afiya,afiya,0.758,afiya,0.753,ok,['afiya'],0.91,0.753,0.91,0,0,0.787,success,genuine,normal,normal,FALSE
+5/3/2026 18:13,afiya,afiya,0.715,afiya,0.614,ok,['afiya'],0.88,0.614,0.88,0,0,0.718,success,genuine,normal,normal,FALSE
+5/3/2026 18:14,afiya,afiya,0.74,afiya,0.741,ok,['afiya'],0.9,0.741,0.9,0,0,0.772,success,genuine,normal,normal,FALSE
+5/3/2026 18:14,afiya,afiya,0.7,afiya,0.71,ok,['afiya'],0.89,0.71,0.89,0,0,0.741,success,genuine,normal,normal,FALSE
+5/3/2026 18:14,afiya,afiya,0.768,afiya,0.768,ok,['afiya'],0.87,0.768,0.87,0,0,0.788,success,genuine,normal,normal,FALSE
+5/3/2026 18:15,afiya,afiya,0.755,afiya,0.661,ok,['afiya'],0.88,0.661,0.88,0,0,0.752,success,genuine,normal,normal,FALSE
+5/3/2026 18:15,afiya,afiya,0.748,afiya,0.812,ok,['afiya'],0.86,0.812,0.86,0,0,0.79,success,genuine,normal,normal,FALSE
+5/3/2026 18:15,afiya,afiya,0.743,afiya,0.798,ok,['afiya'],0.88,0.798,0.88,0,0,0.787,success,genuine,normal,normal,FALSE
+5/3/2026 18:16,afiya,afiya,0.766,afiya,0.782,ok,['afiya'],0.85,0.782,0.85,0,0,0.788,success,genuine,normal,normal,FALSE
+5/3/2026 18:16,afiya,afiya,0.719,afiya,0.769,ok,['afiya'],0.9,0.769,0.9,0,0,0.77,success,genuine,normal,normal,FALSE
+5/3/2026 18:17,afiya,afiya,0.728,afiya,0.776,ok,['afiya'],0.82,0.776,0.82,0,0,0.761,success,genuine,normal,normal,FALSE
+5/3/2026 18:17,afiya,afiya,0.737,afiya,0.763,ok,['afiya'],0.82,0.763,0.82,0,0,0.761,success,genuine,normal,normal,FALSE
+5/3/2026 18:17,afiya,afiya,0.763,afiya,0.677,ok,['afiya'],0.9,0.677,0.9,0,0,0.765,success,genuine,normal,normal,FALSE
+5/3/2026 18:18,afiya,afiya,0.754,afiya,0.729,ok,['afiya'],0.88,0.729,0.88,0,0,0.772,success,genuine,normal,normal,FALSE
+5/3/2026 18:18,afiya,afiya,0.761,afiya,0.762,ok,['afiya'],0.85,0.762,0.85,0,0,0.779,success,genuine,normal,normal,FALSE
+5/3/2026 18:18,afiya,afiya,0.75,afiya,0.58,ok,['afiya'],0.83,0.58,0.83,0,0,0.715,success,genuine,normal,normal,FALSE
+5/3/2026 18:19,afiya,afiya,0.731,afiya,0.484,ok,['afiya'],0.67,0.484,0.67,0,0,0.645,success,genuine,normal,normal,FALSE
+5/3/2026 18:19,afiya,afiya,0.746,afiya,0.674,ok,['afiya'],0.9,0.674,0.9,0,0,0.755,success,genuine,normal,normal,FALSE
+5/3/2026 18:19,afiya,afiya,0.741,afiya,0.691,ok,['afiya'],0.85,0.691,0.85,0,0,0.748,success,genuine,normal,normal,FALSE
+5/3/2026 18:20,afiya,afiya,0.749,afiya,0.718,ok,['afiya'],0.84,0.718,0.84,0,0,0.758,success,genuine,normal,normal,FALSE
+5/3/2026 18:20,afiya,afiya,0.766,afiya,0.708,ok,['afiya'],0.88,0.708,0.88,0,0,0.771,success,genuine,normal,normal,FALSE
+5/3/2026 18:20,afiya,afiya,0.756,afiya,0.688,ok,['afiya'],0.9,0.688,0.9,0,0,0.764,success,genuine,normal,normal,FALSE
+5/3/2026 18:21,afiya,afiya,0.723,afiya,0.734,ok,['afiya'],0.93,0.734,0.93,0,0,0.768,success,genuine,normal,normal,FALSE
+5/3/2026 18:21,afiya,afiya,0.74,afiya,0.72,ok,['afiya'],0.84,0.72,0.84,0,0,0.754,success,genuine,normal,normal,FALSE
+5/3/2026 18:21,afiya,afiya,0.761,afiya,0.661,ok,['afiya'],0.81,0.661,0.81,0,0,0.741,success,genuine,normal,normal,FALSE
+5/3/2026 19:19,Unknown,Unknown,0.176,Unknown,0.356,thumbsup,['Goutham'],0.75,0.356,0,0,0,0.195,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:19,Unknown,Unknown,0.142,Unknown,0.337,,['Unknown'],0,0.337,0,0,0,0.172,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:20,Unknown,Unknown,0.146,Unknown,0.304,thumbsup,['Goutham'],0.82,0.304,0,0,0,0.164,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:20,Unknown,Unknown,0.126,Unknown,0.249,,['Unknown'],0,0.249,0,0,0,0.138,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:21,Unknown,Unknown,0.143,Unknown,0.353,thumbsup,['Goutham'],0.82,0.353,0,0,0,0.177,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:21,Unknown,Unknown,0.136,Unknown,0.33,thumbsup,['Goutham'],0.9,0.33,0,0,0,0.167,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:22,Unknown,Unknown,0.139,Unknown,0.324,thumbsup,['Goutham'],0.91,0.324,0,0,0,0.167,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:22,Unknown,Unknown,0.146,Unknown,0.357,thumbsup,['Goutham'],0.89,0.357,0,0,0,0.18,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:23,Unknown,Unknown,0.132,Unknown,0.326,thumbsup,['Goutham'],0.82,0.326,0,0,0,0.164,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:23,Unknown,Unknown,0.137,Unknown,0.299,thumbsup,['Goutham'],0.84,0.299,0,0,0,0.158,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:24,Unknown,Unknown,0.13,Unknown,0.325,thumbsup,['Goutham'],0.92,0.325,0,0,0,0.163,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:24,Unknown,Unknown,0.136,Unknown,0.315,thumbsup,['Goutham'],0.89,0.315,0,0,0,0.163,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:24,Unknown,Unknown,0.135,Unknown,0.373,thumbsup,['Goutham'],0.92,0.373,0,0,0,0.179,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:25,Unknown,Unknown,0.138,Unknown,0.302,thumbsup,['Goutham'],0.93,0.302,0,0,0,0.16,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:25,Unknown,Unknown,0.153,Unknown,0.336,thumbsup,['Goutham'],0.74,0.336,0,0,0,0.177,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:26,Unknown,Unknown,0.159,Unknown,0.293,thumbsup,['Goutham'],0.9,0.293,0,0,0,0.167,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:26,Unknown,Unknown,0.158,Unknown,0.349,thumbsup,['Goutham'],0.89,0.349,0,0,0,0.184,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:26,Unknown,Unknown,0.139,Unknown,0.337,thumbsup,['Goutham'],0.87,0.337,0,0,0,0.171,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:27,Unknown,Unknown,0.151,Unknown,0.328,thumbsup,['Goutham'],0.83,0.328,0,0,0,0.174,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:27,Unknown,Unknown,0.164,Unknown,0.341,thumbsup,['Goutham'],0.91,0.341,0,0,0,0.184,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:28,Unknown,Unknown,0.137,Unknown,0.32,thumbsup,['Goutham'],0.89,0.32,0,0,0,0.165,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:28,Unknown,Unknown,0.157,Goutham,0.411,thumbsup,['Goutham'],0.86,0.411,0.86,0,0,0.374,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:29,Unknown,Unknown,0.144,Unknown,0.353,thumbsup,['Goutham'],0.82,0.353,0,0,0,0.178,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:29,Unknown,Unknown,0.162,Unknown,0.363,thumbsup,['Goutham'],0.87,0.363,0,0,0,0.19,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:29,Unknown,Unknown,0.155,Unknown,0.356,thumbsup,['Goutham'],0.88,0.356,0,0,0,0.184,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:30,Unknown,Unknown,0.151,Unknown,0.257,thumbsup,['Goutham'],0.87,0.257,0,0,0,0.153,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:30,Unknown,Unknown,0.157,Goutham,0.425,thumbsup,['Goutham'],0.8,0.425,0.8,0,0,0.366,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:31,Unknown,Unknown,0.158,Unknown,0.349,thumbsup,['Goutham'],0.85,0.349,0,0,0,0.184,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:31,Unknown,Unknown,0.159,Unknown,0.333,thumbsup,['Goutham'],0.85,0.333,0,0,0,0.179,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:31,Unknown,Unknown,0.164,Unknown,0.361,thumbsup,['Goutham'],0.92,0.361,0,0,0,0.19,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:32,Unknown,Unknown,0.167,Unknown,0.352,thumbsup,['Goutham'],0.92,0.352,0,0,0,0.189,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:32,Unknown,Unknown,0.138,Unknown,0.334,thumbsup,['Goutham'],0.82,0.334,0,0,0,0.169,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:33,Unknown,Unknown,0.138,Unknown,0.361,thumbsup,['Goutham'],0.85,0.361,0,0,0,0.177,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:33,Unknown,Unknown,0.154,Unknown,0.379,thumbsup,['Goutham'],0.86,0.379,0,0,0,0.191,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:33,Unknown,Unknown,0.153,Goutham,0.43,thumbsup,['Goutham'],0.74,0.43,0.74,0,0,0.354,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:34,Unknown,Unknown,0.158,Unknown,0.345,thumbsup,['Goutham'],0.72,0.345,0,0,0,0.182,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:34,Unknown,Unknown,0.166,Unknown,0.273,thumbsup,['Goutham'],0.91,0.273,0,0,0,0.165,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:35,Unknown,Unknown,0.157,Goutham,0.436,thumbsup,['Goutham'],0.89,0.436,0.89,0,0,0.387,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:35,Unknown,Unknown,0.163,Goutham,0.38,thumbsup,['Goutham'],0.89,0.38,0.89,0,0,0.374,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:35,Unknown,Unknown,0.171,Unknown,0.365,thumbsup,['Goutham'],0.86,0.365,0,0,0,0.195,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:36,Unknown,Unknown,0.162,Unknown,0.325,,['Unknown'],0,0.325,0,0,0,0.178,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:36,Unknown,Unknown,0.163,Goutham,0.4,thumbsup,['Goutham'],0.77,0.4,0.77,0,0,0.356,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:37,Unknown,Unknown,0.151,Goutham,0.452,thumbsup,['Goutham'],0.75,0.452,0.75,0,0,0.361,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:37,Unknown,Unknown,0.157,Goutham,0.391,thumbsup,['Goutham'],0.63,0.391,0.63,0,0,0.322,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:38,Unknown,Unknown,0.171,Unknown,0.327,thumbsup,['Goutham'],0.74,0.327,0,0,0,0.184,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:38,Unknown,Unknown,0.159,Goutham,0.408,thumbsup,['Goutham'],0.71,0.408,0.71,0,0,0.344,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:38,Unknown,Unknown,0.17,Unknown,0.379,thumbsup,['Goutham'],0.75,0.379,0,0,0,0.199,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:39,Unknown,Unknown,0.149,Unknown,0.371,thumbsup,['Goutham'],0.71,0.371,0,0,0,0.186,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:40,Unknown,Unknown,0.168,Goutham,0.384,thumbsup,['Goutham'],0.61,0.384,0.61,0,0,0.321,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:40,Unknown,Unknown,0.17,Goutham,0.399,thumbsup,['Goutham'],0.81,0.399,0.81,0,0,0.367,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:40,Unknown,Unknown,0.161,Unknown,0.209,thumbsup,['Goutham'],0.65,0.209,0,0,0,0.143,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:41,Unknown,Unknown,0.158,Unknown,0.259,thumbsup,['Goutham'],0.64,0.259,0,0,0,0.157,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:41,Unknown,Unknown,0.164,Unknown,0.268,thumbsup,['Goutham'],0.76,0.268,0,0,0,0.162,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:41,Unknown,Unknown,0.152,Unknown,0.341,thumbsup,['Goutham'],0.91,0.341,0,0,0,0.178,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:49,Unknown,Unknown,0.138,Unknown,0.24,four,['Unknown'],0.94,0.24,0,0,0,0.141,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:50,Unknown,Unknown,0.151,Unknown,0.154,four,['Unknown'],0.87,0.154,0,0,0,0.122,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:51,Unknown,Unknown,0.143,Unknown,0.136,four,['Unknown'],0.94,0.136,0,0,0,0.112,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:52,Unknown,Unknown,0.176,Unknown,0.059,four,['Unknown'],0.93,0.059,0,0,0,0.106,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:52,Unknown,Unknown,0.256,Unknown,0.237,four,['Unknown'],0.95,0.237,0,0,0,0.199,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:53,Unknown,Unknown,0.132,Unknown,0.187,four,['Unknown'],0.95,0.187,0,0,0,0.122,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:53,Unknown,Unknown,0.136,Unknown,0.066,four,['Unknown'],0.97,0.066,0,0,0,0.088,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:53,Unknown,Unknown,0.151,Unknown,0.183,four,['Unknown'],0.95,0.183,0,0,0,0.13,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:54,Unknown,Unknown,0.151,Unknown,0.137,four,['Unknown'],0.98,0.137,0,0,0,0.117,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:54,Unknown,Unknown,0.139,Unknown,0.142,four,['Unknown'],0.94,0.142,0,0,0,0.112,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:55,Unknown,Unknown,0.148,Unknown,0.116,four,['Unknown'],0.98,0.116,0,0,0,0.109,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:55,Unknown,Unknown,0.145,Unknown,0.089,four,['Unknown'],0.98,0.089,0,0,0,0.099,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:55,Unknown,Unknown,0.137,Unknown,0.149,four,['Unknown'],0.98,0.149,0,0,0,0.113,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:55,Unknown,Unknown,0.194,Unknown,0.099,four,['Unknown'],0.98,0.099,0,0,0,0.127,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:56,Unknown,Unknown,0.141,Unknown,0.056,four,['Unknown'],0.97,0.056,0,0,0,0.087,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:56,Unknown,Unknown,0.152,Unknown,0.08,four,['Unknown'],0.98,0.08,0,0,0,0.1,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:57,Unknown,Unknown,0.15,Unknown,0.073,four,['Unknown'],0.99,0.073,0,0,0,0.097,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:57,Unknown,Unknown,0.127,Unknown,0.082,four,['Unknown'],0.99,0.082,0,0,0,0.088,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:57,Unknown,Unknown,0.14,Unknown,0.067,four,['Unknown'],0.97,0.067,0,0,0,0.09,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:58,Unknown,Unknown,0.133,Unknown,0.266,four,['Unknown'],0.96,0.266,0,0,0,0.146,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:59,Unknown,Unknown,0.179,Unknown,0.347,four,['Unknown'],0.95,0.347,0,0,0,0.194,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:59,Unknown,Unknown,0.129,Unknown,0.34,four,['Unknown'],0.95,0.34,0,0,0,0.167,failure,impostor,unknown,normal,FALSE
+5/3/2026 17:59,Unknown,Unknown,0.131,Unknown,0.339,thumpsdown,['Unknown'],0.79,0.339,0,0,0,0.167,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:00,Unknown,Unknown,0.161,Unknown,0.236,four,['Unknown'],0.75,0.236,0,0,0,0.151,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:01,Unknown,Unknown,0.272,Unknown,0.069,iloveu,['Unknown'],0.68,0.069,0,0,0,0.157,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:01,Unknown,Unknown,0.115,Unknown,0.049,four,['Unknown'],0.68,0.049,0,0,0,0.072,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:11,Unknown,Unknown,0.132,Unknown,0.124,four,['Unknown'],0.97,0.124,0,0,0,0.103,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:11,Unknown,Unknown,0.139,Unknown,0.173,four,['Unknown'],0.97,0.173,0,0,0,0.121,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:12,Unknown,Unknown,0.137,Unknown,0.235,four,['Unknown'],0.97,0.235,0,0,0,0.139,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:12,Unknown,Unknown,0.176,Unknown,0.131,four,['Unknown'],0.96,0.131,0,0,0,0.127,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:12,Unknown,Unknown,0.133,Unknown,0.162,four,['Unknown'],0.97,0.162,0,0,0,0.115,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:13,Unknown,Unknown,0.188,Unknown,0.206,four,['Unknown'],0.97,0.206,0,0,0,0.156,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:13,Unknown,Unknown,0.194,Unknown,0.136,four,['Unknown'],0.73,0.136,0,0,0,0.138,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:14,Unknown,Unknown,0.15,Unknown,0.231,four,['Unknown'],0.98,0.231,0,0,0,0.144,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:14,Unknown,Unknown,0.139,Unknown,0.115,four,['Unknown'],0.98,0.115,0,0,0,0.104,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:14,Unknown,Unknown,0.129,Unknown,0.12,four,['Unknown'],0.97,0.12,0,0,0,0.101,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:15,Unknown,Unknown,0.121,Unknown,0.073,four,['Unknown'],0.98,0,0,0,0,0.261,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:16,Unknown,Unknown,0.118,Unknown,0.174,four,['Unknown'],0.98,0.174,0,0,0,0.111,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:16,Unknown,Unknown,0.133,Unknown,0.218,four,['Unknown'],0.98,0.218,0,0,0,0.132,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:16,Unknown,Unknown,0.153,Unknown,0.133,thumbsup,['Goutham'],0.92,0.133,0,0,0,0.116,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:17,Unknown,Unknown,0.124,Unknown,0.112,thumbsup,['Goutham'],0.74,0.112,0,0,0,0.096,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:17,Unknown,Unknown,0.137,Unknown,0.136,four,['Unknown'],0.97,0.136,0,0,0,0.109,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:17,Unknown,Unknown,0.208,Unknown,0.116,four,['Unknown'],0.98,0.116,0,0,0,0.139,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:18,Unknown,Unknown,0.198,Unknown,0.127,four,['Unknown'],0.98,0.127,0,0,0,0.137,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:18,Unknown,Unknown,0.179,Unknown,0.128,four,['Unknown'],0.97,0.128,0,0,0,0.128,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:19,Unknown,Unknown,0.191,Unknown,0.243,four,['Unknown'],0.97,0.243,0,0,0,0.168,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:19,Unknown,Unknown,0.159,Unknown,0.209,four,['Unknown'],0.97,0.209,0,0,0,0.142,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:19,Unknown,Unknown,0.139,Unknown,0.093,four,['Unknown'],0.98,0.093,0,0,0,0.097,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:20,Unknown,Unknown,0.185,Unknown,0.218,four,['Unknown'],0.98,0.218,0,0,0,0.158,failure,impostor,unknown,normal,FALSE
+5/3/2026 18:20,Unknown,Unknown,0.148,Unknown,0.145,four,['Unknown'],0.98,0.145,0,0,0,0.117,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:28,Unknown,Unknown,0.092,Unknown,0.24,victory,"['Madhav', 'Sara']",0,0.24,0,0,0,0.118,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:29,Unknown,Unknown,0.076,Unknown,0.212,,['Unknown'],0,0.212,0,0,0,0.102,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:30,Unknown,Unknown,0.071,Unknown,0.202,thumbsup,['Goutham'],0,0.202,0,0,0,0.096,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:31,Unknown,Unknown,0.069,Unknown,0.154,ok,['afiya'],0,0.154,0,0,0,0.081,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:32,Unknown,Unknown,0.07,Unknown,0.123,thumbsup,['Goutham'],0,0.123,0,0,0,0.072,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:32,Unknown,Unknown,0.075,Unknown,0.258,victory,"['Madhav', 'Sara']",0,0.258,0,0,0,0.115,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:33,Unknown,Unknown,0.063,Unknown,0.236,victory,"['Madhav', 'Sara']",0,0.236,0,0,0,0.102,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:34,Unknown,Unknown,0.081,Unknown,0.213,thumbsup,['Goutham'],0,0.213,0,0,0,0.104,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:34,Unknown,Unknown,0.075,Unknown,0.225,thumbsup,['Goutham'],0,0.225,0,0,0,0.105,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:35,Unknown,Unknown,0.07,Unknown,0.195,ok,['afiya'],0,0.195,0,0,0,0.093,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:35,Unknown,Unknown,0.071,Unknown,0.251,thumbsup,['Goutham'],0,0.251,0,0,0,0.111,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:36,Unknown,Unknown,0.066,Unknown,0.157,ok,['afiya'],0,0.157,0,0,0,0.08,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:36,Unknown,Unknown,0.089,Unknown,0.232,victory,"['Madhav', 'Sara']",0,0.232,0,0,0,0.114,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:37,Unknown,Unknown,0.082,Unknown,0.29,victory,"['Madhav', 'Sara']",0,0.29,0,0,0,0.128,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:37,Unknown,Unknown,0.137,Unknown,0.281,victory,"['Madhav', 'Sara']",0,0.281,0,0,0,0.153,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:38,Unknown,Unknown,0.072,Unknown,0.311,thumbsup,['Goutham'],0,0.311,0,0,0,0.129,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:38,Unknown,Unknown,0.102,Unknown,0.333,thumbsup,['Goutham'],0,0.333,0,0,0,0.151,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:39,Unknown,Unknown,0.112,Unknown,0.247,thumbsup,['Goutham'],0,0.247,0,0,0,0.13,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:39,Unknown,Unknown,0.12,Unknown,0.319,victory,"['Madhav', 'Sara']",0,0.319,0,0,0,0.156,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:40,Unknown,Unknown,0.095,Unknown,0.297,palm,['Unknown'],0,0.297,0,0,0,0.137,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:40,Unknown,Unknown,0.127,Unknown,0.305,ok,['afiya'],0,0.305,0,0,0,0.155,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:41,Unknown,Unknown,0.061,Unknown,0.248,victory,"['Madhav', 'Sara']",0,0.248,0,0,0,0.105,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:41,Unknown,Unknown,0.09,Unknown,0.246,thumbsup,['Goutham'],0,0.246,0,0,0,0.119,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:41,Unknown,Unknown,0.074,Unknown,0.202,victory,"['Madhav', 'Sara']",0,0.202,0,0,0,0.098,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:42,Unknown,Unknown,0.078,Unknown,0.275,victory,"['Madhav', 'Sara']",0,0.275,0,0,0,0.121,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:42,Unknown,Unknown,0.055,Unknown,0.219,ok,['afiya'],0,0.219,0,0,0,0.093,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:47,Unknown,Unknown,0.08,Unknown,0.257,victory,"['Madhav', 'Sara']",0,0.257,0,0,0,0.117,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:47,Unknown,Unknown,0.079,Unknown,0.291,,['Unknown'],0,0.291,0,0,0,0.127,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:48,Unknown,Unknown,0.079,Unknown,0.283,ok,['afiya'],0,0.283,0,0,0,0.124,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:48,Unknown,Unknown,0.074,Unknown,0.274,victory,"['Madhav', 'Sara']",0,0.274,0,0,0,0.119,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:49,Unknown,Unknown,0.074,Unknown,0.093,thumbsup,['Goutham'],0,0.093,0,0,0,0.065,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:49,Unknown,Unknown,0.088,Unknown,0.267,thumbsup,['Goutham'],0,0.267,0,0,0,0.124,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:50,Unknown,Unknown,0.08,Unknown,0.21,victory,"['Madhav', 'Sara']",0,0.21,0,0,0,0.103,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:50,Unknown,Unknown,0.088,Unknown,0.29,thumbsup,['Goutham'],0,0.29,0,0,0,0.131,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:50,Unknown,Unknown,0.082,Unknown,0.264,victory,"['Madhav', 'Sara']",0,0.264,0,0,0,0.12,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:51,Unknown,Unknown,0.076,Unknown,0.276,ok,['afiya'],0,0.276,0,0,0,0.121,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:51,Unknown,Unknown,0.078,Unknown,0.262,ok,['afiya'],0,0.262,0,0,0,0.118,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:52,Unknown,Unknown,0.093,Unknown,0.257,victory,"['Madhav', 'Sara']",0,0.257,0,0,0,0.124,failure,impostor,unknown,normal,FALSE
+5/3/2026 15:52,Unknown,Unknown,0.064,Unknown,0.285,victory,"['Madhav', 'Sara']",0,0.285,0,0,0,0.117,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:06,Unknown,Unknown,0.055,Unknown,0.329,victory,"['Madhav', 'Sara']",0,0.329,0,0,0,0.126,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:06,Unknown,Unknown,0.095,Unknown,0.223,thumbsup,['Goutham'],0,0.223,0,0,0,0.114,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:06,Unknown,Unknown,0.085,Unknown,0.3,ok,['afiya'],0,0.3,0,0,0,0.133,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:07,Unknown,Unknown,0.086,Unknown,0.256,palm,['Unknown'],0,0.256,0,0,0,0.12,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:07,Unknown,Unknown,0.088,Unknown,0.28,victory,"['Madhav', 'Sara']",0,0.28,0,0,0,0.128,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:08,Unknown,Unknown,0.076,Unknown,0.232,thumbsup,['Goutham'],0,0.232,0,0,0,0.108,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:08,Unknown,Unknown,0.089,Unknown,0.234,palm,['Unknown'],0,0.234,0,0,0,0.115,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:08,Unknown,Unknown,0.107,Unknown,0.259,ok,['afiya'],0,0.259,0,0,0,0.131,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:09,Unknown,Unknown,0.079,Unknown,0.255,victory,"['Madhav', 'Sara']",0,0.255,0,0,0,0.116,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:09,Unknown,Unknown,0.089,Unknown,0.275,thumbsup,['Goutham'],0,0.275,0,0,0,0.127,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:09,Unknown,Unknown,0.098,Unknown,0.238,victory,"['Madhav', 'Sara']",0,0.238,0,0,0,0.12,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:10,Unknown,Unknown,0.084,Unknown,0.261,thumbsup,['Goutham'],0,0.261,0,0,0,0.12,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:10,Unknown,Unknown,0.096,Unknown,0.217,thumbsup,['Goutham'],0,0.217,0,0,0,0.113,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:11,Unknown,Unknown,0.075,Unknown,0.256,victory,"['Madhav', 'Sara']",0,0.256,0,0,0,0.114,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:11,Unknown,Unknown,0.076,Unknown,0.205,thumbsup,['Goutham'],0,0.205,0,0,0,0.099,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:12,Unknown,Unknown,0.075,Unknown,0.303,victory,"['Madhav', 'Sara']",0,0.303,0,0,0,0.128,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:13,Unknown,Unknown,0.119,Unknown,0.236,victory,"['Madhav', 'Sara']",0,0.236,0,0,0,0.13,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:14,Unknown,Unknown,0.11,Unknown,0.195,thumbsup,['Goutham'],0,0.195,0,0,0,0.113,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:14,Unknown,Unknown,0.09,Unknown,0.257,thumbsup,['Goutham'],0,0.257,0,0,0,0.122,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:15,Unknown,Unknown,0.101,Unknown,0.244,victory,"['Madhav', 'Sara']",0,0.244,0,0,0,0.124,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:15,Unknown,Unknown,0.091,Unknown,0.215,ok,['afiya'],0,0.215,0,0,0,0.11,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:15,Unknown,Unknown,0.076,Unknown,0.21,victory,"['Madhav', 'Sara']",0,0.21,0,0,0,0.101,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:16,Unknown,Unknown,0.088,Unknown,0.193,thumbsup,['Goutham'],0,0.193,0,0,0,0.102,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:16,Unknown,Unknown,0.087,Unknown,0.205,ok,['afiya'],0,0.205,0,0,0,0.105,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:16,Unknown,Unknown,0.086,Unknown,0.193,victory,"['Madhav', 'Sara']",0,0.193,0,0,0,0.101,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:17,Unknown,Unknown,0.096,Unknown,0.259,thumbsup,['Goutham'],0,0.259,0,0,0,0.126,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:18,Unknown,Unknown,0.068,Unknown,0.213,victory,"['Madhav', 'Sara']",0,0.213,0,0,0,0.098,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:18,Unknown,Unknown,0.075,Unknown,0.226,thumbsup,['Goutham'],0,0.226,0,0,0,0.105,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:18,Unknown,Unknown,0.082,Unknown,0.188,three,['Unknown'],0,0.188,0,0,0,0.097,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:19,Unknown,Unknown,0.077,Unknown,0.287,victory,"['Madhav', 'Sara']",0,0.287,0,0,0,0.125,failure,impostor,unknown,normal,FALSE
+5/3/2026 16:19,Unknown,Unknown,0.092,Unknown,0.246,victory,"['Madhav', 'Sara']",0,0.246,0,0,0,0.12,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:14,Unknown,Unknown,0.106,Sara,0.383,pointingfinger,['Unknown'],0.92,0.383,0,0,0,0.168,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:15,Unknown,Unknown,0.132,Unknown,0.349,pointingfinger,['Unknown'],0.98,0.349,0,0,0,0.171,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:15,Unknown,Unknown,0.108,Unknown,0.323,pointingfinger,['Unknown'],0.98,0.323,0,0,0,0.151,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:15,Unknown,Unknown,0.102,Unknown,0.316,pointingfinger,['Unknown'],0.94,0.316,0,0,0,0.146,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:15,Unknown,Unknown,0.103,Unknown,0.326,pointingfinger,['Unknown'],0.96,0.326,0,0,0,0.149,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:16,Unknown,Unknown,0.144,Unknown,0.342,,['Unknown'],0,0.342,0,0,0,0.175,failure,impostor,unknown,normal,FALSE
+5/3/2026 19:16,Unknown,Unknown,0.099,Unknown,0.369,three,['Unknown'],0.97,0.369,0,0,0,0.16,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:35,Unknown,Unknown,0.179,Unknown,0.348,pointingfinger,['Unknown'],0.99,0.348,0,0,0,0.194,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:35,Unknown,Unknown,0.199,Unknown,0.275,pointingfinger,['Unknown'],0.99,0.275,0,0,0,0.182,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:36,Unknown,Unknown,0.202,Unknown,0.103,pointingfinger,['Unknown'],0.99,0.103,0,0,0,0.132,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:36,Unknown,Unknown,0.21,Unknown,0.374,pointingfinger,['Unknown'],0.99,0.374,0,0,0,0.217,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:37,Unknown,Unknown,0.203,Unknown,0.359,pointingfinger,['Unknown'],0.97,0.359,0,0,0,0.209,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:37,Unknown,Unknown,0.187,Unknown,0.37,three,['Unknown'],0.98,0.37,0,0,0,0.205,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:37,Unknown,Unknown,0.205,Sara,0.474,three,['Unknown'],0.98,0.474,0,0,0,0.245,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:38,Unknown,Unknown,0.215,Unknown,0.363,three,['Unknown'],0.98,0.363,0,0,0,0.216,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:38,Unknown,Unknown,0.227,Sara,0.416,three,['Unknown'],0.9,0.416,0,0,0,0.238,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:39,Unknown,Unknown,0.202,Sara,0.384,three,['Unknown'],0.94,0.384,0,0,0,0.216,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:39,Unknown,Unknown,0.223,Unknown,0.356,victory,"['Madhav', 'Sara']",0.87,0.356,0,0,0,0.218,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:39,Unknown,Unknown,0.203,Unknown,0.339,four,['Unknown'],0.97,0.339,0,0,0,0.203,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:40,Unknown,Unknown,0.188,Unknown,0.263,four,['Unknown'],0.98,0.263,0,0,0,0.173,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:40,Unknown,Unknown,0.224,Unknown,0.363,four,['Unknown'],0.97,0.363,0,0,0,0.221,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:40,Unknown,Unknown,0.221,Sara,0.398,four,['Unknown'],0.98,0.398,0,0,0,0.23,failure,impostor,unknown,normal,FALSE
+5/3/2026 22:12,Unknown,Unknown,0.084,Unknown,0.262,pointingfinger,['Unknown'],0.99,0.262,0,0,0,0.121,failure,impostor,unknown,normal,FALSE
+5/3/2026 22:12,Unknown,Unknown,0.088,Unknown,0.259,pointingfinger,['Unknown'],0.96,0.259,0,0,0,0.122,failure,impostor,unknown,normal,FALSE
+5/3/2026 22:13,Unknown,Unknown,0.123,Unknown,0.117,pointingfinger,['Unknown'],0.93,0.117,0,0,0,0.097,failure,impostor,unknown,normal,FALSE
+5/3/2026 22:13,Unknown,Unknown,0.145,Unknown,0.256,pointingfinger,['Unknown'],0.99,0.256,0,0,0,0.149,failure,impostor,unknown,normal,FALSE
+5/3/2026 21:08,Unknown,Goutham,0.782,Madhav,0.532,thumbsup,['Goutham'],0.91,0,0.91,0,0,0.573,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:11,Unknown,Goutham,0.776,Madhav,0.746,thumbsup,['Goutham'],0.93,0,0.93,0.2238,1,0.35,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:12,Unknown,Goutham,0.769,Madhav,0.699,thumbsup,['Goutham'],0.84,0,0.84,0,0,0.552,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:12,Unknown,Goutham,0.786,Madhav,0.502,thumbsup,['Goutham'],0.89,0,0.89,0,0,0.571,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:12,Unknown,Goutham,0.762,Madhav,0.408,thumbsup,['Goutham'],0.89,0,0.89,0,0,0.559,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:13,Unknown,Goutham,0.739,Madhav,0.452,thumbsup,['Goutham'],0.88,0,0.88,0,0,0.545,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:13,Unknown,Goutham,0.759,Unknown,0.303,thumbsup,['Goutham'],0.87,0,0.87,0,0,0.553,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:13,Unknown,Goutham,0.759,Unknown,0.217,thumbsup,['Goutham'],0.91,0,0.91,0,0,0.561,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:14,Unknown,Goutham,0.781,Madhav,0.577,thumbsup,['Goutham'],0.9,0,0.9,0,0,0.571,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:15,Unknown,Goutham,0.781,Madhav,0.688,thumbsup,['Goutham'],0.83,0,0.83,0,0,0.556,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:17,Unknown,Madhav,0.696,Goutham,0.509,victory,"['Madhav', 'Sara']",0.88,0,0.88,0,0,0.524,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:17,Unknown,Madhav,0.689,Goutham,0.448,victory,"['Madhav', 'Sara']",0.89,0,0.89,0,0,0.522,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:17,Unknown,Madhav,0.668,Goutham,0.463,victory,"['Madhav', 'Sara']",0.91,0,0.91,0,0,0.516,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:18,Unknown,Madhav,0.667,Goutham,0.453,victory,"['Madhav', 'Sara']",0.94,0,0.94,0,0,0.522,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:18,Unknown,Madhav,0.661,Goutham,0.546,victory,"['Madhav', 'Sara']",0.91,0,0.91,0,0,0.513,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:18,Unknown,Madhav,0.661,Goutham,0.591,victory,"['Madhav', 'Sara']",0.96,0,0.96,0,0,0.522,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:18,Unknown,Madhav,0.666,Goutham,0.467,victory,"['Madhav', 'Sara']",0.84,0,0.84,0,0,0.501,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:19,Unknown,Madhav,0.68,Unknown,0.285,victory,"['Madhav', 'Sara']",0.96,0,0.96,0,0,0.532,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:19,Unknown,Madhav,0.579,Goutham,0.465,victory,"['Madhav', 'Sara']",0.91,0,0.91,0,0,0.472,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:19,Unknown,Madhav,0.615,Goutham,0.41,victory,"['Madhav', 'Sara']",0.87,0,0.87,0,0,0.482,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:24,Unknown,Sara,0.739,afiya,0.418,victory,"['Madhav', 'Sara']",0.82,0,0.82,0,0,0.533,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:57,Unknown,Sara,0.786,afiya,0.462,victory,"['Madhav', 'Sara']",0.73,0,0.73,0,0,0.539,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:59,Unknown,Sara,0.786,afiya,0.412,victory,"['Madhav', 'Sara']",0.94,0,0.94,0,0,0.581,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:00,Unknown,Sara,0.76,afiya,0.462,victory,"['Madhav', 'Sara']",0.94,0,0.94,0,0,0.568,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:00,Unknown,Sara,0.762,afiya,0.391,victory,"['Madhav', 'Sara']",0.92,0,0.92,0,0,0.565,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:00,Unknown,Sara,0.75,afiya,0.547,victory,"['Madhav', 'Sara']",0.9,0,0.9,0,0,0.555,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:01,Unknown,Sara,0.782,afiya,0.572,victory,"['Madhav', 'Sara']",0.91,0,0.91,0,0,0.573,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:01,Unknown,Sara,0.784,afiya,0.607,victory,"['Madhav', 'Sara']",0.87,0,0.87,0,0,0.566,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:02,Unknown,Sara,0.723,afiya,0.387,victory,"['Madhav', 'Sara']",0.98,0,0.98,0,0,0.557,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:03,Unknown,Sara,0.772,afiya,0.587,victory,"['Madhav', 'Sara']",0.98,0,0.98,0,0,0.582,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:03,Unknown,Sara,0.781,afiya,0.385,victory,"['Madhav', 'Sara']",0.93,0,0.93,0,0,0.577,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:03,Unknown,Sara,0.765,afiya,0.516,victory,"['Madhav', 'Sara']",0.96,0,0.96,0,0,0.575,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:04,Unknown,Sara,0.775,afiya,0.622,victory,"['Madhav', 'Sara']",0.81,0,0.81,0,0,0.55,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:05,Unknown,Sara,0.75,afiya,0.511,victory,"['Madhav', 'Sara']",0.9,0,0.9,0,0,0.555,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:06,Unknown,Sara,0.761,afiya,0.468,victory,"['Madhav', 'Sara']",0.94,0,0.94,0,0,0.569,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:06,Unknown,Sara,0.771,afiya,0.418,victory,"['Madhav', 'Sara']",0.98,0,0.98,0,0,0.582,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:06,Unknown,Sara,0.774,afiya,0.485,victory,"['Madhav', 'Sara']",0.99,0,0.99,0,0,0.585,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:06,Unknown,Sara,0.778,afiya,0.554,victory,"['Madhav', 'Sara']",0.98,0,0.98,0,0,0.585,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:07,Unknown,Sara,0.782,afiya,0.42,victory,"['Madhav', 'Sara']",0.96,0,0.96,0,0,0.583,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:09,Unknown,Sara,0.769,afiya,0.613,victory,"['Madhav', 'Sara']",0.93,0,0.93,0,0,0.571,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 19:09,Unknown,Sara,0.748,afiya,0.577,victory,"['Madhav', 'Sara']",0.67,0,0.67,0,0,0.508,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:30,Unknown,Madhav,0.5,Sabir,0.721,victory,"['Madhav', 'Sara', 'Sabir']",0.83,0,0.83,0.2163,1,0.2,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:31,Unknown,Madhav,0.518,Sabir,0.783,victory,"['Madhav', 'Sara', 'Sabir']",0.81,0,0.81,0.2349,1,0.186,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:42,Unknown,Madhav,0.778,Sabir,0.382,victory,"['Madhav', 'Sara', 'Sabir']",0.82,0,0.82,0,0,0.553,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:43,Unknown,Madhav,0.731,Sabir,0.722,victory,"['Madhav', 'Sara', 'Sabir']",0.84,0,0.84,0.2166,1,0.317,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:44,Unknown,Madhav,0.829,Sabir,0.71,victory,"['Madhav', 'Sara', 'Sabir']",0.94,0,0.94,0.213,1,0.39,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:45,Unknown,Madhav,0.784,Sabir,0.643,victory,"['Madhav', 'Sara', 'Sabir']",0.72,0,0.72,0,0,0.536,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:45,Unknown,Madhav,0.701,Sabir,0.481,victory,"['Madhav', 'Sara', 'Sabir']",0.95,0,0.95,0,0,0.54,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:47,Unknown,Madhav,0.7,Sabir,0.586,victory,"['Madhav', 'Sara', 'Sabir']",0.96,0,0.96,0,0,0.542,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:47,Unknown,Madhav,0.805,Sabir,0.626,victory,"['Madhav', 'Sara', 'Sabir']",0.87,0,0.87,0,0,0.577,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:48,Unknown,Madhav,0.782,Sabir,0.63,victory,"['Madhav', 'Sara', 'Sabir']",0.91,0,0.91,0,0,0.573,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:49,Unknown,Madhav,0.52,Sabir,0.551,victory,"['Madhav', 'Sara', 'Sabir']",0.72,0,0.72,0,0,0.404,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:49,Unknown,Madhav,0.81,Sabir,0.581,victory,"['Madhav', 'Sara', 'Sabir']",0.68,0,0.68,0,0,0.541,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:50,Unknown,Madhav,0.808,Sabir,0.571,victory,"['Madhav', 'Sara', 'Sabir']",0.95,0,0.95,0,0,0.594,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:50,Madhav,Madhav,0.81,Sabir,0.592,victory,"['Madhav', 'Sara', 'Sabir']",0.99,0,0.99,0,0,0.603,success,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:51,Unknown,Madhav,0.79,Sabir,0.69,victory,"['Madhav', 'Sara', 'Sabir']",0.88,0,0.88,0,0,0.571,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:52,Unknown,Madhav,0.818,Sabir,0.713,victory,"['Madhav', 'Sara', 'Sabir']",0.97,0,0.97,0.2139,1,0.389,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:54,Unknown,Madhav,0.779,Sabir,0.62,victory,"['Madhav', 'Sara', 'Sabir']",0.8,0,0.8,0,0,0.55,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:55,Unknown,Madhav,0.742,Sabir,0.731,victory,"['Madhav', 'Sara', 'Sabir']",0.72,0,0.72,0.2193,1,0.296,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:56,Unknown,Madhav,0.735,Sabir,0.624,victory,"['Madhav', 'Sara', 'Sabir']",0.91,0,0.91,0,0,0.549,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:56,Unknown,Madhav,0.791,Sabir,0.723,victory,"['Madhav', 'Sara', 'Sabir']",0.79,0,0.79,0.2169,1,0.337,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:57,Unknown,Madhav,0.808,Sabir,0.504,victory,"['Madhav', 'Sara', 'Sabir']",0.92,0,0.92,0,0,0.588,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:58,Unknown,Madhav,0.817,Sabir,0.579,victory,"['Madhav', 'Sara', 'Sabir']",0.82,0,0.82,0,0,0.573,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:59,Unknown,Madhav,0.813,Sabir,0.661,victory,"['Madhav', 'Sara', 'Sabir']",0.87,0,0.87,0,0,0.581,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 17:59,Unknown,Madhav,0.817,Sabir,0.48,victory,"['Madhav', 'Sara', 'Sabir']",0.77,0,0.77,0,0,0.562,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:00,Unknown,Madhav,0.812,Sabir,0.578,victory,"['Madhav', 'Sara', 'Sabir']",0.73,0,0.73,0,0,0.552,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:01,Unknown,Madhav,0.784,Sabir,0.596,victory,"['Madhav', 'Sara', 'Sabir']",0.93,0,0.93,0,0,0.578,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:01,Unknown,Madhav,0.814,Sabir,0.6,victory,"['Madhav', 'Sara', 'Sabir']",0.91,0,0.91,0,0,0.589,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:02,Madhav,Madhav,0.82,Sabir,0.513,victory,"['Madhav', 'Sara', 'Sabir']",0.96,0,0.96,0,0,0.602,success,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:03,Unknown,Madhav,0.808,Sabir,0.589,victory,"['Madhav', 'Sara', 'Sabir']",0.93,0,0.93,0,0,0.59,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:04,Unknown,Madhav,0.792,Sabir,0.658,victory,"['Madhav', 'Sara', 'Sabir']",0.87,0,0.87,0,0,0.57,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:04,Unknown,Madhav,0.8,Sabir,0.585,victory,"['Madhav', 'Sara', 'Sabir']",0.99,0,0.99,0,0,0.598,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:05,Unknown,Madhav,0.809,Sabir,0.42,victory,"['Madhav', 'Sara', 'Sabir']",0.91,0,0.91,0,0,0.587,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:05,Unknown,Madhav,0.795,Sabir,0.691,victory,"['Madhav', 'Sara', 'Sabir']",0.85,0,0.85,0,0,0.568,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:06,Unknown,Madhav,0.805,Sabir,0.612,victory,"['Madhav', 'Sara', 'Sabir']",0.96,0,0.96,0,0,0.595,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:07,Unknown,Madhav,0.793,Sabir,0.691,victory,"['Madhav', 'Sara', 'Sabir']",0.97,0,0.97,0,0,0.591,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:07,Unknown,Madhav,0.772,Sabir,0.722,victory,"['Madhav', 'Sara', 'Sabir']",0.97,0,0.97,0.2166,1,0.363,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:08,Unknown,Madhav,0.813,Sabir,0.716,victory,"['Madhav', 'Sara', 'Sabir']",0.98,0,0.98,0.2148,1,0.388,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:08,Unknown,Madhav,0.814,Sabir,0.707,victory,"['Madhav', 'Sara', 'Sabir']",0.98,0,0.98,0.2121,1,0.391,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:09,Madhav,Madhav,0.815,Sabir,0.553,victory,"['Madhav', 'Sara', 'Sabir']",0.98,0,0.98,0,0,0.603,success,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:09,Unknown,Madhav,0.805,Sabir,0.662,victory,"['Madhav', 'Sara', 'Sabir']",0.97,0,0.97,0,0,0.597,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:10,Unknown,Madhav,0.551,Sabir,0.635,victory,"['Madhav', 'Sara', 'Sabir']",0.87,0,0.87,0,0,0.45,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:10,Unknown,Madhav,0.762,Sabir,0.722,victory,"['Madhav', 'Sara', 'Sabir']",0.99,0,0.99,0.2166,1,0.362,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:12,Unknown,Madhav,0.754,Sabir,0.577,victory,"['Madhav', 'Sara', 'Sabir']",0.98,0,0.98,0,0,0.573,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:13,Unknown,Madhav,0.807,Sabir,0.624,victory,"['Madhav', 'Sara', 'Sabir']",0.97,0,0.97,0,0,0.598,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:13,Madhav,Madhav,0.824,Sabir,0.684,victory,"['Madhav', 'Sara', 'Sabir']",0.97,0,0.97,0,0,0.606,success,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:14,Madhav,Madhav,0.81,Sabir,0.512,victory,"['Madhav', 'Sara', 'Sabir']",0.98,0,0.98,0,0,0.601,success,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:14,Unknown,Madhav,0.806,Sabir,0.74,victory,"['Madhav', 'Sara', 'Sabir']",0.94,0,0.94,0.222,1,0.369,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:15,Unknown,Madhav,0.813,Sabir,0.532,victory,"['Madhav', 'Sara', 'Sabir']",0.96,0,0.96,0,0,0.599,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:17,Unknown,Madhav,0.582,Sabir,0.794,victory,"['Madhav', 'Sara', 'Sabir']",0.75,0,0.75,0.2382,1,0.203,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:22,Unknown,Madhav,0.612,Sabir,0.82,victory,"['Madhav', 'Sara', 'Sabir']",0.84,0,0.84,0.246,1,0.228,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 18:33,Unknown,Madhav,0.654,Sabir,0.748,victory,"['Madhav', 'Sara', 'Sabir']",0.96,0,0.96,0.2244,1,0.295,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:50,Unknown,afiya,0.743,Unknown,0.284,ok,['afiya'],0.94,0,0.94,0,0,0.559,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:50,Unknown,afiya,0.746,Unknown,0.285,ok,['afiya'],0.94,0,0.94,0,0,0.561,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:43,Unknown,afiya,0.75,Unknown,0.236,ok,['afiya'],0.91,0,0.91,0,0,0.557,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:44,Unknown,afiya,0.769,Unknown,0.235,ok,['afiya'],0.92,0,0.92,0,0,0.569,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:44,Unknown,afiya,0.768,Unknown,0.23,ok,['afiya'],0.88,0,0.88,0,0,0.56,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:44,Unknown,afiya,0.768,Unknown,0.258,ok,['afiya'],0.92,0,0.92,0,0,0.568,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:45,Unknown,afiya,0.765,Unknown,0.317,ok,['afiya'],0.9,0,0.9,0,0,0.562,failure,impostor,spoof_voice,normal,FALSE
+5/3/2026 21:51,Unknown,afiya,0.747,Unknown,0.292,ok,['afiya'],0.93,0,0.93,0,0,0.559,failure,impostor,spoof_voice,normal,FALSE

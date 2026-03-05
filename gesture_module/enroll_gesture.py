@@ -4,7 +4,7 @@ import os
 
 ALLOWED_GESTURES = [
     "bang", "comehere", "fist", "four", "grab", "greeting",
-    "loser", "love", "ok", "palm", "pinkyfinger",
+    "loser", "ILoveU", "ok", "palm", "pinkyfinger",
     "pointingfinger", "rock", "three", "thumbsup",
     "thumbsdown", "victory", "w", "zero"
 ]
