@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import sqlite3
 import os
+import torch.nn.functional as F
 
 
 from speechbrain.inference import SpeakerRecognition
@@ -82,6 +83,7 @@ def run_voice_enrollment(user_name):
         return None
 
     final_embedding = torch.stack(embeddings).mean(dim=0)
+    final_embedding = F.normalize(final_embedding, p=2, dim=0)
 
     print("\nEnrollment completed")
     yield "Enrollment completed"

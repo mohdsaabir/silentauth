@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi import Request
-
+import config
 
 app = FastAPI()
 
@@ -21,7 +21,12 @@ app.add_middleware(
 )
 
 templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
+
+# As of now the endpoint /enroll is not used it is moved to system_controller.py but we keep it here for future
+# use when we want to trigger enrollment from dashboard without page reload
 @app.get("/enroll", response_class=HTMLResponse)
 def load_enrollment_page(request: Request):
     return templates.TemplateResponse("enroll.html", {"request": request})
@@ -52,9 +57,8 @@ def update_user_preset(user_name, preset):
     conn.close()
 
 
-# -------------------------------
-# STREAMING ENROLLMENT ENDPOINT
-# -------------------------------
+
+# Endpoint for sequential enrollment
 @app.post("/enroll_stream")
 def enroll_user_stream(data: EnrollmentRequest):
 
@@ -75,7 +79,7 @@ def enroll_user_stream(data: EnrollmentRequest):
         # -------------------------------
         
         with requests.post(
-            "http://127.0.0.1:5004/enroll_stream",
+            f"http://127.0.0.1:{config.FACE_ENROLL}/enroll_stream",
             json={"user_name": user_name},
             stream=True
         ) as r:
@@ -91,7 +95,7 @@ def enroll_user_stream(data: EnrollmentRequest):
         if preset in ["normal", "motor_impaired"]:
 
             with requests.post(
-                "http://127.0.0.1:5002/enroll_stream",
+                f"http://127.0.0.1:{config.VOICE_ENROLL}/enroll_stream",
                 json={"user_name": user_name},
                 stream=True
             ) as r:
@@ -113,7 +117,7 @@ def enroll_user_stream(data: EnrollmentRequest):
                 return
 
             with requests.post(
-                "http://127.0.0.1:5003/enroll_stream",
+                f"http://127.0.0.1:{config.GESTURE_ENROLL}/enroll_stream",
                 json={
                     "user_name": user_name,
                     "gesture_name": gesture_name

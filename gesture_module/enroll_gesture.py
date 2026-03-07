@@ -3,10 +3,10 @@ import sqlite3
 import os
 
 ALLOWED_GESTURES = [
-    "bang", "comehere", "fist", "four", "grab", "greeting",
-    "loser", "love", "ok", "palm", "pinkyfinger",
-    "pointingfinger", "rock", "three", "thumbsup",
-    "thumbsdown", "victory", "w", "zero"
+    "bang", "comehere", "fist", "four", "greeting",
+    "loser", "ILoveU", "ok", "pinkyfinger",
+    "pointingfinger", "three", "thumbsup",
+    "thumbsdown", "victory", "zero"
 ]
 
 def run_gesture_enrollment(user_name, gesture_name):

@@ -26,7 +26,7 @@ DB_PATH = os.environ.get(
 
 VERIFICATION_TIME = 4
 NO_GESTURE_TIMEOUT = 8  # Exit if no gesture detected for 10s
-MIN_CONFIDENCE = 0.55
+MIN_CONFIDENCE = 0.60
 DISPLAY_AFTER = 2
 SMOOTHING_FACTOR = 0.7
 
@@ -72,6 +72,19 @@ classes = clf.classes_
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
+# ================= MEDIAPIPE (LOAD ONCE) =================
+mp_hands = mp.solutions.hands
+mp_drawing = mp.solutions.drawing_utils
+
+hands_model = mp_hands.Hands(
+    max_num_hands=1,
+    min_detection_confidence=0.6,
+    min_tracking_confidence=0.6
+)
+
+print("✅ Gesture model loaded once at startup")
+
+
 # ================= NORMALIZATION =================
 def normalize(pts):
     pts = np.array(pts)
@@ -90,18 +103,14 @@ def run_gesture_verification():
     no_gesture_start = None
 
     # Flush old frames
-    for _ in range(5):
-        try:
-            frame_socket.recv(flags=zmq.NOBLOCK)
-        except:
-            break
+    
 
-    hands = mp_hands.Hands(
+    '''hands = mp_hands.Hands(
         max_num_hands=1,
         min_detection_confidence=0.6,
         min_tracking_confidence=0.6
     )
-
+'''
     window_name = "Gesture Verification"
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
     cv2.setWindowProperty(window_name, cv2.WND_PROP_TOPMOST, 1)
@@ -111,17 +120,10 @@ def run_gesture_verification():
     try:
         while True:
             # Receive frame from ZMQ or fallback to any camera
-            try:
-                frame = pickle.loads(frame_socket.recv(flags=zmq.NOBLOCK))
-            except zmq.Again:
-                cap = cv2.VideoCapture(0)  # default webcam
-                ret, frame = cap.read()
-                cap.release()
-                if not ret:
-                    continue
+            frame = pickle.loads(frame_socket.recv())
 
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            result = hands.process(rgb)
+            result = hands_model.process(rgb)
 
             if result.multi_hand_landmarks and result.multi_handedness:
                 hand_label = result.multi_handedness[0].classification[0].label
@@ -218,7 +220,7 @@ def run_gesture_verification():
         print("FINAL OUTPUT:", api_output)
 
     finally:
-        hands.close()
+        #hands.close()
         cv2.destroyAllWindows()
 
     return api_output

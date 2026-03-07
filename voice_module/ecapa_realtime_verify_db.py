@@ -12,7 +12,7 @@ from speechbrain.utils.fetching import LocalStrategy
 # ================= CONFIG =================
 SAMPLE_RATE = 16000
 RECORD_SECONDS = 10
-THRESHOLD = 0.40
+THRESHOLD = 0.38
 
 # ================= DATABASE =================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -85,6 +85,7 @@ def run_voice_verification():
 
     audio = record_audio(RECORD_SECONDS)
     verify_embedding = get_embedding_from_signal(audio)
+    verify_embedding = F.normalize(verify_embedding, p=2, dim=0)
 
     best_user = None
     best_score = -1.0

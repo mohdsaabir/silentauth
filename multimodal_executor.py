@@ -1,12 +1,14 @@
 import requests
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import config
 
 #--------VERIFY API ENDPOINTS-----------------------
-FACE_VERIFY_URL = "http://localhost:5010/verify"
-VOICE_VERIFY_URL = "http://localhost:5011/verify"
-GESTURE_VERIFY_URL = "http://localhost:5012/verify"
+FACE_VERIFY_URL = f"http://localhost:{config.FACE_VERIFY}/verify"
+VOICE_VERIFY_URL = f"http://localhost:{config.VOICE_VERIFY}/verify"
+GESTURE_VERIFY_URL = f"http://localhost:{config.GESTURE_VERIFY}/verify"
 #---------------------------------------------------
+
 
 #---------FUNCTION TO CALLING APIS-------------
 def call_api(name, url):

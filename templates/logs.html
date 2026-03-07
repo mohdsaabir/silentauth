@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Logs</title>
+<script src="/static/config.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background: #f5f5f5;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        background: white;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        width: 500px;
+        max-width: 100%;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: monospace;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    td.success {
+        color: green;
+        font-weight: bold;
+    }
+
+    td.failure {
+        color: red;
+        font-weight: bold;
+    }
+
+    td.unknown {
+        color: #444;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Verification Logs</h2>
+
+    <table id="logTable">
+        <tr>
+            <th>Timestamp</th>
+            <th>Result</th>
+            <th>User</th>
+        </tr>
+    </table>
+</div>
+
+<script>
+async function loadLogs() {
+    try {
+        const res = await fetch(`${CONFIG.VERIFICATION_CONTROLLER}/verification-logs`);
+        const data = await res.json();
+        const table = document.getElementById("logTable");
+
+        data.logs.forEach(log => {
+            const resultClass = log.result.toLowerCase() === 'success' ? 'success' :
+                                log.result.toLowerCase() === 'failure' ? 'failure' : 'unknown';
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${log.timestamp}</td>
+                <td class="${resultClass}">${log.result}</td>
+                <td>${log.username}</td>
+            `;
+            table.appendChild(row);
+        });
+    } catch (err) {
+        console.error("Failed to load logs:", err);
+    }
+}
+
+loadLogs();
+</script>
+
+</body>
+</html>

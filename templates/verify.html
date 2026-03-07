@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>SilentAuth Verification</title>
+    <script src="/static/config.js"></script>
     <style>
         body {
             font-family: Arial;
             background: #f4f6f8;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items: flex-start;
+            gap: 20px;
+            padding-top: 40px;
         }
 
         .card {
             background: white;
-            padding: 30px;
+            padding: 25px 30px;
             border-radius: 12px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.1);
             width: 400px;
@@ -39,87 +41,151 @@
 
         button:disabled {
             background: gray;
+            cursor: not-allowed;
         }
 
-        #status {
-            margin-top: 25px;
-            font-size: 18px;
-            font-weight: bold;
-            min-height: 40px;
+        .status, .health {
+            margin-top: 20px;
+            text-align: left;
+            min-height: 60px;
+            font-family: monospace;
         }
 
-        .success {
-            color: green;
-        }
+        .running { color: green; }
+        .stopped { color: red; }
+        .info { color: #444; font-weight: normal; }
+        .success { color: green; font-weight: bold; }
+        .failure { color: red; font-weight: bold; }
 
-        .failure {
-            color: red;
-        }
-
-        .info {
-            color: #444;
-            font-weight: normal;
-        }
     </style>
 </head>
 <body>
 
+<!-- Verification Card -->
 <div class="card">
     <h2>Verification</h2>
+    <button id="verifyBtn" onclick="startVerification()" disabled>Start Verification</button>
+    <div id="status" class="status info">
+        Please look at the camera, speak clearly, and show your registered gesture.
+    </div>
+</div>
 
-    <button id="verifyBtn" onclick="startVerification()">
-        Start Verification
-    </button>
-
-    <div id="status"></div>
+<!-- System Health Card -->
+<div class="card">
+    <h2>System Health</h2>
+    <div id="healthStatus" class="health">Checking services...</div>
 </div>
 
 <script>
+const verifyBtn = document.getElementById("verifyBtn");
+const statusBox = document.getElementById("status");
+const healthBox = document.getElementById("healthStatus");
 
+// -----------------------------
+// Start verification
+// -----------------------------
 async function startVerification() {
-
-    const statusBox = document.getElementById("status");
-    const button = document.getElementById("verifyBtn");
-
-    // Disable button
-    button.disabled = true;
-    button.innerText = "Verifying...";
-
-    // Show instruction
-    statusBox.className = "info";
-    statusBox.innerHTML = 
-        "Please look at the camera, speak clearly, and show your registered gesture.";
-
-    // Small delay for UX
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    verifyBtn.disabled = true;
+    verifyBtn.innerText = "Verifying...";
+    statusBox.className = "status info";
+    statusBox.innerHTML = "Please look at the camera, speak clearly, and show your registered gesture.";
 
     try {
-        const response = await fetch("http://127.0.0.1:8004/verify_endpoint", {
-            method: "POST"
-        });
-
+        const response = await fetch(`${CONFIG.VERIFICATION_CONTROLLER}/verify_endpoint`, { method: "POST" });
         const result = await response.json();
 
         if (result.status === "success") {
-            statusBox.className = "success";
-            statusBox.innerHTML = 
-                "Authenticated – " + result.username + "<br>Score – " + result.score;
+            statusBox.className = "status success";
+            statusBox.innerHTML = `Authenticated - ${result.username} <br>Score - ${result.score}`;
         } else {
-            statusBox.className = "failure";
-            statusBox.innerHTML = 
-                "Authentication Failed";
+            statusBox.className = "status failure";
+            statusBox.innerHTML = "Authentication Failed";
         }
-
     } catch (error) {
-        statusBox.className = "failure";
+        statusBox.className = "status failure";
         statusBox.innerHTML = "Server error. Please try again.";
     }
 
-    button.disabled = false;
-    button.innerText = "Start Verification";
+    verifyBtn.disabled = false;
+    verifyBtn.innerText = "Start Verification";
 }
 
-</script>
+// -----------------------------
+// Stop verification on unload
+// -----------------------------
+async function stopVerification() {
+    try {
+        await fetch("/stop-verification", { method: "POST" });
+        console.log("Camera service stopped");
+    } catch (err) {
+        console.error(err);
+    }
+}
+window.addEventListener("beforeunload", stopVerification);
+window.addEventListener("popstate", stopVerification);
 
+
+
+
+// -----------------------------
+// System health check
+// -----------------------------
+async function checkSystemHealth() {
+    try {
+        const res = await fetch("/system-status?context=verify");
+
+        if (!res.ok) throw new Error("Server not reachable");
+
+        const data = await res.json();
+
+        if (!data.services) throw new Error("Invalid response");
+
+        let allRunning = true;
+        let html = "";
+
+        for (let service in data.services) {
+            const running = data.services[service].running;
+
+            html += `${service} : <span class="${running ? 'running' : 'stopped'}">${running ? 'Running' : 'Stopped'}</span><br>`;
+          
+
+            if (!running) allRunning = false;
+        }
+
+        healthBox.innerHTML = html;
+        verifyBtn.disabled = !allRunning;
+
+    } catch (err) {
+        console.error("Health check failed:", err);
+        healthBox.innerHTML = "System controller temporarily unavailable...";
+        verifyBtn.disabled = true;
+    }
+}
+
+
+
+
+
+window.addEventListener("load", function () {
+
+    const navType = performance.getEntriesByType("navigation")[0].type;
+
+    if (navType === "reload") {
+        console.log("Refresh detected → set camera UI to stopped");
+        healthBox.innerHTML = "Cheking services...";
+        verifyBtn.disabled = true;
+    }
+
+});
+// Initial health check
+//checkSystemHealth();
+
+// Refresh health every 5 seconds
+setInterval(checkSystemHealth, 5000);
+
+</script>
 </body>
 </html>
+
+
+

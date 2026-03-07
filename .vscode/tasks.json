@@ -88,7 +88,7 @@
       "command": "cmd",
       "args": [
         "/k",
-        "env\\Scripts\\activate && uvicorn verification_controller:app --host 0.0.0.0 --port 8004 --reload"
+        "env\\Scripts\\activate && uvicorn verification_controller:app --host 0.0.0.0 --port 8007 --reload"
       ],
       "presentation": {
         "panel": "new",
@@ -190,6 +190,22 @@
       "problemMatcher": []
     },
     {
+      "label": "System controller",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/k",
+        "env\\Scripts\\activate && uvicorn system_controller:app --host 0.0.0.0 --port 9008 --reload"
+      ],
+      "presentation": {
+        "panel": "new",
+        "reveal": "always",
+        "focus": true,
+        "group": "silentauth"
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Start SilentAuth-Enrollment (ALL)",
       "dependsOn": [
         "Enroll Face Service",
@@ -197,6 +213,21 @@
         "Enroll Voice Service",
         "Main Enrollment Engine",
         "Enrollment Controller"
+      ],
+    },
+    {
+      "label": "Start SilentAuth GUI (ALL)",
+      "dependsOn": [
+        "Enroll Face Service",
+        "Enroll Gesture Service",
+        "Enroll Voice Service",
+        "Enrollment Controller",
+        "Face Service",
+        "Gesture Service",
+        "Voice Service",
+        "Verification Controller",
+        "System controller"
+
       ],
     }
   ]

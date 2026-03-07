@@ -21,3 +21,4 @@ def enroll_stream(data: VoiceRequest):
         event_generator(),
         media_type="text/event-stream"
     )
+

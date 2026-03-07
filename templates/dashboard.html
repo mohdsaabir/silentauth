@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SilentAuth Dashboard</title>
+<script src="/static/config.js"></script>
+<style>
+
+body{
+    font-family: Arial;
+    background:#f5f5f5;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    max-width:500px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:6px;
+    background:#007bff;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.status{
+    margin-top:20px;
+    background:#111;
+    color:#00ff88;
+    padding:10px;
+    border-radius:8px;
+    font-family:monospace;
+    height:200px;
+    overflow:auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>SilentAuth Dashboard</h2>
+
+<button onclick="startEnroll()">Enroll User</button>
+
+<button onclick="startVerify()">Verify User</button>
+
+<button onclick="openLogs()">Verification Logs</button>
+
+<button onclick="checkHealth()">System Health</button>
+
+
+
+<div id="status" class="status"></div>
+
+</div>
+
+<script>
+
+async function startEnroll(){
+
+    //await fetch("/start-enrollment",{
+    //    method:"POST"
+    //})
+
+    window.location="/enroll";
+}
+
+async function startVerify(){
+
+    await fetch("/start-verification",{
+        method:"POST"
+    })
+
+    window.location="/verify"
+}
+
+async function checkHealth() {
+
+    const res = await fetch("/system-status");
+    const data = await res.json();
+    const log = document.getElementById("status");
+
+    log.innerHTML = "";
+
+    log.innerHTML += "<b>Mode:</b> " + data.mode + "<br><br>";
+
+    for (let service in data.services) {
+        const svc = data.services[service];
+        const statusText = svc.running ? "working" : "not working";
+        const color = svc.running ? "green" : "red";
+
+        log.innerHTML += `<span style="color:${color};">${service} : ${statusText} (port: ${svc.port})</span><br>`;
+    }
+
+   // setTimeout(() => {
+   // log.innerHTML = "";
+   // }, 9000);
+}
+
+function openLogs(){
+    window.location = `${CONFIG.VERIFICATION_CONTROLLER}/logs`;
+}
+
+window.addEventListener("beforeunload", function () {
+    document.getElementById("status").innerHTML = "";
+});
+
+</script>
+
+</body>
+</html>
